@@ -166,5 +166,137 @@ namespace Arcane.Liquidador.Properties {
                 this["darkMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string defaultSim_hint {
+            get {
+                return ((string)(this["defaultSim_hint"]));
+            }
+            set {
+                this["defaultSim_hint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string objSim1_hint {
+            get {
+                return ((string)(this["objSim1_hint"]));
+            }
+            set {
+                this["objSim1_hint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string objSim2_hint {
+            get {
+                return ((string)(this["objSim2_hint"]));
+            }
+            set {
+                this["objSim2_hint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string objSim3_hint {
+            get {
+                return ((string)(this["objSim3_hint"]));
+            }
+            set {
+                this["objSim3_hint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string defaultSo_hint {
+            get {
+                return ((string)(this["defaultSo_hint"]));
+            }
+            set {
+                this["defaultSo_hint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string objSO1_hint {
+            get {
+                return ((string)(this["objSO1_hint"]));
+            }
+            set {
+                this["objSO1_hint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string objSO2_hint {
+            get {
+                return ((string)(this["objSO2_hint"]));
+            }
+            set {
+                this["objSO2_hint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string saleTarget_hint {
+            get {
+                return ((string)(this["saleTarget_hint"]));
+            }
+            set {
+                this["saleTarget_hint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string volumeTarget_hint {
+            get {
+                return ((string)(this["volumeTarget_hint"]));
+            }
+            set {
+                this["volumeTarget_hint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string volumePayment_hint {
+            get {
+                return ((string)(this["volumePayment_hint"]));
+            }
+            set {
+                this["volumePayment_hint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string psrRequiered_hint {
+            get {
+                return ((string)(this["psrRequiered_hint"]));
+            }
+            set {
+                this["psrRequiered_hint"] = value;
+            }
+        }
     }
 }
