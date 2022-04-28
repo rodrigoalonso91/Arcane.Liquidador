@@ -26,7 +26,7 @@ namespace Arcane.Liquidador
 
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager.Theme = SetTheme();
             materialSkinManager.ColorScheme = new ColorScheme(primary: Color.FromArgb(139, 181, 157),
                                                               darkPrimary: Color.FromArgb(92, 120, 104),
                                                               lightPrimary: Color.FromArgb(146, 165, 154),
@@ -34,6 +34,23 @@ namespace Arcane.Liquidador
                                                               TextShade.BLACK);
 
             FillTxtboxList();
+        }
+
+        private MaterialSkinManager.Themes SetTheme()
+        {
+            if (Switch_DarkMode.Checked) return MaterialSkinManager.Themes.DARK;
+            else return MaterialSkinManager.Themes.LIGHT;
+        }
+
+        private void Switch_DarkMode_CheckedChanged(object sender, EventArgs e)
+        {
+            MaterialSkinManager.Instance.Theme = SetTheme();
+        }
+
+        private void Switch_DarkMode_CheckStateChanged(object sender, EventArgs e)
+        {
+            Settings.Default.darkMode = Switch_DarkMode.Checked;
+            Settings.Default.Save();
         }
 
         private void FillTxtboxList()
@@ -115,9 +132,11 @@ namespace Arcane.Liquidador
         }
         #endregion
 
+        #region Manage load and save settings
         private void MainForm_Load(object sender, EventArgs e)
         {
             isStartUp = false;
+            Switch_DarkMode.Checked = Settings.Default.darkMode;
 
             Txtbox_DefaultSim.Text = Settings.Default.defaultSim;
             Txtbox_Obj1Sim.Text = Settings.Default.objSim1;
@@ -200,5 +219,7 @@ namespace Arcane.Liquidador
             Settings.Default.psrRequiered = Txtbox_PsrReq.Text;
             Settings.Default.Save();
         }
+
+        #endregion
     }
 }
