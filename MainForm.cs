@@ -18,6 +18,7 @@ namespace Arcane.Liquidador
     {
         private List<string> reportList = new List<string>();
         private List<MaterialTextBox> txtboxList = new List<MaterialTextBox>();
+        private bool isStartUp = true;
 
         public MainForm()
         {
@@ -114,65 +115,90 @@ namespace Arcane.Liquidador
         }
         #endregion
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            isStartUp = false;
+
+            Txtbox_DefaultSim.Text = Settings.Default.defaultSim;
+            Txtbox_Obj1Sim.Text = Settings.Default.objSim1;
+            Txtbox_Obj2Sim.Text = Settings.Default.objSim2;
+            Txtbox_Obj3Sim.Text = Settings.Default.objSim3;
+
+            Txtbox_DefaultSO.Text = Settings.Default.defaultSo;
+            Txtbox_Obj1SO.Text = Settings.Default.objSO1;
+            Txtbox_Obj2SO.Text = Settings.Default.objSO2;
+            Txtbox_SalesTargetSO.Text = Settings.Default.saleTarget;
+
+            Txtbox_volTarget.Text = Settings.Default.volumeTarget;
+            Txtbox_volPayment.Text = Settings.Default.volumePayment;
+            Txtbox_PsrReq.Text = Settings.Default.psrRequiered;
+        }
+
         private void Txtbox_DefaultSim_TextChanged(object sender, EventArgs e)
         {
+            if (isStartUp) return;
             Settings.Default.defaultSim = Txtbox_DefaultSim.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj1Sim_TextChanged(object sender, EventArgs e)
         {
+            if (isStartUp) return;
             Settings.Default.objSim1 = Txtbox_Obj1Sim.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj2Sim_TextChanged(object sender, EventArgs e)
         {
+            if (isStartUp) return;
             Settings.Default.objSim2 = Txtbox_Obj2Sim.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj3Sim_TextChanged(object sender, EventArgs e)
         {
+            if (isStartUp) return;
             Settings.Default.objSim3 = Txtbox_Obj3Sim.Text;
             Settings.Default.Save();
         }
         private void Txtbox_DefaultSO_TextChanged(object sender, EventArgs e)
         {
+            if (isStartUp) return;
             Settings.Default.defaultSo = Txtbox_DefaultSO.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj1SO_TextChanged(object sender, EventArgs e)
         {
+            if (isStartUp) return;
             Settings.Default.objSO1 = Txtbox_Obj1SO.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj2SO_TextChanged(object sender, EventArgs e)
         {
+            if (isStartUp) return;
             Settings.Default.objSO2 = Txtbox_Obj2SO.Text;
             Settings.Default.Save();
         }
         private void Txtbox_SalesTargetSO_TextChanged(object sender, EventArgs e)
         {
+            if (isStartUp) return;
             Settings.Default.saleTarget = Txtbox_SalesTargetSO.Text;
             Settings.Default.Save();
         }
         private void Txtbox_volTarget_TextChanged(object sender, EventArgs e)
         {
+            if (isStartUp) return;
             Settings.Default.volumeTarget = Txtbox_volTarget.Text;
             Settings.Default.Save();
         }
         private void Txtbox_volPayment_TextChanged(object sender, EventArgs e)
         {
+            if (isStartUp) return;
             Settings.Default.volumePayment = Txtbox_volPayment.Text;
             Settings.Default.Save();
         }
         private void Txtbox_PsrReq_TextChanged(object sender, EventArgs e)
         {
+            if (isStartUp) return;
             Settings.Default.psrRequiered = Txtbox_PsrReq.Text;
             Settings.Default.Save();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            Txtbox_DefaultSim.Text = Settings.Default.defaultSim;
         }
     }
 }
