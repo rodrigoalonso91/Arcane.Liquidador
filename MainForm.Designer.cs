@@ -643,6 +643,7 @@ namespace Arcane.Liquidador
             this.Padding = new System.Windows.Forms.Padding(3, 94, 3, 4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liquidador - By Rodrigo Alonso";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Dgv_Payments.ResumeLayout(false);
             this.TabPage_Home.ResumeLayout(false);
             this.TabPage_Home.PerformLayout();

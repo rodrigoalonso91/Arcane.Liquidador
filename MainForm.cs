@@ -113,55 +113,66 @@ namespace Arcane.Liquidador
             e.Handled = IsNumber(e);
         }
         #endregion
-        private void SaveTextBoxValue(string text, string key)
-        {
-            Settings.Default[key] = text;
-            Settings.Default.Save();
-        }
 
         private void Txtbox_DefaultSim_TextChanged(object sender, EventArgs e)
         {
-            SaveTextBoxValue(Txtbox_DefaultSim.Text, key: "defaultSim");
+            Settings.Default.defaultSim = Txtbox_DefaultSim.Text;
+            Settings.Default.Save();
         }
         private void Txtbox_Obj1Sim_TextChanged(object sender, EventArgs e)
         {
-            SaveTextBoxValue(Txtbox_Obj1Sim.Text, key: "objSim1");
+            Settings.Default.objSim1 = Txtbox_Obj1Sim.Text;
+            Settings.Default.Save();
         }
         private void Txtbox_Obj2Sim_TextChanged(object sender, EventArgs e)
         {
-            SaveTextBoxValue(Txtbox_Obj2Sim.Text, key: "objSim2");
+            Settings.Default.objSim2 = Txtbox_Obj2Sim.Text;
+            Settings.Default.Save();
         }
         private void Txtbox_Obj3Sim_TextChanged(object sender, EventArgs e)
         {
-            SaveTextBoxValue(Txtbox_Obj3Sim.Text, key: "objSim3");
+            Settings.Default.objSim3 = Txtbox_Obj3Sim.Text;
+            Settings.Default.Save();
         }
         private void Txtbox_DefaultSO_TextChanged(object sender, EventArgs e)
         {
-            SaveTextBoxValue(Txtbox_DefaultSO.Text, key: "defaultSO");
+            Settings.Default.defaultSo = Txtbox_DefaultSO.Text;
+            Settings.Default.Save();
         }
         private void Txtbox_Obj1SO_TextChanged(object sender, EventArgs e)
         {
-            SaveTextBoxValue(Txtbox_Obj1SO.Text, key: "objSO1");
+            Settings.Default.objSO1 = Txtbox_Obj1SO.Text;
+            Settings.Default.Save();
         }
         private void Txtbox_Obj2SO_TextChanged(object sender, EventArgs e)
         {
-            SaveTextBoxValue(Txtbox_Obj2SO.Text, key: "objSO2");
+            Settings.Default.objSO2 = Txtbox_Obj2SO.Text;
+            Settings.Default.Save();
         }
         private void Txtbox_SalesTargetSO_TextChanged(object sender, EventArgs e)
         {
-            SaveTextBoxValue(Txtbox_SalesTargetSO.Text, key: "saleTarget");
+            Settings.Default.saleTarget = Txtbox_SalesTargetSO.Text;
+            Settings.Default.Save();
         }
         private void Txtbox_volTarget_TextChanged(object sender, EventArgs e)
         {
-            SaveTextBoxValue(Txtbox_volTarget.Text, key: "volumeTarget");
+            Settings.Default.volumeTarget = Txtbox_volTarget.Text;
+            Settings.Default.Save();
         }
         private void Txtbox_volPayment_TextChanged(object sender, EventArgs e)
         {
-            SaveTextBoxValue(Txtbox_volPayment.Text, key: "volumePayment");
+            Settings.Default.volumePayment = Txtbox_volPayment.Text;
+            Settings.Default.Save();
         }
         private void Txtbox_PsrReq_TextChanged(object sender, EventArgs e)
         {
-            SaveTextBoxValue(Txtbox_PsrReq.Text, key: "psrRequiered");
+            Settings.Default.psrRequiered = Txtbox_PsrReq.Text;
+            Settings.Default.Save();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            Txtbox_DefaultSim.Text = Settings.Default.defaultSim;
         }
     }
 }
