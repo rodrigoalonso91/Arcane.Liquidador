@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Arcane.Liquidador.Extentions;
+using Arcane.Liquidador.Properties;
 using MaterialSkin;
 using MaterialSkin.Controls;
 
@@ -112,5 +113,55 @@ namespace Arcane.Liquidador
             e.Handled = IsNumber(e);
         }
         #endregion
+        private void SaveTextBoxValue(string text, string key)
+        {
+            Settings.Default[key] = text;
+            Settings.Default.Save();
+        }
+
+        private void Txtbox_DefaultSim_TextChanged(object sender, EventArgs e)
+        {
+            SaveTextBoxValue(Txtbox_DefaultSim.Text, key: "defaultSim");
+        }
+        private void Txtbox_Obj1Sim_TextChanged(object sender, EventArgs e)
+        {
+            SaveTextBoxValue(Txtbox_Obj1Sim.Text, key: "objSim1");
+        }
+        private void Txtbox_Obj2Sim_TextChanged(object sender, EventArgs e)
+        {
+            SaveTextBoxValue(Txtbox_Obj2Sim.Text, key: "objSim2");
+        }
+        private void Txtbox_Obj3Sim_TextChanged(object sender, EventArgs e)
+        {
+            SaveTextBoxValue(Txtbox_Obj3Sim.Text, key: "objSim3");
+        }
+        private void Txtbox_DefaultSO_TextChanged(object sender, EventArgs e)
+        {
+            SaveTextBoxValue(Txtbox_DefaultSO.Text, key: "defaultSO");
+        }
+        private void Txtbox_Obj1SO_TextChanged(object sender, EventArgs e)
+        {
+            SaveTextBoxValue(Txtbox_Obj1SO.Text, key: "objSO1");
+        }
+        private void Txtbox_Obj2SO_TextChanged(object sender, EventArgs e)
+        {
+            SaveTextBoxValue(Txtbox_Obj2SO.Text, key: "objSO2");
+        }
+        private void Txtbox_SalesTargetSO_TextChanged(object sender, EventArgs e)
+        {
+            SaveTextBoxValue(Txtbox_SalesTargetSO.Text, key: "saleTarget");
+        }
+        private void Txtbox_volTarget_TextChanged(object sender, EventArgs e)
+        {
+            SaveTextBoxValue(Txtbox_volTarget.Text, key: "volumeTarget");
+        }
+        private void Txtbox_volPayment_TextChanged(object sender, EventArgs e)
+        {
+            SaveTextBoxValue(Txtbox_volPayment.Text, key: "volumePayment");
+        }
+        private void Txtbox_PsrReq_TextChanged(object sender, EventArgs e)
+        {
+            SaveTextBoxValue(Txtbox_PsrReq.Text, key: "psrRequiered");
+        }
     }
 }
