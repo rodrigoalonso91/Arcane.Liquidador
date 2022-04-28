@@ -59,9 +59,9 @@ namespace Arcane.Liquidador
             this.Txtbox_Obj2SO = new MaterialSkin.Controls.MaterialTextBox();
             this.materialTextBox11 = new MaterialSkin.Controls.MaterialTextBox();
             this.TabPage_Pagos = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TabPage_Settings = new System.Windows.Forms.TabPage();
             this.ImgList_Menu = new System.Windows.Forms.ImageList(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Dgv_Payments.SuspendLayout();
             this.TabPage_Home.SuspendLayout();
@@ -214,6 +214,7 @@ namespace Arcane.Liquidador
             this.Txtbox_DefaultSim.TabIndex = 3;
             this.Txtbox_DefaultSim.Text = "";
             this.Txtbox_DefaultSim.TrailingIcon = null;
+            this.Txtbox_DefaultSim.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbox_DefaultSim_KeyPress);
             // 
             // BtnAdd_ReportSim
             // 
@@ -253,6 +254,7 @@ namespace Arcane.Liquidador
             this.Txtbox_DefaultSO.TabIndex = 7;
             this.Txtbox_DefaultSO.Text = "";
             this.Txtbox_DefaultSO.TrailingIcon = null;
+            this.Txtbox_DefaultSO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbox_DefaultSO_KeyPress);
             // 
             // BtnAdd_ReportAgency
             // 
@@ -292,6 +294,7 @@ namespace Arcane.Liquidador
             this.Txtbox_Obj1Sim.TabIndex = 4;
             this.Txtbox_Obj1Sim.Text = "";
             this.Txtbox_Obj1Sim.TrailingIcon = null;
+            this.Txtbox_Obj1Sim.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbox_Obj1Sim_KeyPress);
             // 
             // Txtbox_ReportSO
             // 
@@ -330,6 +333,7 @@ namespace Arcane.Liquidador
             this.Txtbox_Obj2Sim.TabIndex = 5;
             this.Txtbox_Obj2Sim.Text = "";
             this.Txtbox_Obj2Sim.TrailingIcon = null;
+            this.Txtbox_Obj2Sim.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbox_Obj2Sim_KeyPress);
             // 
             // Txtbox_ReportSim
             // 
@@ -368,6 +372,7 @@ namespace Arcane.Liquidador
             this.Txtbox_Obj3Sim.TabIndex = 6;
             this.Txtbox_Obj3Sim.Text = "";
             this.Txtbox_Obj3Sim.TrailingIcon = null;
+            this.Txtbox_Obj3Sim.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbox_Obj3Sim_KeyPress);
             // 
             // TxtBox_ReportAgency
             // 
@@ -407,6 +412,7 @@ namespace Arcane.Liquidador
             this.Txtbox_SalesTargetSO.TabIndex = 10;
             this.Txtbox_SalesTargetSO.Text = "";
             this.Txtbox_SalesTargetSO.TrailingIcon = null;
+            this.Txtbox_SalesTargetSO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbox_SalesTargetSO_KeyPress);
             // 
             // MCard_ReportView
             // 
@@ -524,6 +530,7 @@ namespace Arcane.Liquidador
             this.Txtbox_Obj1SO.TabIndex = 8;
             this.Txtbox_Obj1SO.Text = "";
             this.Txtbox_Obj1SO.TrailingIcon = null;
+            this.Txtbox_Obj1SO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbox_Obj1SO_KeyPress);
             // 
             // Txtbox_Obj2SO
             // 
@@ -543,6 +550,7 @@ namespace Arcane.Liquidador
             this.Txtbox_Obj2SO.TabIndex = 9;
             this.Txtbox_Obj2SO.Text = "";
             this.Txtbox_Obj2SO.TrailingIcon = null;
+            this.Txtbox_Obj2SO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbox_Obj2SO_KeyPress);
             // 
             // materialTextBox11
             // 
@@ -576,13 +584,22 @@ namespace Arcane.Liquidador
             this.TabPage_Pagos.Text = "Pagos";
             this.TabPage_Pagos.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 4);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1130, 377);
+            this.dataGridView1.TabIndex = 0;
+            // 
             // TabPage_Settings
             // 
             this.TabPage_Settings.ImageKey = "settings_FILL0_wght400_GRAD-25_opsz48.png";
             this.TabPage_Settings.Location = new System.Drawing.Point(4, 39);
             this.TabPage_Settings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TabPage_Settings.Name = "TabPage_Settings";
-            this.TabPage_Settings.Size = new System.Drawing.Size(1135, 531);
+            this.TabPage_Settings.Size = new System.Drawing.Size(1136, 531);
             this.TabPage_Settings.TabIndex = 2;
             this.TabPage_Settings.Text = "Configuración";
             this.TabPage_Settings.UseVisualStyleBackColor = true;
@@ -596,18 +613,10 @@ namespace Arcane.Liquidador
             this.ImgList_Menu.Images.SetKeyName(2, "home_FILL0_wght400_GRAD0_opsz48.png");
             this.ImgList_Menu.Images.SetKeyName(3, "Icono.jpg");
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1130, 377);
-            this.dataGridView1.TabIndex = 0;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Archivos CSV|*.csv|Todos los archivos|*.*";
             // 
             // MainForm
             // 

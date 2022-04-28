@@ -71,5 +71,46 @@ namespace Arcane.Liquidador
         {
             Txtbox_ReportSO.Text = ValidateFile();
         }
+
+        #region Manage Key Press Events
+        private bool IsNumber(KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) return true;
+            else return false;
+        }
+
+        private void Txtbox_DefaultSim_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = IsNumber(e);
+        }
+        private void Txtbox_Obj1Sim_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = IsNumber(e);
+        }
+        private void Txtbox_Obj2Sim_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = IsNumber(e);
+        }
+        private void Txtbox_Obj3Sim_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = IsNumber(e);
+        }
+        private void Txtbox_DefaultSO_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = IsNumber(e);
+        }
+        private void Txtbox_Obj1SO_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = IsNumber(e);
+        }
+        private void Txtbox_Obj2SO_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = IsNumber(e);
+        }
+        private void Txtbox_SalesTargetSO_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = IsNumber(e);
+        }
+        #endregion
     }
 }
