@@ -2,44 +2,41 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Arcane.Liquidador.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="defaultSim" Type="System.String" Scope="User">
+    <Setting Name="defaultSim_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSim1" Type="System.String" Scope="User">
+    <Setting Name="objSim1_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSim2" Type="System.String" Scope="User">
+    <Setting Name="objSim2_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSim3" Type="System.String" Scope="User">
+    <Setting Name="objSim3_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="defaultSo" Type="System.String" Scope="User">
+    <Setting Name="defaultSo_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSO1" Type="System.String" Scope="User">
+    <Setting Name="objSO1_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSO2" Type="System.String" Scope="User">
+    <Setting Name="objSO2_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="saleTarget" Type="System.String" Scope="User">
+    <Setting Name="saleTarget_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="volumeTarget" Type="System.String" Scope="User">
+    <Setting Name="volumeTarget_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="volumePayment" Type="System.String" Scope="User">
+    <Setting Name="volumePayment_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="psrRequiered" Type="System.String" Scope="User">
+    <Setting Name="psrRequiered_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="darkMode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="defaultSim_hint" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="objSim1_hint" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -50,26 +47,41 @@
     <Setting Name="objSim3_hint" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="defaultSo_hint" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="objSO1_hint" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="objSO2_hint" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="saleTarget_hint" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="DefaultSim" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="volumeTarget_hint" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="ObjectiveSim1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="volumePayment_hint" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="ObjectiveSim2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="psrRequiered_hint" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="ObjectiveSim3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="DefaultSellout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ObjectiveSO1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ObjectiveSO2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ClientSaleTarget" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="VolumeTarget" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="VolumePayment" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

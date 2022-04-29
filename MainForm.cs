@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Arcane.Claro.Utils;
+using Arcane.Liquidador.Abstractions;
+using Arcane.Liquidador.Data;
 using Arcane.Liquidador.Extentions;
 using Arcane.Liquidador.Properties;
 using MaterialSkin;
@@ -16,9 +19,11 @@ namespace Arcane.Liquidador
 {
     public partial class MainForm : MaterialForm
     {
-        public List<string> ReportList { get; set; } = new List<string>();
-        private List<MaterialTextBox> txtboxList = new List<MaterialTextBox>();
-        private bool isStartUp = true;
+        private bool _isStartUp = true;
+        private List<string> ReportList { get; set; } = new List<string>();
+        private List<MaterialTextBox> TxtboxObjectivesList { get; set; } = new List<MaterialTextBox>();
+        private Dictionary<string, MaterialTextBox> TxtboxSettingsDict { get; set; } = new Dictionary<string, MaterialTextBox>();
+        private IPsrObjectives ClientObjectives { get; set; }
 
         public MainForm()
         {
@@ -33,7 +38,8 @@ namespace Arcane.Liquidador
                                                               accent: Color.FromArgb(241, 167, 173),
                                                               TextShade.BLACK);
 
-            FillTxtboxList();
+            FillTxtboxReportList();
+            FillTxtboxSettingsList();
         }
 
         private MaterialSkinManager.Themes SetTheme()
@@ -56,126 +62,137 @@ namespace Arcane.Liquidador
         #region Manage load and save settings
         private void MainForm_Load(object sender, EventArgs e)
         {
-            isStartUp = false;
+            _isStartUp = false;
             Switch_DarkMode.Checked = Settings.Default.darkMode;
 
             // Txtbox Hints
-            Txtbox_DefaultSim.Hint = Settings.Default.defaultSim_hint;
             Txtbox_Obj1Sim.Hint = Settings.Default.objSim1_hint;
             Txtbox_Obj2Sim.Hint = Settings.Default.objSim2_hint;
             Txtbox_Obj3Sim.Hint = Settings.Default.objSim3_hint;
 
-            Txtbox_DefaultSO.Hint = Settings.Default.defaultSo_hint;
             Txtbox_Obj1SO.Hint = Settings.Default.objSO1_hint;
             Txtbox_Obj2SO.Hint = Settings.Default.objSO2_hint;
-            Txtbox_SalesTargetSO.Hint = Settings.Default.saleTarget_hint;
 
-            Txtbox_volTarget.Hint = Settings.Default.volumeTarget_hint;
-            Txtbox_volPayment.Hint = Settings.Default.volumePayment_hint;
-            Txtbox_PsrReq.Hint = Settings.Default.psrRequiered_hint;
+            //Txtbox Settings Values
+            TxtboxSettings_ObjSim1.Text = Utils.ExtractNumber(Settings.Default.objSim1_hint);
+            TxtboxSettings_ObjSim2.Text = Utils.ExtractNumber(Settings.Default.objSim2_hint);
+            TxtboxSettings_ObjSim3.Text = Utils.ExtractNumber(Settings.Default.objSim3_hint);
+
+            TxtboxSettings_ObjSO1.Text = Utils.ExtractNumber(Settings.Default.objSO1_hint);
+            TxtboxSettings_ObjSO2.Text = Utils.ExtractNumber(Settings.Default.objSO2_hint);
 
             // Txtbox Values
-            Txtbox_DefaultSim.Text = Settings.Default.defaultSim;
-            Txtbox_Obj1Sim.Text = Settings.Default.objSim1;
-            Txtbox_Obj2Sim.Text = Settings.Default.objSim2;
-            Txtbox_Obj3Sim.Text = Settings.Default.objSim3;
+            Txtbox_DefaultSim.Text = Settings.Default.defaultSim_text;
+            Txtbox_Obj1Sim.Text = Settings.Default.objSim1_text;
+            Txtbox_Obj2Sim.Text = Settings.Default.objSim2_text;
+            Txtbox_Obj3Sim.Text = Settings.Default.objSim3_text;
 
-            Txtbox_DefaultSO.Text = Settings.Default.defaultSo;
-            Txtbox_Obj1SO.Text = Settings.Default.objSO1;
-            Txtbox_Obj2SO.Text = Settings.Default.objSO2;
-            Txtbox_SalesTargetSO.Text = Settings.Default.saleTarget;
+            Txtbox_DefaultSO.Text = Settings.Default.defaultSo_text;
+            Txtbox_Obj1SO.Text = Settings.Default.objSO1_text;
+            Txtbox_Obj2SO.Text = Settings.Default.objSO2_text;
+            Txtbox_SalesTargetSO.Text = Settings.Default.saleTarget_text;
 
-            Txtbox_volTarget.Text = Settings.Default.volumeTarget;
-            Txtbox_volPayment.Text = Settings.Default.volumePayment;
-            Txtbox_PsrReq.Text = Settings.Default.psrRequiered;
+            Txtbox_volTarget.Text = Settings.Default.volumeTarget_text;
+            Txtbox_volPayment.Text = Settings.Default.volumePayment_text;
+            Txtbox_PsrReq.Text = Settings.Default.psrRequiered_text;
         }
 
         private void Txtbox_DefaultSim_TextChanged(object sender, EventArgs e)
         {
-            if (isStartUp) return;
-            Settings.Default.defaultSim = Txtbox_DefaultSim.Text;
+            if (_isStartUp) return;
+            Settings.Default.defaultSim_text = Txtbox_DefaultSim.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj1Sim_TextChanged(object sender, EventArgs e)
         {
-            if (isStartUp) return;
-            Settings.Default.objSim1 = Txtbox_Obj1Sim.Text;
+            if (_isStartUp) return;
+            Settings.Default.objSim1_text = Txtbox_Obj1Sim.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj2Sim_TextChanged(object sender, EventArgs e)
         {
-            if (isStartUp) return;
-            Settings.Default.objSim2 = Txtbox_Obj2Sim.Text;
+            if (_isStartUp) return;
+            Settings.Default.objSim2_text = Txtbox_Obj2Sim.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj3Sim_TextChanged(object sender, EventArgs e)
         {
-            if (isStartUp) return;
-            Settings.Default.objSim3 = Txtbox_Obj3Sim.Text;
+            if (_isStartUp) return;
+            Settings.Default.objSim3_text = Txtbox_Obj3Sim.Text;
             Settings.Default.Save();
         }
         private void Txtbox_DefaultSO_TextChanged(object sender, EventArgs e)
         {
-            if (isStartUp) return;
-            Settings.Default.defaultSo = Txtbox_DefaultSO.Text;
+            if (_isStartUp) return;
+            Settings.Default.defaultSo_text = Txtbox_DefaultSO.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj1SO_TextChanged(object sender, EventArgs e)
         {
-            if (isStartUp) return;
-            Settings.Default.objSO1 = Txtbox_Obj1SO.Text;
+            if (_isStartUp) return;
+            Settings.Default.objSO1_text = Txtbox_Obj1SO.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj2SO_TextChanged(object sender, EventArgs e)
         {
-            if (isStartUp) return;
-            Settings.Default.objSO2 = Txtbox_Obj2SO.Text;
+            if (_isStartUp) return;
+            Settings.Default.objSO2_text = Txtbox_Obj2SO.Text;
             Settings.Default.Save();
         }
         private void Txtbox_SalesTargetSO_TextChanged(object sender, EventArgs e)
         {
-            if (isStartUp) return;
-            Settings.Default.saleTarget = Txtbox_SalesTargetSO.Text;
+            if (_isStartUp) return;
+            Settings.Default.saleTarget_text = Txtbox_SalesTargetSO.Text;
             Settings.Default.Save();
         }
         private void Txtbox_volTarget_TextChanged(object sender, EventArgs e)
         {
-            if (isStartUp) return;
-            Settings.Default.volumeTarget = Txtbox_volTarget.Text;
+            if (_isStartUp) return;
+            Settings.Default.volumeTarget_text = Txtbox_volTarget.Text;
             Settings.Default.Save();
         }
         private void Txtbox_volPayment_TextChanged(object sender, EventArgs e)
         {
-            if (isStartUp) return;
-            Settings.Default.volumePayment = Txtbox_volPayment.Text;
+            if (_isStartUp) return;
+            Settings.Default.volumePayment_text = Txtbox_volPayment.Text;
             Settings.Default.Save();
         }
         private void Txtbox_PsrReq_TextChanged(object sender, EventArgs e)
         {
-            if (isStartUp) return;
-            Settings.Default.psrRequiered = Txtbox_PsrReq.Text;
+            if (_isStartUp) return;
+            Settings.Default.psrRequiered_text = Txtbox_PsrReq.Text;
             Settings.Default.Save();
         }
 
         #endregion
 
-        private void FillTxtboxList()
+        private void FillTxtboxReportList()
         {
-            txtboxList.Add(TxtBox_ReportAgency);
-            txtboxList.Add(Txtbox_ReportSim);
-            txtboxList.Add(Txtbox_ReportSO);
+            TxtboxObjectivesList.Add(TxtBox_ReportAgency);
+            TxtboxObjectivesList.Add(Txtbox_ReportSim);
+            TxtboxObjectivesList.Add(Txtbox_ReportSO);
+        }
+        private void FillTxtboxSettingsList()
+        {
+            if (!_isStartUp) TxtboxSettingsDict.Clear();
+
+            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSim1), TxtboxSettings_ObjSim1);
+            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSim2), TxtboxSettings_ObjSim2);
+            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSim3), TxtboxSettings_ObjSim3);
+            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSO1), TxtboxSettings_ObjSO1);
+            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSO2), TxtboxSettings_ObjSO2);
         }
 
         private string ValidateFile()
         {
-            ReportList.SyncTxtboxContent(txtboxList);
+            ReportList.SyncTxtboxContent(TxtboxObjectivesList);
 
             if (openFileDialog1.ShowDialog() != DialogResult.OK) return string.Empty;
 
             var filePath = openFileDialog1.FileName;
             if (ReportList.Contains(filePath))
             {
-                MessageBox.Show("Este archivo ya fue seleccionado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Warnings.AlreadySelectedFile, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return string.Empty;
             }
 
@@ -236,6 +253,88 @@ namespace Arcane.Liquidador
         {
             e.Handled = IsNumber(e);
         }
+        private void TxtboxSettings_ObjSim1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = IsNumber(e);
+        }
         #endregion
+
+        private void BtnSave_ObjSettings_Click(object sender, EventArgs e)
+        {
+            FillTxtboxSettingsList();
+
+            if (IsSomeTxtEmpty())
+            {
+                MessageBox.Show("Hay uno o más campos vacios, verifique.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                ValidateObjectiveRules();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var userConfirmation = MessageBox.Show("Desea guardar estos ajustes?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (userConfirmation is DialogResult.No) return;
+
+            MakeHintsForSim();
+            MakeHintsForSellout();
+            SaveAndReloadForm(sender, e);
+        }
+
+        private bool IsSomeTxtEmpty()
+        {
+            return TxtboxSettingsDict.Values.All(txtbox => !string.IsNullOrEmpty(txtbox.Text));
+        }
+
+        private void ValidateObjectiveRules()
+        {
+            var settingObjectives = new PsrObjectives(TxtboxSettingsDict);
+
+            var isObj3LessThanObj2 = settingObjectives.ObjectiveSim3 < settingObjectives.ObjectiveSim2;
+            if (isObj3LessThanObj2)
+            {
+                throw new ArgumentException(Erros.Error_Obj3);
+            }
+
+            var isGreatherThanDefault = settingObjectives.ObjectiveSim1 > settingObjectives.ObjectiveSim2;
+            if (isGreatherThanDefault)
+            {
+                throw new ArgumentException(Erros.Error_Obj1);
+            }
+
+            var isLessThanObj1 = settingObjectives.ObjectiveSim2 < settingObjectives.ObjectiveSim1;
+            var isGreatherThanObj3 = settingObjectives.ObjectiveSim2 > settingObjectives.ObjectiveSim3;
+            if (isLessThanObj1 || isGreatherThanObj3)
+            {
+                throw new ArgumentException(Erros.Error_Obj2);
+            }
+        }
+
+        private void SaveAndReloadForm(object sender, EventArgs e)
+        {
+            Settings.Default.Save();
+            MainForm_Load(sender, e);
+        }
+
+        private void MakeHintsForSellout()
+        {
+            Settings.Default.objSO1_hint = Utils.MakeHintText(TxtboxSettings_ObjSO1.Text, "SO");
+            Settings.Default.objSO2_hint = Utils.MakeHintText(TxtboxSettings_ObjSO2.Text, "SO");
+        }
+
+        private void MakeHintsForSim()
+        {
+            Settings.Default.objSim1_hint = Utils.MakeHintText(TxtboxSettings_ObjSim1.Text, "Sim");
+            Settings.Default.objSim2_hint = Utils.MakeHintText(TxtboxSettings_ObjSim2.Text, "Sim");
+            Settings.Default.objSim3_hint = Utils.MakeHintText(TxtboxSettings_ObjSim3.Text, "Sim");
+        }
+
+
     }
 }

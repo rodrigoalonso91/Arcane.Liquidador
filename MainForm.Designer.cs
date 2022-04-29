@@ -61,11 +61,12 @@ namespace Arcane.Liquidador
             this.TabPage_Pagos = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TabPage_Settings = new System.Windows.Forms.TabPage();
-            this.materialTextBox5 = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialTextBox4 = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialTextBox3 = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialTextBox2 = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
+            this.BtnSave_ObjSettings = new MaterialSkin.Controls.MaterialButton();
+            this.TxtboxSettings_ObjSO2 = new MaterialSkin.Controls.MaterialTextBox();
+            this.TxtboxSettings_ObjSO1 = new MaterialSkin.Controls.MaterialTextBox();
+            this.TxtboxSettings_ObjSim3 = new MaterialSkin.Controls.MaterialTextBox();
+            this.TxtboxSettings_ObjSim2 = new MaterialSkin.Controls.MaterialTextBox();
+            this.TxtboxSettings_ObjSim1 = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
@@ -78,7 +79,6 @@ namespace Arcane.Liquidador
             this.Switch_DarkMode = new MaterialSkin.Controls.MaterialSwitch();
             this.ImgList_Menu = new System.Windows.Forms.ImageList(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.BtnSave_ObjSettings = new MaterialSkin.Controls.MaterialButton();
             this.Dgv_Payments.SuspendLayout();
             this.TabPage_Home.SuspendLayout();
             this.MCard_ReportView.SuspendLayout();
@@ -624,11 +624,11 @@ namespace Arcane.Liquidador
             // TabPage_Settings
             // 
             this.TabPage_Settings.Controls.Add(this.BtnSave_ObjSettings);
-            this.TabPage_Settings.Controls.Add(this.materialTextBox5);
-            this.TabPage_Settings.Controls.Add(this.materialTextBox4);
-            this.TabPage_Settings.Controls.Add(this.materialTextBox3);
-            this.TabPage_Settings.Controls.Add(this.materialTextBox2);
-            this.TabPage_Settings.Controls.Add(this.materialTextBox1);
+            this.TabPage_Settings.Controls.Add(this.TxtboxSettings_ObjSO2);
+            this.TabPage_Settings.Controls.Add(this.TxtboxSettings_ObjSO1);
+            this.TabPage_Settings.Controls.Add(this.TxtboxSettings_ObjSim3);
+            this.TabPage_Settings.Controls.Add(this.TxtboxSettings_ObjSim2);
+            this.TabPage_Settings.Controls.Add(this.TxtboxSettings_ObjSim1);
             this.TabPage_Settings.Controls.Add(this.materialLabel6);
             this.TabPage_Settings.Controls.Add(this.materialLabel5);
             this.TabPage_Settings.Controls.Add(this.materialLabel4);
@@ -648,90 +648,111 @@ namespace Arcane.Liquidador
             this.TabPage_Settings.Text = "Configuración";
             this.TabPage_Settings.UseVisualStyleBackColor = true;
             // 
-            // materialTextBox5
+            // BtnSave_ObjSettings
             // 
-            this.materialTextBox5.AnimateReadOnly = false;
-            this.materialTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialTextBox5.Depth = 0;
-            this.materialTextBox5.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox5.LeadingIcon = null;
-            this.materialTextBox5.Location = new System.Drawing.Point(617, 342);
-            this.materialTextBox5.MaxLength = 50;
-            this.materialTextBox5.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox5.Multiline = false;
-            this.materialTextBox5.Name = "materialTextBox5";
-            this.materialTextBox5.Size = new System.Drawing.Size(100, 50);
-            this.materialTextBox5.TabIndex = 5;
-            this.materialTextBox5.Text = "";
-            this.materialTextBox5.TrailingIcon = null;
+            this.BtnSave_ObjSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnSave_ObjSettings.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.BtnSave_ObjSettings.Depth = 0;
+            this.BtnSave_ObjSettings.HighEmphasis = true;
+            this.BtnSave_ObjSettings.Icon = null;
+            this.BtnSave_ObjSettings.Location = new System.Drawing.Point(463, 495);
+            this.BtnSave_ObjSettings.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnSave_ObjSettings.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnSave_ObjSettings.Name = "BtnSave_ObjSettings";
+            this.BtnSave_ObjSettings.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.BtnSave_ObjSettings.Size = new System.Drawing.Size(88, 36);
+            this.BtnSave_ObjSettings.TabIndex = 6;
+            this.BtnSave_ObjSettings.Text = "Guardar";
+            this.BtnSave_ObjSettings.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnSave_ObjSettings.UseAccentColor = false;
+            this.BtnSave_ObjSettings.UseVisualStyleBackColor = true;
+            this.BtnSave_ObjSettings.Click += new System.EventHandler(this.BtnSave_ObjSettings_Click);
             // 
-            // materialTextBox4
+            // TxtboxSettings_ObjSO2
             // 
-            this.materialTextBox4.AnimateReadOnly = false;
-            this.materialTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialTextBox4.Depth = 0;
-            this.materialTextBox4.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox4.LeadingIcon = null;
-            this.materialTextBox4.Location = new System.Drawing.Point(617, 280);
-            this.materialTextBox4.MaxLength = 50;
-            this.materialTextBox4.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox4.Multiline = false;
-            this.materialTextBox4.Name = "materialTextBox4";
-            this.materialTextBox4.Size = new System.Drawing.Size(100, 50);
-            this.materialTextBox4.TabIndex = 5;
-            this.materialTextBox4.Text = "";
-            this.materialTextBox4.TrailingIcon = null;
+            this.TxtboxSettings_ObjSO2.AnimateReadOnly = false;
+            this.TxtboxSettings_ObjSO2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtboxSettings_ObjSO2.Depth = 0;
+            this.TxtboxSettings_ObjSO2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TxtboxSettings_ObjSO2.LeadingIcon = null;
+            this.TxtboxSettings_ObjSO2.Location = new System.Drawing.Point(617, 342);
+            this.TxtboxSettings_ObjSO2.MaxLength = 50;
+            this.TxtboxSettings_ObjSO2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtboxSettings_ObjSO2.Multiline = false;
+            this.TxtboxSettings_ObjSO2.Name = "TxtboxSettings_ObjSO2";
+            this.TxtboxSettings_ObjSO2.Size = new System.Drawing.Size(100, 50);
+            this.TxtboxSettings_ObjSO2.TabIndex = 5;
+            this.TxtboxSettings_ObjSO2.Text = "";
+            this.TxtboxSettings_ObjSO2.TrailingIcon = null;
             // 
-            // materialTextBox3
+            // TxtboxSettings_ObjSO1
             // 
-            this.materialTextBox3.AnimateReadOnly = false;
-            this.materialTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialTextBox3.Depth = 0;
-            this.materialTextBox3.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox3.LeadingIcon = null;
-            this.materialTextBox3.Location = new System.Drawing.Point(185, 408);
-            this.materialTextBox3.MaxLength = 50;
-            this.materialTextBox3.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox3.Multiline = false;
-            this.materialTextBox3.Name = "materialTextBox3";
-            this.materialTextBox3.Size = new System.Drawing.Size(100, 50);
-            this.materialTextBox3.TabIndex = 5;
-            this.materialTextBox3.Text = "";
-            this.materialTextBox3.TrailingIcon = null;
+            this.TxtboxSettings_ObjSO1.AnimateReadOnly = false;
+            this.TxtboxSettings_ObjSO1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtboxSettings_ObjSO1.Depth = 0;
+            this.TxtboxSettings_ObjSO1.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TxtboxSettings_ObjSO1.LeadingIcon = null;
+            this.TxtboxSettings_ObjSO1.Location = new System.Drawing.Point(617, 280);
+            this.TxtboxSettings_ObjSO1.MaxLength = 50;
+            this.TxtboxSettings_ObjSO1.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtboxSettings_ObjSO1.Multiline = false;
+            this.TxtboxSettings_ObjSO1.Name = "TxtboxSettings_ObjSO1";
+            this.TxtboxSettings_ObjSO1.Size = new System.Drawing.Size(100, 50);
+            this.TxtboxSettings_ObjSO1.TabIndex = 5;
+            this.TxtboxSettings_ObjSO1.Text = "";
+            this.TxtboxSettings_ObjSO1.TrailingIcon = null;
             // 
-            // materialTextBox2
+            // TxtboxSettings_ObjSim3
             // 
-            this.materialTextBox2.AnimateReadOnly = false;
-            this.materialTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialTextBox2.Depth = 0;
-            this.materialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox2.LeadingIcon = null;
-            this.materialTextBox2.Location = new System.Drawing.Point(185, 342);
-            this.materialTextBox2.MaxLength = 50;
-            this.materialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox2.Multiline = false;
-            this.materialTextBox2.Name = "materialTextBox2";
-            this.materialTextBox2.Size = new System.Drawing.Size(100, 50);
-            this.materialTextBox2.TabIndex = 5;
-            this.materialTextBox2.Text = "";
-            this.materialTextBox2.TrailingIcon = null;
+            this.TxtboxSettings_ObjSim3.AnimateReadOnly = false;
+            this.TxtboxSettings_ObjSim3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtboxSettings_ObjSim3.Depth = 0;
+            this.TxtboxSettings_ObjSim3.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TxtboxSettings_ObjSim3.LeadingIcon = null;
+            this.TxtboxSettings_ObjSim3.Location = new System.Drawing.Point(185, 408);
+            this.TxtboxSettings_ObjSim3.MaxLength = 50;
+            this.TxtboxSettings_ObjSim3.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtboxSettings_ObjSim3.Multiline = false;
+            this.TxtboxSettings_ObjSim3.Name = "TxtboxSettings_ObjSim3";
+            this.TxtboxSettings_ObjSim3.Size = new System.Drawing.Size(100, 50);
+            this.TxtboxSettings_ObjSim3.TabIndex = 5;
+            this.TxtboxSettings_ObjSim3.Text = "";
+            this.TxtboxSettings_ObjSim3.TrailingIcon = null;
             // 
-            // materialTextBox1
+            // TxtboxSettings_ObjSim2
             // 
-            this.materialTextBox1.AnimateReadOnly = false;
-            this.materialTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialTextBox1.Depth = 0;
-            this.materialTextBox1.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox1.LeadingIcon = null;
-            this.materialTextBox1.Location = new System.Drawing.Point(185, 280);
-            this.materialTextBox1.MaxLength = 50;
-            this.materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox1.Multiline = false;
-            this.materialTextBox1.Name = "materialTextBox1";
-            this.materialTextBox1.Size = new System.Drawing.Size(100, 50);
-            this.materialTextBox1.TabIndex = 5;
-            this.materialTextBox1.Text = "";
-            this.materialTextBox1.TrailingIcon = null;
+            this.TxtboxSettings_ObjSim2.AnimateReadOnly = false;
+            this.TxtboxSettings_ObjSim2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtboxSettings_ObjSim2.Depth = 0;
+            this.TxtboxSettings_ObjSim2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TxtboxSettings_ObjSim2.LeadingIcon = null;
+            this.TxtboxSettings_ObjSim2.Location = new System.Drawing.Point(185, 342);
+            this.TxtboxSettings_ObjSim2.MaxLength = 50;
+            this.TxtboxSettings_ObjSim2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtboxSettings_ObjSim2.Multiline = false;
+            this.TxtboxSettings_ObjSim2.Name = "TxtboxSettings_ObjSim2";
+            this.TxtboxSettings_ObjSim2.Size = new System.Drawing.Size(100, 50);
+            this.TxtboxSettings_ObjSim2.TabIndex = 5;
+            this.TxtboxSettings_ObjSim2.Text = "";
+            this.TxtboxSettings_ObjSim2.TrailingIcon = null;
+            // 
+            // TxtboxSettings_ObjSim1
+            // 
+            this.TxtboxSettings_ObjSim1.AnimateReadOnly = false;
+            this.TxtboxSettings_ObjSim1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtboxSettings_ObjSim1.Depth = 0;
+            this.TxtboxSettings_ObjSim1.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TxtboxSettings_ObjSim1.LeadingIcon = null;
+            this.TxtboxSettings_ObjSim1.Location = new System.Drawing.Point(185, 280);
+            this.TxtboxSettings_ObjSim1.MaxLength = 50;
+            this.TxtboxSettings_ObjSim1.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtboxSettings_ObjSim1.Multiline = false;
+            this.TxtboxSettings_ObjSim1.Name = "TxtboxSettings_ObjSim1";
+            this.TxtboxSettings_ObjSim1.Size = new System.Drawing.Size(100, 50);
+            this.TxtboxSettings_ObjSim1.TabIndex = 5;
+            this.TxtboxSettings_ObjSim1.Text = "";
+            this.TxtboxSettings_ObjSim1.TrailingIcon = null;
+            this.TxtboxSettings_ObjSim1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtboxSettings_ObjSim1_KeyPress);
             // 
             // materialLabel6
             // 
@@ -879,25 +900,6 @@ namespace Arcane.Liquidador
             // 
             this.openFileDialog1.Filter = "Archivos CSV|*.csv|Todos los archivos|*.*";
             // 
-            // BtnSave_ObjSettings
-            // 
-            this.BtnSave_ObjSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BtnSave_ObjSettings.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.BtnSave_ObjSettings.Depth = 0;
-            this.BtnSave_ObjSettings.HighEmphasis = true;
-            this.BtnSave_ObjSettings.Icon = null;
-            this.BtnSave_ObjSettings.Location = new System.Drawing.Point(463, 495);
-            this.BtnSave_ObjSettings.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.BtnSave_ObjSettings.MouseState = MaterialSkin.MouseState.HOVER;
-            this.BtnSave_ObjSettings.Name = "BtnSave_ObjSettings";
-            this.BtnSave_ObjSettings.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.BtnSave_ObjSettings.Size = new System.Drawing.Size(190, 36);
-            this.BtnSave_ObjSettings.TabIndex = 6;
-            this.BtnSave_ObjSettings.Text = "Guardar";
-            this.BtnSave_ObjSettings.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.BtnSave_ObjSettings.UseAccentColor = false;
-            this.BtnSave_ObjSettings.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
@@ -966,13 +968,13 @@ namespace Arcane.Liquidador
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialDivider materialDivider3;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox1;
+        private MaterialSkin.Controls.MaterialTextBox TxtboxSettings_ObjSim1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox2;
+        private MaterialSkin.Controls.MaterialTextBox TxtboxSettings_ObjSim2;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox5;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox4;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox3;
+        private MaterialSkin.Controls.MaterialTextBox TxtboxSettings_ObjSO2;
+        private MaterialSkin.Controls.MaterialTextBox TxtboxSettings_ObjSO1;
+        private MaterialSkin.Controls.MaterialTextBox TxtboxSettings_ObjSim3;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;

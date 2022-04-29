@@ -14,5 +14,10 @@ namespace Arcane.Liquidador.Extentions
             reportList.Clear();
             txtboxList.ForEach(txtbox => reportList.Add(txtbox.Text));
         }
+
+        public static void UpdateTxtboxSettingList(this List<MaterialButton> txtSettingList)
+        {
+            txtSettingList.Clear();
+        }
     }
 }
