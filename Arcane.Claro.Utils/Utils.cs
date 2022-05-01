@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arcane.Claro.Utils
+namespace Arcane.Itec.Utils
 {
     public class Utils
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Arcane.Claro.Utils;
+using Arcane.Itec.Utils;
 using Arcane.Liquidador.Abstractions;
 using Arcane.Liquidador.Data;
 using Arcane.Liquidador.Extentions;

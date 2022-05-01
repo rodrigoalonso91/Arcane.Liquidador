@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcane.Liquidador", "Arcane
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcane.Liquidador.UT", "Arcane.Liquidador.UT\Arcane.Liquidador.UT.csproj", "{C152CEA4-F2C2-4A58-A99C-8845EC7A3E4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcane.Claro.Utils", "Arcane.Claro.Utils\Arcane.Claro.Utils.csproj", "{3A309FA7-09A9-433A-8270-F7C8BFA63FD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcane.Itec.Utils", "Arcane.Claro.Utils\Arcane.Itec.Utils.csproj", "{3A309FA7-09A9-433A-8270-F7C8BFA63FD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
