@@ -12,10 +12,10 @@ namespace Arcane.Itec.ReportManager
         public CsvReportHandler(string[] reportPsrAgency)
         {
             PsrFromAgency = new Dictionary<string, PSR>();
-            ExtractAgencyPsr(reportPsrAgency);
+            HandleAgencyPsr(reportPsrAgency);
         }
 
-        private void ExtractAgencyPsr(string[] reportPsrAgency)
+        private void HandleAgencyPsr(string[] reportPsrAgency)
         {
             var psrFromAgency = new Dictionary<string, PSR>();
             var reportLength = reportPsrAgency.Length;
@@ -36,7 +36,7 @@ namespace Arcane.Itec.ReportManager
             }
         }
 
-        public Dictionary<string, PSR> ExtractSimRemuneration(string[] reportSimPaying)
+        public Dictionary<string, PSR> HandleSimRemuneration(string[] reportSimPaying)
         {
             var reportLength = reportSimPaying.Length;
             for (int i = (int)ReportSimPaymentIndexs.ReportStartIndex; i < reportLength; i++)
@@ -55,7 +55,7 @@ namespace Arcane.Itec.ReportManager
             return PsrFromAgency;
         }
 
-        public Dictionary<string, PSR> ExtractSORemuneration(string[] reportSOPaying, int sellTargetSO)
+        public Dictionary<string, PSR> HandleSORemuneration(string[] reportSOPaying, int sellTargetSO)
         {
             var reportLength = reportSOPaying.Length;
 
