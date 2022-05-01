@@ -8,5 +8,6 @@ namespace Arcane.Itec.Utils
 {
     public class CsvReportHandler
     {
+
     }
 }
