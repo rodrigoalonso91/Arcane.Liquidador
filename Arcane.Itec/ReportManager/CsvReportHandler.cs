@@ -1,20 +1,21 @@
 ﻿using Arcane.Itec.Data;
 using Arcane.Itec.ItecUtils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Arcane.Itec.ReportManager
 {
     public class CsvReportHandler
     {
-        private Dictionary<string, PSR> PsrFromAgency;
+        private readonly Dictionary<string, PSR> PsrFromAgency;
         public Dictionary<string, PSR> GetResults => PsrFromAgency;
 
+        public CsvReportHandler(string[] reportPsrAgency)
+        {
+            PsrFromAgency = new Dictionary<string, PSR>();
+            ExtractAgencyPsr(reportPsrAgency);
+        }
 
-        public static Dictionary<string, PSR> ExtractAgencyPsr(string[] reportPsrAgency)
+        private void ExtractAgencyPsr(string[] reportPsrAgency)
         {
             var psrFromAgency = new Dictionary<string, PSR>();
             var reportLength = reportPsrAgency.Length;
@@ -33,14 +34,10 @@ namespace Arcane.Itec.ReportManager
                 };
                 psrFromAgency[client.Codpsr] = client;
             }
-
-            return psrFromAgency;
         }
 
-        public Dictionary<string, PSR> ExtractInfoRemuneration(string[] reportSimPaying)
+        public Dictionary<string, PSR> ExtractSimRemuneration(string[] reportSimPaying)
         {
-            if (PsrFromAgency is null) throw new FieldAccessException(message: "No se encontraron PSR de la agencia, intente invocar primero a 'GetPsrFromReport'");
-
             var reportLength = reportSimPaying.Length;
             for (int i = (int)ReportSimPaymentIndexs.ReportStartIndex; i < reportLength; i++)
             {
@@ -53,6 +50,25 @@ namespace Arcane.Itec.ReportManager
                 if (PsrFromAgency.ContainsKey(psrCode) && !string.IsNullOrWhiteSpace(commision))
                 {
                     PsrFromAgency[psrCode].SimOk = true;
+                }
+            }
+            return PsrFromAgency;
+        }
+
+        public Dictionary<string, PSR> ExtractSORemuneration(string[] reportSOPaying, int sellTargetSO)
+        {
+            var reportLength = reportSOPaying.Length;
+
+            for (int i = (int)ReportSOPaymentIndexs.ReportStartIndex; i < reportLength; i++)
+            {
+                var reportFiels = reportSOPaying[i].Split(';');
+                var psrCode = Utils.NormalizePsrCode(reportFiels, (int)ReportSOPaymentIndexs.PsrCode);
+                var monthlySale = reportFiels[(int)ReportSOPaymentIndexs.TotalSale];
+
+                if (PsrFromAgency.ContainsKey(psrCode))
+                {
+                    PsrFromAgency[psrCode].MonthlySale = int.Parse(monthlySale);
+                    PsrFromAgency[psrCode].SelloutOk = PsrFromAgency[psrCode].MonthlySale >= sellTargetSO;
                 }
             }
             return PsrFromAgency;
