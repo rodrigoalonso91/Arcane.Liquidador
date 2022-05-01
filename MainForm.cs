@@ -23,7 +23,6 @@ namespace Arcane.Liquidador
         private List<string> ReportList { get; set; } = new List<string>();
         private List<MaterialTextBox> TxtboxObjectivesList { get; set; } = new List<MaterialTextBox>();
         private Dictionary<string, MaterialTextBox> TxtboxSettingsDict { get; set; } = new Dictionary<string, MaterialTextBox>();
-        private IPsrObjectives ClientObjectives { get; set; }
 
         public MainForm()
         {
@@ -182,7 +181,6 @@ namespace Arcane.Liquidador
             TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSO1), TxtboxSettings_ObjSO1);
             TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSO2), TxtboxSettings_ObjSO2);
         }
-
         private string ValidateFile()
         {
             ReportList.SyncTxtboxContent(TxtboxObjectivesList);

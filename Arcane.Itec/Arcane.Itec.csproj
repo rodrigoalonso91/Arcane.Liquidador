@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Data\PSR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportManager\CsvReportHandler.cs" />
+    <Compile Include="ReportManager\ReportIndexs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
