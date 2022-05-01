@@ -68,5 +68,23 @@ namespace Arcane.Liquidador.Properties {
                 return ResourceManager.GetString("AlreadySelectedFile", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Desea guardar estos ajustes?.
+        /// </summary>
+        internal static string ConfirmSave {
+            get {
+                return ResourceManager.GetString("ConfirmSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Hay uno o más campos vacios, verifique..
+        /// </summary>
+        internal static string EmptyFields {
+            get {
+                return ResourceManager.GetString("EmptyFields", resourceCulture);
+            }
+        }
     }
 }

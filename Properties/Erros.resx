@@ -118,12 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Error_Obj1" xml:space="preserve">
-    <value>El objetivo 1 no puede tener una valor mayor al objetivo 2</value>
-  </data>
-  <data name="Error_Obj2" xml:space="preserve">
-    <value>El valor del objetivo 2 debe ser mayor al objetivo 1 y menor al objetivo 3</value>
+    <value>El objetivo 1 debe ser el de menor valor.</value>
   </data>
   <data name="Error_Obj3" xml:space="preserve">
-    <value>El valor del objetivo 3 debe ser superior al del objetivo 2</value>
+    <value>El valor del objetivo 3 debe ser el más alto.</value>
   </data>
 </root>

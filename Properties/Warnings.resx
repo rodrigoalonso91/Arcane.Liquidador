@@ -120,4 +120,10 @@
   <data name="AlreadySelectedFile" xml:space="preserve">
     <value>Este archivo ya fue seleccionado</value>
   </data>
+  <data name="ConfirmSave" xml:space="preserve">
+    <value>Desea guardar estos ajustes?</value>
+  </data>
+  <data name="EmptyFields" xml:space="preserve">
+    <value>Hay uno o más campos vacios, verifique.</value>
+  </data>
 </root>

@@ -61,7 +61,7 @@ namespace Arcane.Liquidador.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a El objetivo 1 no puede tener una valor mayor al objetivo 2.
+        ///   Busca una cadena traducida similar a El objetivo 1 debe ser el de menor valor..
         /// </summary>
         internal static string Error_Obj1 {
             get {
@@ -70,16 +70,7 @@ namespace Arcane.Liquidador.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a El valor del objetivo 2 debe ser mayor al objetivo 1 y menor al objetivo 3.
-        /// </summary>
-        internal static string Error_Obj2 {
-            get {
-                return ResourceManager.GetString("Error_Obj2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a El valor del objetivo 3 debe ser superior al del objetivo 2.
+        ///   Busca una cadena traducida similar a El valor del objetivo 3 debe ser el más alto..
         /// </summary>
         internal static string Error_Obj3 {
             get {

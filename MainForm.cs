@@ -39,7 +39,7 @@ namespace Arcane.Liquidador
                                                               TextShade.BLACK);
 
             FillTxtboxReportList();
-            FillTxtboxSettingsList();
+            FillTxtboxSettingsDict();
         }
 
         private MaterialSkinManager.Themes SetTheme()
@@ -172,9 +172,9 @@ namespace Arcane.Liquidador
             TxtboxObjectivesList.Add(Txtbox_ReportSim);
             TxtboxObjectivesList.Add(Txtbox_ReportSO);
         }
-        private void FillTxtboxSettingsList()
+        private void FillTxtboxSettingsDict()
         {
-            if (!_isStartUp) TxtboxSettingsDict.Clear();
+            TxtboxSettingsDict.Clear();
 
             TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSim1), TxtboxSettings_ObjSim1);
             TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSim2), TxtboxSettings_ObjSim2);
@@ -220,7 +220,6 @@ namespace Arcane.Liquidador
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) return true;
             else return false;
         }
-
         private void Txtbox_DefaultSim_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = IsNumber(e);
@@ -261,11 +260,11 @@ namespace Arcane.Liquidador
 
         private void BtnSave_ObjSettings_Click(object sender, EventArgs e)
         {
-            FillTxtboxSettingsList();
+            FillTxtboxSettingsDict();
 
             if (IsSomeTxtEmpty())
             {
-                MessageBox.Show("Hay uno o más campos vacios, verifique.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Warnings.EmptyFields, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -279,40 +278,44 @@ namespace Arcane.Liquidador
                 return;
             }
 
-            var userConfirmation = MessageBox.Show("Desea guardar estos ajustes?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            var userConfirmation = MessageBox.Show(Warnings.ConfirmSave, "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (userConfirmation is DialogResult.No) return;
 
-            MakeHintsForSim();
-            MakeHintsForSellout();
+            FillHintsForSim();
+            FillHintsForSellout();
             SaveAndReloadForm(sender, e);
         }
 
         private bool IsSomeTxtEmpty()
         {
-            return TxtboxSettingsDict.Values.All(txtbox => !string.IsNullOrEmpty(txtbox.Text));
+            return !TxtboxSettingsDict.Values.All(txtbox => !string.IsNullOrEmpty(txtbox.Text));
         }
 
         private void ValidateObjectiveRules()
         {
             var settingObjectives = new PsrObjectives(TxtboxSettingsDict);
 
-            var isObj3LessThanObj2 = settingObjectives.ObjectiveSim3 < settingObjectives.ObjectiveSim2;
-            if (isObj3LessThanObj2)
+            var isObj3LessThanObj2 = settingObjectives.ObjectiveSim3 <= settingObjectives.ObjectiveSim2;
+            var isObj3LessThanObj1 = settingObjectives.ObjectiveSim3 <= settingObjectives.ObjectiveSim1;
+
+            if (isObj3LessThanObj2 || isObj3LessThanObj1)
             {
                 throw new ArgumentException(Erros.Error_Obj3);
             }
 
-            var isGreatherThanDefault = settingObjectives.ObjectiveSim1 > settingObjectives.ObjectiveSim2;
-            if (isGreatherThanDefault)
+            var isObj1GreatherThanObj2 = settingObjectives.ObjectiveSim1 >= settingObjectives.ObjectiveSim2;
+            var isObj1GreatherThanObj3 = settingObjectives.ObjectiveSim1 >= settingObjectives.ObjectiveSim3;
+
+            if (isObj1GreatherThanObj2 || isObj1GreatherThanObj3)
             {
                 throw new ArgumentException(Erros.Error_Obj1);
             }
 
-            var isLessThanObj1 = settingObjectives.ObjectiveSim2 < settingObjectives.ObjectiveSim1;
-            var isGreatherThanObj3 = settingObjectives.ObjectiveSim2 > settingObjectives.ObjectiveSim3;
-            if (isLessThanObj1 || isGreatherThanObj3)
+            isObj1GreatherThanObj2 = settingObjectives.ObjectiveSO1 >= settingObjectives.ObjectiveSO2;
+
+            if (isObj1GreatherThanObj2)
             {
-                throw new ArgumentException(Erros.Error_Obj2);
+                throw new ArgumentException(Erros.Error_Obj1);
             }
         }
 
@@ -322,19 +325,17 @@ namespace Arcane.Liquidador
             MainForm_Load(sender, e);
         }
 
-        private void MakeHintsForSellout()
+        private void FillHintsForSellout()
         {
             Settings.Default.objSO1_hint = Utils.MakeHintText(TxtboxSettings_ObjSO1.Text, "SO");
             Settings.Default.objSO2_hint = Utils.MakeHintText(TxtboxSettings_ObjSO2.Text, "SO");
         }
 
-        private void MakeHintsForSim()
+        private void FillHintsForSim()
         {
             Settings.Default.objSim1_hint = Utils.MakeHintText(TxtboxSettings_ObjSim1.Text, "Sim");
             Settings.Default.objSim2_hint = Utils.MakeHintText(TxtboxSettings_ObjSim2.Text, "Sim");
             Settings.Default.objSim3_hint = Utils.MakeHintText(TxtboxSettings_ObjSim3.Text, "Sim");
         }
-
-
     }
 }
