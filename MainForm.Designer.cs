@@ -59,7 +59,21 @@ namespace Arcane.Liquidador
             this.Txtbox_Obj2SO = new MaterialSkin.Controls.MaterialTextBox();
             this.Txtbox_PsrReq = new MaterialSkin.Controls.MaterialTextBox();
             this.TabPage_Pagos = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.GridControl_PSR = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Dgv_Main = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabPage_Settings = new System.Windows.Forms.TabPage();
             this.BtnSave_ObjSettings = new MaterialSkin.Controls.MaterialButton();
             this.TxtboxSettings_ObjSO2 = new MaterialSkin.Controls.MaterialTextBox();
@@ -84,7 +98,9 @@ namespace Arcane.Liquidador
             this.MCard_ReportView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_Logo)).BeginInit();
             this.TabPage_Pagos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridControl_PSR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Main)).BeginInit();
             this.TabPage_Settings.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,6 +186,7 @@ namespace Arcane.Liquidador
             this.Btn_GetPaymentsResults.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.Btn_GetPaymentsResults.UseAccentColor = false;
             this.Btn_GetPaymentsResults.UseVisualStyleBackColor = true;
+            this.Btn_GetPaymentsResults.Click += new System.EventHandler(this.Btn_GetPaymentsResults_Click);
             // 
             // MDivider1
             // 
@@ -439,7 +456,7 @@ namespace Arcane.Liquidador
             // 
             // MCard_ReportView
             // 
-            this.MCard_ReportView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.MCard_ReportView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MCard_ReportView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.MCard_ReportView.Controls.Add(this.PicBox_Logo);
@@ -457,7 +474,7 @@ namespace Arcane.Liquidador
             // 
             // PicBox_Logo
             // 
-            this.PicBox_Logo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.PicBox_Logo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PicBox_Logo.Image = ((System.Drawing.Image)(resources.GetObject("PicBox_Logo.Image")));
             this.PicBox_Logo.InitialImage = ((System.Drawing.Image)(resources.GetObject("PicBox_Logo.InitialImage")));
@@ -470,7 +487,7 @@ namespace Arcane.Liquidador
             // 
             // MLTxtBox1
             // 
-            this.MLTxtBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.MLTxtBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MLTxtBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.MLTxtBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -480,6 +497,7 @@ namespace Arcane.Liquidador
             this.MLTxtBox1.Location = new System.Drawing.Point(17, 57);
             this.MLTxtBox1.MouseState = MaterialSkin.MouseState.HOVER;
             this.MLTxtBox1.Name = "MLTxtBox1";
+            this.MLTxtBox1.ReadOnly = true;
             this.MLTxtBox1.Size = new System.Drawing.Size(392, 227);
             this.MLTxtBox1.TabIndex = 0;
             this.MLTxtBox1.Text = resources.GetString("MLTxtBox1.Text");
@@ -601,7 +619,8 @@ namespace Arcane.Liquidador
             // 
             // TabPage_Pagos
             // 
-            this.TabPage_Pagos.Controls.Add(this.dataGridView1);
+            this.TabPage_Pagos.Controls.Add(this.GridControl_PSR);
+            this.TabPage_Pagos.Controls.Add(this.Dgv_Main);
             this.TabPage_Pagos.ImageKey = "payments_FILL0_wght400_GRAD-25_opsz48.png";
             this.TabPage_Pagos.Location = new System.Drawing.Point(4, 39);
             this.TabPage_Pagos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -612,14 +631,135 @@ namespace Arcane.Liquidador
             this.TabPage_Pagos.Text = "Pagos";
             this.TabPage_Pagos.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // GridControl_PSR
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1130, 377);
-            this.dataGridView1.TabIndex = 0;
+            this.GridControl_PSR.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.GridControl_PSR.Location = new System.Drawing.Point(3, 327);
+            this.GridControl_PSR.MainView = this.gridView1;
+            this.GridControl_PSR.Name = "GridControl_PSR";
+            this.GridControl_PSR.Size = new System.Drawing.Size(1130, 200);
+            this.GridControl_PSR.TabIndex = 1;
+            this.GridControl_PSR.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1});
+            this.gridView1.GridControl = this.GridControl_PSR;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // Dgv_Main
+            // 
+            this.Dgv_Main.AllowUserToAddRows = false;
+            this.Dgv_Main.AllowUserToDeleteRows = false;
+            this.Dgv_Main.AllowUserToOrderColumns = true;
+            this.Dgv_Main.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dgv_Main.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Dgv_Main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Main.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11});
+            this.Dgv_Main.Location = new System.Drawing.Point(3, 4);
+            this.Dgv_Main.Name = "Dgv_Main";
+            this.Dgv_Main.ReadOnly = true;
+            this.Dgv_Main.RowHeadersVisible = false;
+            this.Dgv_Main.Size = new System.Drawing.Size(1130, 316);
+            this.Dgv_Main.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 111.6751F;
+            this.Column1.HeaderText = "Caminante";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.FillWeight = 98.83251F;
+            this.Column2.HeaderText = "PSR Totales";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.FillWeight = 98.83251F;
+            this.Column3.HeaderText = "Obj. Sim";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.FillWeight = 98.83251F;
+            this.Column4.HeaderText = "Sim (%)";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.FillWeight = 98.83251F;
+            this.Column5.HeaderText = "Comisión Sim";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.FillWeight = 98.83251F;
+            this.Column6.HeaderText = "Obj. SO";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.FillWeight = 98.83251F;
+            this.Column7.HeaderText = "SO (%)";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.FillWeight = 98.83251F;
+            this.Column8.HeaderText = "Comisión SO";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.FillWeight = 98.83251F;
+            this.Column9.HeaderText = "Volumen";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.FillWeight = 98.83251F;
+            this.Column10.HeaderText = "Comisión volumen";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.FillWeight = 98.83251F;
+            this.Column11.HeaderText = "Total a pagar";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
             // 
             // TabPage_Settings
             // 
@@ -922,7 +1062,9 @@ namespace Arcane.Liquidador
             this.MCard_ReportView.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_Logo)).EndInit();
             this.TabPage_Pagos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridControl_PSR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Main)).EndInit();
             this.TabPage_Settings.ResumeLayout(false);
             this.TabPage_Settings.PerformLayout();
             this.ResumeLayout(false);
@@ -961,7 +1103,7 @@ namespace Arcane.Liquidador
         private MaterialSkin.Controls.MaterialLabel Lbl_FormatDescription;
         private MaterialSkin.Controls.MaterialMultiLineTextBox MLTxtBox1;
         private System.Windows.Forms.PictureBox PicBox_Logo;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView Dgv_Main;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private MaterialSkin.Controls.MaterialSwitch Switch_DarkMode;
         private MaterialSkin.Controls.MaterialLabel LblTitle1;
@@ -979,6 +1121,20 @@ namespace Arcane.Liquidador
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialButton BtnSave_ObjSettings;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private DevExpress.XtraGrid.GridControl GridControl_PSR;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }
 

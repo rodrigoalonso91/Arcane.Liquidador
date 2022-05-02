@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Arcane.Itec.Utils;
-using Arcane.Liquidador.Abstractions;
+using Arcane.Itec;
+using Arcane.Itec.DTO;
+using Arcane.Itec.Extentions;
+using Arcane.Itec.ItecUtils;
+using Arcane.Itec.ReportManager;
 using Arcane.Liquidador.Data;
 using Arcane.Liquidador.Extentions;
 using Arcane.Liquidador.Properties;
@@ -20,8 +24,8 @@ namespace Arcane.Liquidador
     public partial class MainForm : MaterialForm
     {
         private bool _isStartUp = true;
-        private List<string> ReportList { get; set; } = new List<string>();
-        private List<MaterialTextBox> TxtboxObjectivesList { get; set; } = new List<MaterialTextBox>();
+        private List<string> TxtboxPathsList { get; set; } = new List<string>();
+        private List<MaterialTextBox> TxtboxReportsList { get; set; } = new List<MaterialTextBox>();
         private Dictionary<string, MaterialTextBox> TxtboxSettingsDict { get; set; } = new Dictionary<string, MaterialTextBox>();
 
         public MainForm()
@@ -167,9 +171,9 @@ namespace Arcane.Liquidador
 
         private void FillTxtboxReportList()
         {
-            TxtboxObjectivesList.Add(TxtBox_ReportAgency);
-            TxtboxObjectivesList.Add(Txtbox_ReportSim);
-            TxtboxObjectivesList.Add(Txtbox_ReportSO);
+            TxtboxReportsList.Add(TxtBox_ReportAgency);
+            TxtboxReportsList.Add(Txtbox_ReportSim);
+            TxtboxReportsList.Add(Txtbox_ReportSO);
         }
         private void FillTxtboxSettingsDict()
         {
@@ -183,12 +187,12 @@ namespace Arcane.Liquidador
         }
         private string ValidateFile()
         {
-            ReportList.SyncTxtboxContent(TxtboxObjectivesList);
+            TxtboxPathsList.SyncTxtboxContent(TxtboxReportsList);
 
             if (openFileDialog1.ShowDialog() != DialogResult.OK) return string.Empty;
 
             var filePath = openFileDialog1.FileName;
-            if (ReportList.Contains(filePath))
+            if (TxtboxPathsList.Contains(filePath))
             {
                 MessageBox.Show(Warnings.AlreadySelectedFile, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return string.Empty;
@@ -291,7 +295,7 @@ namespace Arcane.Liquidador
 
         private void ValidateObjectiveRules()
         {
-            var settingObjectives = new PsrObjectives(TxtboxSettingsDict);
+            var settingObjectives = new HintSettings(TxtboxSettingsDict);
 
             var isObj3LessThanObj2 = settingObjectives.ObjectiveSim3 <= settingObjectives.ObjectiveSim2;
             var isObj3LessThanObj1 = settingObjectives.ObjectiveSim3 <= settingObjectives.ObjectiveSim1;
@@ -334,6 +338,76 @@ namespace Arcane.Liquidador
             Settings.Default.objSim1_hint = Utils.MakeHintText(TxtboxSettings_ObjSim1.Text, "Sim");
             Settings.Default.objSim2_hint = Utils.MakeHintText(TxtboxSettings_ObjSim2.Text, "Sim");
             Settings.Default.objSim3_hint = Utils.MakeHintText(TxtboxSettings_ObjSim3.Text, "Sim");
+        }
+
+        private void Btn_GetPaymentsResults_Click(object sender, EventArgs e)
+        {
+            if (AnyReportMissing())
+            {
+                MessageBox.Show(Warnings.ReportMissing, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var allObjValues = GetValuesFromObjTxtBox();
+            if (allObjValues.Exists(item => string.IsNullOrEmpty(item)))
+            {
+                MessageBox.Show(Warnings.EmptyFields, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Dgv_Main.Rows.Clear();
+
+            string[] reportPsrAgency = File.ReadAllLines(TxtBox_ReportAgency.Text);
+            string[] reportPayingSim = File.ReadAllLines(Txtbox_ReportSim.Text);
+            string[] reportPayingSO = File.ReadAllLines(Txtbox_ReportSO.Text);
+
+            var listObjValues = allObjValues.ConvertValuesToInt();
+            var objectivesDTO = new AgencyObjectivesDTO
+            {
+                DefaultSim = listObjValues[(int)ObjectiveIndex.DefaultSim],
+                ObjectiveSim1 = listObjValues[(int)ObjectiveIndex.Obj1Sim],
+                ObjectiveSim2 = listObjValues[(int)ObjectiveIndex.Obj2Sim],
+                ObjectiveSim3 = listObjValues[(int)ObjectiveIndex.Obj3Sim],
+                DefaultSellout = listObjValues[(int)ObjectiveIndex.DefaultSO],
+                ObjectiveSO1 = listObjValues[(int)ObjectiveIndex.Obj1SO],
+                ObjectiveSO2 = listObjValues[(int)ObjectiveIndex.Obj2SO],
+                ClientSaleTarget = listObjValues[(int)ObjectiveIndex.SaleTarget],
+                VolumeTarget = listObjValues[(int)ObjectiveIndex.VolTarget],
+                VolumePayment = listObjValues[(int)ObjectiveIndex.VolPayment]
+            };
+
+            var backoffice = new Backoffice(reportPsrAgency, reportPayingSim, reportPayingSO, objectivesDTO);
+
+            FillAllGrids();
+        }
+
+        private void FillAllGrids()
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool AnyReportMissing()
+        {
+            TxtboxPathsList.SyncTxtboxContent(TxtboxReportsList);
+            return TxtboxPathsList.Exists(item => string.IsNullOrEmpty(item));
+        }
+
+        private List<string> GetValuesFromObjTxtBox()
+        {
+            return new List<string>
+            {
+                [(int)ObjectiveIndex.DefaultSim] = Txtbox_DefaultSim.Text,
+                [(int)ObjectiveIndex.Obj1Sim] = Txtbox_Obj1Sim.Text,
+                [(int)ObjectiveIndex.Obj2Sim] = Txtbox_Obj2Sim.Text,
+                [(int)ObjectiveIndex.Obj3Sim] = Txtbox_Obj3Sim.Text,
+                [(int)ObjectiveIndex.DefaultSO] = Txtbox_DefaultSO.Text,
+                [(int)ObjectiveIndex.Obj1SO] = Txtbox_Obj1SO.Text,
+                [(int)ObjectiveIndex.Obj2SO] = Txtbox_Obj2SO.Text,
+                [(int)ObjectiveIndex.SaleTarget] = Txtbox_SalesTargetSO.Text,
+                [(int)ObjectiveIndex.VolTarget] = Txtbox_volTarget.Text,
+                [(int)ObjectiveIndex.VolPayment] = Txtbox_volPayment.Text,
+                [(int)ObjectiveIndex.PsrRequiered] = Txtbox_PsrReq.Text
+            };
         }
     }
 }

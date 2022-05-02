@@ -86,5 +86,14 @@ namespace Arcane.Liquidador.Properties {
                 return ResourceManager.GetString("EmptyFields", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Es necesario cargar todos los reportes para calcular los resultados..
+        /// </summary>
+        internal static string ReportMissing {
+            get {
+                return ResourceManager.GetString("ReportMissing", resourceCulture);
+            }
+        }
     }
 }

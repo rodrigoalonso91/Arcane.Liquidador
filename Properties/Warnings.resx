@@ -126,4 +126,7 @@
   <data name="EmptyFields" xml:space="preserve">
     <value>Hay uno o más campos vacios, verifique.</value>
   </data>
+  <data name="ReportMissing" xml:space="preserve">
+    <value>Es necesario cargar todos los reportes para calcular los resultados.</value>
+  </data>
 </root>
