@@ -31,7 +31,7 @@ namespace Arcane.Liquidador
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.Dgv_Payments = new MaterialSkin.Controls.MaterialTabControl();
+            this.TabControl_Main = new MaterialSkin.Controls.MaterialTabControl();
             this.TabPage_Home = new System.Windows.Forms.TabPage();
             this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
             this.Btn_GetPaymentsResults = new MaterialSkin.Controls.MaterialButton();
@@ -99,7 +99,7 @@ namespace Arcane.Liquidador
             this.ImgList_Menu = new System.Windows.Forms.ImageList(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.nonCompliantClientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Dgv_Payments.SuspendLayout();
+            this.TabControl_Main.SuspendLayout();
             this.TabPage_Home.SuspendLayout();
             this.MCard_ReportView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_Logo)).BeginInit();
@@ -112,22 +112,22 @@ namespace Arcane.Liquidador
             ((System.ComponentModel.ISupportInitialize)(this.nonCompliantClientsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // Dgv_Payments
+            // TabControl_Main
             // 
-            this.Dgv_Payments.Controls.Add(this.TabPage_Home);
-            this.Dgv_Payments.Controls.Add(this.TabPage_Pagos);
-            this.Dgv_Payments.Controls.Add(this.TabPage_Settings);
-            this.Dgv_Payments.Depth = 0;
-            this.Dgv_Payments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Dgv_Payments.ImageList = this.ImgList_Menu;
-            this.Dgv_Payments.Location = new System.Drawing.Point(3, 94);
-            this.Dgv_Payments.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Dgv_Payments.MouseState = MaterialSkin.MouseState.HOVER;
-            this.Dgv_Payments.Multiline = true;
-            this.Dgv_Payments.Name = "Dgv_Payments";
-            this.Dgv_Payments.SelectedIndex = 0;
-            this.Dgv_Payments.Size = new System.Drawing.Size(1144, 574);
-            this.Dgv_Payments.TabIndex = 0;
+            this.TabControl_Main.Controls.Add(this.TabPage_Home);
+            this.TabControl_Main.Controls.Add(this.TabPage_Pagos);
+            this.TabControl_Main.Controls.Add(this.TabPage_Settings);
+            this.TabControl_Main.Depth = 0;
+            this.TabControl_Main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabControl_Main.ImageList = this.ImgList_Menu;
+            this.TabControl_Main.Location = new System.Drawing.Point(3, 94);
+            this.TabControl_Main.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TabControl_Main.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TabControl_Main.Multiline = true;
+            this.TabControl_Main.Name = "TabControl_Main";
+            this.TabControl_Main.SelectedIndex = 0;
+            this.TabControl_Main.Size = new System.Drawing.Size(1144, 574);
+            this.TabControl_Main.TabIndex = 0;
             // 
             // TabPage_Home
             // 
@@ -845,17 +845,19 @@ namespace Arcane.Liquidador
             // 
             // BtnSave_ObjSettings
             // 
+            this.BtnSave_ObjSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSave_ObjSettings.AutoSize = false;
             this.BtnSave_ObjSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BtnSave_ObjSettings.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.BtnSave_ObjSettings.Depth = 0;
             this.BtnSave_ObjSettings.HighEmphasis = true;
             this.BtnSave_ObjSettings.Icon = null;
-            this.BtnSave_ObjSettings.Location = new System.Drawing.Point(463, 495);
+            this.BtnSave_ObjSettings.Location = new System.Drawing.Point(865, 474);
             this.BtnSave_ObjSettings.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnSave_ObjSettings.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnSave_ObjSettings.Name = "BtnSave_ObjSettings";
             this.BtnSave_ObjSettings.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.BtnSave_ObjSettings.Size = new System.Drawing.Size(88, 36);
+            this.BtnSave_ObjSettings.Size = new System.Drawing.Size(246, 39);
             this.BtnSave_ObjSettings.TabIndex = 6;
             this.BtnSave_ObjSettings.Text = "Guardar";
             this.BtnSave_ObjSettings.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -870,7 +872,7 @@ namespace Arcane.Liquidador
             this.TxtboxSettings_ObjSO2.Depth = 0;
             this.TxtboxSettings_ObjSO2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TxtboxSettings_ObjSO2.LeadingIcon = null;
-            this.TxtboxSettings_ObjSO2.Location = new System.Drawing.Point(617, 342);
+            this.TxtboxSettings_ObjSO2.Location = new System.Drawing.Point(617, 359);
             this.TxtboxSettings_ObjSO2.MaxLength = 50;
             this.TxtboxSettings_ObjSO2.MouseState = MaterialSkin.MouseState.OUT;
             this.TxtboxSettings_ObjSO2.Multiline = false;
@@ -887,7 +889,7 @@ namespace Arcane.Liquidador
             this.TxtboxSettings_ObjSO1.Depth = 0;
             this.TxtboxSettings_ObjSO1.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TxtboxSettings_ObjSO1.LeadingIcon = null;
-            this.TxtboxSettings_ObjSO1.Location = new System.Drawing.Point(617, 280);
+            this.TxtboxSettings_ObjSO1.Location = new System.Drawing.Point(617, 297);
             this.TxtboxSettings_ObjSO1.MaxLength = 50;
             this.TxtboxSettings_ObjSO1.MouseState = MaterialSkin.MouseState.OUT;
             this.TxtboxSettings_ObjSO1.Multiline = false;
@@ -904,7 +906,7 @@ namespace Arcane.Liquidador
             this.TxtboxSettings_ObjSim3.Depth = 0;
             this.TxtboxSettings_ObjSim3.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TxtboxSettings_ObjSim3.LeadingIcon = null;
-            this.TxtboxSettings_ObjSim3.Location = new System.Drawing.Point(185, 408);
+            this.TxtboxSettings_ObjSim3.Location = new System.Drawing.Point(185, 425);
             this.TxtboxSettings_ObjSim3.MaxLength = 50;
             this.TxtboxSettings_ObjSim3.MouseState = MaterialSkin.MouseState.OUT;
             this.TxtboxSettings_ObjSim3.Multiline = false;
@@ -921,7 +923,7 @@ namespace Arcane.Liquidador
             this.TxtboxSettings_ObjSim2.Depth = 0;
             this.TxtboxSettings_ObjSim2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TxtboxSettings_ObjSim2.LeadingIcon = null;
-            this.TxtboxSettings_ObjSim2.Location = new System.Drawing.Point(185, 342);
+            this.TxtboxSettings_ObjSim2.Location = new System.Drawing.Point(185, 359);
             this.TxtboxSettings_ObjSim2.MaxLength = 50;
             this.TxtboxSettings_ObjSim2.MouseState = MaterialSkin.MouseState.OUT;
             this.TxtboxSettings_ObjSim2.Multiline = false;
@@ -938,7 +940,7 @@ namespace Arcane.Liquidador
             this.TxtboxSettings_ObjSim1.Depth = 0;
             this.TxtboxSettings_ObjSim1.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TxtboxSettings_ObjSim1.LeadingIcon = null;
-            this.TxtboxSettings_ObjSim1.Location = new System.Drawing.Point(185, 280);
+            this.TxtboxSettings_ObjSim1.Location = new System.Drawing.Point(185, 297);
             this.TxtboxSettings_ObjSim1.MaxLength = 50;
             this.TxtboxSettings_ObjSim1.MouseState = MaterialSkin.MouseState.OUT;
             this.TxtboxSettings_ObjSim1.Multiline = false;
@@ -955,7 +957,7 @@ namespace Arcane.Liquidador
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel6.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.materialLabel6.Location = new System.Drawing.Point(478, 355);
+            this.materialLabel6.Location = new System.Drawing.Point(478, 372);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(122, 24);
@@ -968,7 +970,7 @@ namespace Arcane.Liquidador
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel5.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.materialLabel5.Location = new System.Drawing.Point(478, 293);
+            this.materialLabel5.Location = new System.Drawing.Point(478, 310);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(122, 24);
@@ -981,7 +983,7 @@ namespace Arcane.Liquidador
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel4.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.materialLabel4.Location = new System.Drawing.Point(46, 421);
+            this.materialLabel4.Location = new System.Drawing.Point(46, 438);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(130, 24);
@@ -994,7 +996,7 @@ namespace Arcane.Liquidador
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel3.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.materialLabel3.Location = new System.Drawing.Point(46, 355);
+            this.materialLabel3.Location = new System.Drawing.Point(46, 372);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(130, 24);
@@ -1007,7 +1009,7 @@ namespace Arcane.Liquidador
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.materialLabel2.Location = new System.Drawing.Point(46, 293);
+            this.materialLabel2.Location = new System.Drawing.Point(46, 310);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(130, 24);
@@ -1016,23 +1018,27 @@ namespace Arcane.Liquidador
             // 
             // materialDivider3
             // 
+            this.materialDivider3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider3.Depth = 0;
             this.materialDivider3.Location = new System.Drawing.Point(49, 247);
             this.materialDivider3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider3.Name = "materialDivider3";
-            this.materialDivider3.Size = new System.Drawing.Size(971, 10);
+            this.materialDivider3.Size = new System.Drawing.Size(1034, 10);
             this.materialDivider3.TabIndex = 3;
             this.materialDivider3.Text = "materialDivider1";
             // 
             // materialDivider1
             // 
+            this.materialDivider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
             this.materialDivider1.Location = new System.Drawing.Point(49, 74);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(971, 10);
+            this.materialDivider1.Size = new System.Drawing.Size(1034, 10);
             this.materialDivider1.TabIndex = 3;
             this.materialDivider1.Text = "materialDivider1";
             // 
@@ -1069,7 +1075,7 @@ namespace Arcane.Liquidador
             this.Switch_DarkMode.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Switch_DarkMode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Switch_DarkMode.Depth = 0;
-            this.Switch_DarkMode.Location = new System.Drawing.Point(42, 119);
+            this.Switch_DarkMode.Location = new System.Drawing.Point(42, 123);
             this.Switch_DarkMode.Margin = new System.Windows.Forms.Padding(0);
             this.Switch_DarkMode.MouseLocation = new System.Drawing.Point(-1, -1);
             this.Switch_DarkMode.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1104,9 +1110,9 @@ namespace Arcane.Liquidador
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 672);
-            this.Controls.Add(this.Dgv_Payments);
+            this.Controls.Add(this.TabControl_Main);
             this.DrawerShowIconsWhenHidden = true;
-            this.DrawerTabControl = this.Dgv_Payments;
+            this.DrawerTabControl = this.TabControl_Main;
             this.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
@@ -1114,7 +1120,7 @@ namespace Arcane.Liquidador
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liquidador - By Rodrigo Alonso";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.Dgv_Payments.ResumeLayout(false);
+            this.TabControl_Main.ResumeLayout(false);
             this.TabPage_Home.ResumeLayout(false);
             this.TabPage_Home.PerformLayout();
             this.MCard_ReportView.ResumeLayout(false);
@@ -1134,7 +1140,7 @@ namespace Arcane.Liquidador
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialTabControl Dgv_Payments;
+        private MaterialSkin.Controls.MaterialTabControl TabControl_Main;
         private System.Windows.Forms.TabPage TabPage_Home;
         private System.Windows.Forms.TabPage TabPage_Pagos;
         private System.Windows.Forms.ImageList ImgList_Menu;

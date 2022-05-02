@@ -378,8 +378,9 @@ namespace Arcane.Liquidador
 
             var backoffice = new Backoffice(reportPsrAgency, reportPayingSim, reportPayingSO, objectivesDTO);
 
-            
+
             GridControl_Clients.DataSource = backoffice.GetNonCompliantClients();
+            TabControl_Main.SelectedTab = TabPage_Pagos;
         }
 
         private bool AnyReportMissing()
