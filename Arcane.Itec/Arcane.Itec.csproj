@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Backoffice.cs" />
+    <Compile Include="Data\NonCompliantClients.cs" />
     <Compile Include="Data\PSR.cs" />
     <Compile Include="DTO\AgencyObjectivesDTO.cs" />
     <Compile Include="Extentions\ListExtentions.cs" />

@@ -59,9 +59,14 @@ namespace Arcane.Liquidador
             this.Txtbox_Obj2SO = new MaterialSkin.Controls.MaterialTextBox();
             this.Txtbox_PsrReq = new MaterialSkin.Controls.MaterialTextBox();
             this.TabPage_Pagos = new System.Windows.Forms.TabPage();
-            this.GridControl_PSR = new DevExpress.XtraGrid.GridControl();
+            this.GridControl_Clients = new DevExpress.XtraGrid.GridControl();
+            this.pSRBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Dgv_Main = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,15 +98,18 @@ namespace Arcane.Liquidador
             this.Switch_DarkMode = new MaterialSkin.Controls.MaterialSwitch();
             this.ImgList_Menu = new System.Windows.Forms.ImageList(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.nonCompliantClientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Dgv_Payments.SuspendLayout();
             this.TabPage_Home.SuspendLayout();
             this.MCard_ReportView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_Logo)).BeginInit();
             this.TabPage_Pagos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridControl_PSR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridControl_Clients)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pSRBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Main)).BeginInit();
             this.TabPage_Settings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nonCompliantClientsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Dgv_Payments
@@ -619,7 +627,7 @@ namespace Arcane.Liquidador
             // 
             // TabPage_Pagos
             // 
-            this.TabPage_Pagos.Controls.Add(this.GridControl_PSR);
+            this.TabPage_Pagos.Controls.Add(this.GridControl_Clients);
             this.TabPage_Pagos.Controls.Add(this.Dgv_Main);
             this.TabPage_Pagos.ImageKey = "payments_FILL0_wght400_GRAD-25_opsz48.png";
             this.TabPage_Pagos.Location = new System.Drawing.Point(4, 39);
@@ -631,30 +639,77 @@ namespace Arcane.Liquidador
             this.TabPage_Pagos.Text = "Pagos";
             this.TabPage_Pagos.UseVisualStyleBackColor = true;
             // 
-            // GridControl_PSR
+            // GridControl_Clients
             // 
-            this.GridControl_PSR.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.GridControl_PSR.Location = new System.Drawing.Point(3, 327);
-            this.GridControl_PSR.MainView = this.gridView1;
-            this.GridControl_PSR.Name = "GridControl_PSR";
-            this.GridControl_PSR.Size = new System.Drawing.Size(1130, 200);
-            this.GridControl_PSR.TabIndex = 1;
-            this.GridControl_PSR.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.GridControl_Clients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GridControl_Clients.DataSource = this.nonCompliantClientsBindingSource;
+            this.GridControl_Clients.Location = new System.Drawing.Point(3, 326);
+            this.GridControl_Clients.MainView = this.gridView1;
+            this.GridControl_Clients.Name = "GridControl_Clients";
+            this.GridControl_Clients.Size = new System.Drawing.Size(1130, 201);
+            this.GridControl_Clients.TabIndex = 1;
+            this.GridControl_Clients.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            // 
+            // pSRBindingSource
+            // 
+            this.pSRBindingSource.DataSource = typeof(Arcane.Itec.Data.PSR);
             // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1});
-            this.gridView1.GridControl = this.GridControl_PSR;
+            this.gridColumn1,
+            this.gridColumn6,
+            this.gridColumn2,
+            this.gridColumn4,
+            this.gridColumn5});
+            this.gridView1.GridControl = this.GridControl_Clients;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsFind.AlwaysVisible = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
+            this.gridColumn1.Caption = "PsrCode";
+            this.gridColumn1.FieldName = "PsrCode";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Caminante";
+            this.gridColumn6.FieldName = "WalkerName";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 1;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Cliente";
+            this.gridColumn2.FieldName = "ClientName";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 2;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Venta alcanzada";
+            this.gridColumn4.FieldName = "Sale";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 4;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Objetivo";
+            this.gridColumn5.FieldName = "Type";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 3;
             // 
             // Dgv_Main
             // 
@@ -1040,6 +1095,10 @@ namespace Arcane.Liquidador
             // 
             this.openFileDialog1.Filter = "Archivos CSV|*.csv|Todos los archivos|*.*";
             // 
+            // nonCompliantClientsBindingSource
+            // 
+            this.nonCompliantClientsBindingSource.DataSource = typeof(Arcane.Itec.Data.NonCompliantClients);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
@@ -1062,11 +1121,13 @@ namespace Arcane.Liquidador
             this.MCard_ReportView.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_Logo)).EndInit();
             this.TabPage_Pagos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GridControl_PSR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridControl_Clients)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pSRBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Main)).EndInit();
             this.TabPage_Settings.ResumeLayout(false);
             this.TabPage_Settings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nonCompliantClientsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1132,9 +1193,15 @@ namespace Arcane.Liquidador
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private DevExpress.XtraGrid.GridControl GridControl_PSR;
+        private DevExpress.XtraGrid.GridControl GridControl_Clients;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private System.Windows.Forms.BindingSource pSRBindingSource;
+        private System.Windows.Forms.BindingSource nonCompliantClientsBindingSource;
     }
 }
 

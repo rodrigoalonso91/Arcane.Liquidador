@@ -378,12 +378,8 @@ namespace Arcane.Liquidador
 
             var backoffice = new Backoffice(reportPsrAgency, reportPayingSim, reportPayingSO, objectivesDTO);
 
-            FillAllGrids();
-        }
-
-        private void FillAllGrids()
-        {
-            throw new NotImplementedException();
+            
+            GridControl_Clients.DataSource = backoffice.GetNonCompliantClients();
         }
 
         private bool AnyReportMissing()
@@ -394,20 +390,20 @@ namespace Arcane.Liquidador
 
         private List<string> GetValuesFromObjTxtBox()
         {
-            return new List<string>
-            {
-                [(int)ObjectiveIndex.DefaultSim] = Txtbox_DefaultSim.Text,
-                [(int)ObjectiveIndex.Obj1Sim] = Txtbox_Obj1Sim.Text,
-                [(int)ObjectiveIndex.Obj2Sim] = Txtbox_Obj2Sim.Text,
-                [(int)ObjectiveIndex.Obj3Sim] = Txtbox_Obj3Sim.Text,
-                [(int)ObjectiveIndex.DefaultSO] = Txtbox_DefaultSO.Text,
-                [(int)ObjectiveIndex.Obj1SO] = Txtbox_Obj1SO.Text,
-                [(int)ObjectiveIndex.Obj2SO] = Txtbox_Obj2SO.Text,
-                [(int)ObjectiveIndex.SaleTarget] = Txtbox_SalesTargetSO.Text,
-                [(int)ObjectiveIndex.VolTarget] = Txtbox_volTarget.Text,
-                [(int)ObjectiveIndex.VolPayment] = Txtbox_volPayment.Text,
-                [(int)ObjectiveIndex.PsrRequiered] = Txtbox_PsrReq.Text
-            };
+            var output = new List<string>();
+            output.Insert((int)ObjectiveIndex.DefaultSim, Txtbox_DefaultSim.Text);
+            output.Insert((int)ObjectiveIndex.Obj1Sim, Txtbox_Obj1Sim.Text);
+            output.Insert((int)ObjectiveIndex.Obj2Sim, Txtbox_Obj2Sim.Text);
+            output.Insert((int)ObjectiveIndex.Obj3Sim, Txtbox_Obj3Sim.Text);
+            output.Insert((int)ObjectiveIndex.DefaultSO, Txtbox_DefaultSO.Text);
+            output.Insert((int)ObjectiveIndex.Obj1SO, Txtbox_Obj1SO.Text);
+            output.Insert((int)ObjectiveIndex.Obj2SO, Txtbox_Obj2SO.Text);
+            output.Insert((int)ObjectiveIndex.SaleTarget, Txtbox_SalesTargetSO.Text);
+            output.Insert((int)ObjectiveIndex.VolTarget, Txtbox_volTarget.Text);
+            output.Insert((int)ObjectiveIndex.VolPayment, Txtbox_volPayment.Text);
+            output.Insert((int)ObjectiveIndex.PsrRequiered, Txtbox_PsrReq.Text);
+
+            return output;
         }
     }
 }
