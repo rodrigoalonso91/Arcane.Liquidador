@@ -355,8 +355,6 @@ namespace Arcane.Liquidador
                 return;
             }
 
-            Dgv_Main.Rows.Clear();
-
             string[] reportPsrAgency = File.ReadAllLines(TxtBox_ReportAgency.Text);
             string[] reportPayingSim = File.ReadAllLines(Txtbox_ReportSim.Text);
             string[] reportPayingSO = File.ReadAllLines(Txtbox_ReportSO.Text);

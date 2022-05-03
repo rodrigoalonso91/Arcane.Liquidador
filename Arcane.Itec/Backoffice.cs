@@ -25,7 +25,7 @@ namespace Arcane.Itec
         public List<NonCompliantClients> GetNonCompliantClients()
         {
             var outputList = new List<NonCompliantClients>();
-            foreach (var psr in ReportHandler.GetResults.Values)
+            foreach (var psr in ReportHandler.GetPSRs.Values)
             {
                 if (!psr.SimOk)
                 {

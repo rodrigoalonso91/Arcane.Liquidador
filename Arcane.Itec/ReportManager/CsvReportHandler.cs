@@ -7,7 +7,7 @@ namespace Arcane.Itec.ReportManager
     public class CsvReportHandler
     {
         private readonly Dictionary<string, PSR> PsrFromAgency;
-        public Dictionary<string, PSR> GetResults => PsrFromAgency;
+        public Dictionary<string, PSR> GetPSRs => PsrFromAgency;
 
         public CsvReportHandler(string[] reportPsrAgency)
         {
