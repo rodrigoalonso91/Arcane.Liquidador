@@ -58,7 +58,7 @@ namespace Arcane.Liquidador
 
         private void Switch_DarkMode_CheckStateChanged(object sender, EventArgs e)
         {
-            Settings.Default.darkMode = Switch_DarkMode.Checked;
+            Settings.Default.DarkMode = Switch_DarkMode.Checked;
             Settings.Default.Save();
         }
 
@@ -66,38 +66,38 @@ namespace Arcane.Liquidador
         private void MainForm_Load(object sender, EventArgs e)
         {
             _isStartUp = false;
-            Switch_DarkMode.Checked = Settings.Default.darkMode;
+            Switch_DarkMode.Checked = Settings.Default.DarkMode;
 
             // Txtbox Hints
-            Txtbox_Obj1Sim.Hint = Settings.Default.objSim1_hint;
-            Txtbox_Obj2Sim.Hint = Settings.Default.objSim2_hint;
-            Txtbox_Obj3Sim.Hint = Settings.Default.objSim3_hint;
+            Txtbox_Step1Sim.Hint = Settings.Default.SimStep1_hint;
+            Txtbox_Step2Sim.Hint = Settings.Default.SimStep2_hint;
+            Txtbox_Step3Sim.Hint = Settings.Default.SimStep3_hint;
 
-            Txtbox_Obj1SO.Hint = Settings.Default.objSO1_hint;
-            Txtbox_Obj2SO.Hint = Settings.Default.objSO2_hint;
+            Txtbox_Step1SO.Hint = Settings.Default.SOStep1_hint;
+            Txtbox_Step2SO.Hint = Settings.Default.SOStep2_hint;
 
             //Txtbox Settings Values
-            TxtboxSettings_ObjSim1.Text = Utils.ExtractNumber(Settings.Default.objSim1_hint);
-            TxtboxSettings_ObjSim2.Text = Utils.ExtractNumber(Settings.Default.objSim2_hint);
-            TxtboxSettings_ObjSim3.Text = Utils.ExtractNumber(Settings.Default.objSim3_hint);
+            TxtboxSettings_SimStep1.Text = Utils.ExtractNumber(Settings.Default.SimStep1_hint);
+            TxtboxSettings_SimStep2.Text = Utils.ExtractNumber(Settings.Default.SimStep2_hint);
+            TxtboxSettings_SimStep3.Text = Utils.ExtractNumber(Settings.Default.SimStep3_hint);
 
-            TxtboxSettings_ObjSO1.Text = Utils.ExtractNumber(Settings.Default.objSO1_hint);
-            TxtboxSettings_ObjSO2.Text = Utils.ExtractNumber(Settings.Default.objSO2_hint);
+            TxtboxSettings_SelloutStep1.Text = Utils.ExtractNumber(Settings.Default.SOStep1_hint);
+            TxtboxSettings_SelloutStep2.Text = Utils.ExtractNumber(Settings.Default.SOStep2_hint);
 
             // Txtbox Values
             Txtbox_DefaultSim.Text = Settings.Default.defaultSim_text;
-            Txtbox_Obj1Sim.Text = Settings.Default.objSim1_text;
-            Txtbox_Obj2Sim.Text = Settings.Default.objSim2_text;
-            Txtbox_Obj3Sim.Text = Settings.Default.objSim3_text;
+            Txtbox_Step1Sim.Text = Settings.Default.SimStep1_text;
+            Txtbox_Step2Sim.Text = Settings.Default.SimStep2_text;
+            Txtbox_Step3Sim.Text = Settings.Default.SimStep3_text;
 
             Txtbox_DefaultSO.Text = Settings.Default.defaultSo_text;
-            Txtbox_Obj1SO.Text = Settings.Default.objSO1_text;
-            Txtbox_Obj2SO.Text = Settings.Default.objSO2_text;
-            Txtbox_SalesTargetSO.Text = Settings.Default.saleTarget_text;
+            Txtbox_Step1SO.Text = Settings.Default.SOStep1_text;
+            Txtbox_Step2SO.Text = Settings.Default.SOStep2_text;
+            Txtbox_SalesTargetSO.Text = Settings.Default.SaleTarget_text;
 
-            Txtbox_volTarget.Text = Settings.Default.volumeTarget_text;
-            Txtbox_volPayment.Text = Settings.Default.volumePayment_text;
-            Txtbox_PsrReq.Text = Settings.Default.psrRequiered_text;
+            Txtbox_VolTarget.Text = Settings.Default.VolumeTarget_text;
+            Txtbox_VolPayment.Text = Settings.Default.VolumePayment_text;
+            Txtbox_PsrRequiered.Text = Settings.Default.PsrRequiered_text;
         }
 
         private void Txtbox_DefaultSim_TextChanged(object sender, EventArgs e)
@@ -109,19 +109,19 @@ namespace Arcane.Liquidador
         private void Txtbox_Obj1Sim_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
-            Settings.Default.objSim1_text = Txtbox_Obj1Sim.Text;
+            Settings.Default.SimStep1_text = Txtbox_Step1Sim.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj2Sim_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
-            Settings.Default.objSim2_text = Txtbox_Obj2Sim.Text;
+            Settings.Default.SimStep2_text = Txtbox_Step2Sim.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj3Sim_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
-            Settings.Default.objSim3_text = Txtbox_Obj3Sim.Text;
+            Settings.Default.SimStep3_text = Txtbox_Step3Sim.Text;
             Settings.Default.Save();
         }
         private void Txtbox_DefaultSO_TextChanged(object sender, EventArgs e)
@@ -133,37 +133,37 @@ namespace Arcane.Liquidador
         private void Txtbox_Obj1SO_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
-            Settings.Default.objSO1_text = Txtbox_Obj1SO.Text;
+            Settings.Default.SOStep1_text = Txtbox_Step1SO.Text;
             Settings.Default.Save();
         }
         private void Txtbox_Obj2SO_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
-            Settings.Default.objSO2_text = Txtbox_Obj2SO.Text;
+            Settings.Default.SOStep2_text = Txtbox_Step2SO.Text;
             Settings.Default.Save();
         }
         private void Txtbox_SalesTargetSO_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
-            Settings.Default.saleTarget_text = Txtbox_SalesTargetSO.Text;
+            Settings.Default.SaleTarget_text = Txtbox_SalesTargetSO.Text;
             Settings.Default.Save();
         }
         private void Txtbox_volTarget_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
-            Settings.Default.volumeTarget_text = Txtbox_volTarget.Text;
+            Settings.Default.VolumeTarget_text = Txtbox_VolTarget.Text;
             Settings.Default.Save();
         }
         private void Txtbox_volPayment_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
-            Settings.Default.volumePayment_text = Txtbox_volPayment.Text;
+            Settings.Default.VolumePayment_text = Txtbox_VolPayment.Text;
             Settings.Default.Save();
         }
         private void Txtbox_PsrReq_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
-            Settings.Default.psrRequiered_text = Txtbox_PsrReq.Text;
+            Settings.Default.PsrRequiered_text = Txtbox_PsrRequiered.Text;
             Settings.Default.Save();
         }
 
@@ -179,11 +179,11 @@ namespace Arcane.Liquidador
         {
             TxtboxSettingsDict.Clear();
 
-            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSim1), TxtboxSettings_ObjSim1);
-            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSim2), TxtboxSettings_ObjSim2);
-            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSim3), TxtboxSettings_ObjSim3);
-            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSO1), TxtboxSettings_ObjSO1);
-            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.ObjSO2), TxtboxSettings_ObjSO2);
+            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.SimStep1), TxtboxSettings_SimStep1);
+            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.SimStep2), TxtboxSettings_SimStep2);
+            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.SimStep3), TxtboxSettings_SimStep3);
+            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.SelloutStep1), TxtboxSettings_SelloutStep1);
+            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.SelloutStep2), TxtboxSettings_SelloutStep2);
         }
         private string ValidateFile()
         {
@@ -260,33 +260,7 @@ namespace Arcane.Liquidador
         }
         #endregion
 
-        private void BtnSave_ObjSettings_Click(object sender, EventArgs e)
-        {
-            FillTxtboxSettingsDict();
 
-            if (IsSomeTxtEmpty())
-            {
-                MessageBox.Show(Warnings.EmptyFields, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                ValidateObjectiveRules();
-            }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            var userConfirmation = MessageBox.Show(Warnings.ConfirmSave, "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (userConfirmation is DialogResult.No) return;
-
-            FillHintsForSim();
-            FillHintsForSellout();
-            SaveAndReloadForm(sender, e);
-        }
 
         private bool IsSomeTxtEmpty()
         {
@@ -297,27 +271,27 @@ namespace Arcane.Liquidador
         {
             var settingObjectives = new HintSettings(TxtboxSettingsDict);
 
-            var isObj3LessThanObj2 = settingObjectives.ObjectiveSim3 <= settingObjectives.ObjectiveSim2;
-            var isObj3LessThanObj1 = settingObjectives.ObjectiveSim3 <= settingObjectives.ObjectiveSim1;
+            var isObj3LessThanObj2 = settingObjectives.SimStep3 <= settingObjectives.SimStep2;
+            var isObj3LessThanObj1 = settingObjectives.SimStep3 <= settingObjectives.SimStep1;
 
             if (isObj3LessThanObj2 || isObj3LessThanObj1)
             {
-                throw new ArgumentException(Erros.Error_Obj3);
+                throw new ArgumentException(Erros.Error_Step3);
             }
 
-            var isObj1GreatherThanObj2 = settingObjectives.ObjectiveSim1 >= settingObjectives.ObjectiveSim2;
-            var isObj1GreatherThanObj3 = settingObjectives.ObjectiveSim1 >= settingObjectives.ObjectiveSim3;
+            var isObj1GreatherThanObj2 = settingObjectives.SimStep1 >= settingObjectives.SimStep2;
+            var isObj1GreatherThanObj3 = settingObjectives.SimStep1 >= settingObjectives.SimStep3;
 
             if (isObj1GreatherThanObj2 || isObj1GreatherThanObj3)
             {
-                throw new ArgumentException(Erros.Error_Obj1);
+                throw new ArgumentException(Erros.Error_Step1);
             }
 
-            isObj1GreatherThanObj2 = settingObjectives.ObjectiveSO1 >= settingObjectives.ObjectiveSO2;
+            isObj1GreatherThanObj2 = settingObjectives.SelloutStep1 >= settingObjectives.SelloutStep2;
 
             if (isObj1GreatherThanObj2)
             {
-                throw new ArgumentException(Erros.Error_Obj1);
+                throw new ArgumentException(Erros.Error_Step1);
             }
         }
 
@@ -329,15 +303,15 @@ namespace Arcane.Liquidador
 
         private void FillHintsForSellout()
         {
-            Settings.Default.objSO1_hint = Utils.MakeHintText(TxtboxSettings_ObjSO1.Text, "SO");
-            Settings.Default.objSO2_hint = Utils.MakeHintText(TxtboxSettings_ObjSO2.Text, "SO");
+            Settings.Default.SOStep1_hint = Utils.MakeHintText(TxtboxSettings_SelloutStep1.Text, "SO");
+            Settings.Default.SOStep2_hint = Utils.MakeHintText(TxtboxSettings_SelloutStep2.Text, "SO");
         }
 
         private void FillHintsForSim()
         {
-            Settings.Default.objSim1_hint = Utils.MakeHintText(TxtboxSettings_ObjSim1.Text, "Sim");
-            Settings.Default.objSim2_hint = Utils.MakeHintText(TxtboxSettings_ObjSim2.Text, "Sim");
-            Settings.Default.objSim3_hint = Utils.MakeHintText(TxtboxSettings_ObjSim3.Text, "Sim");
+            Settings.Default.SimStep1_hint = Utils.MakeHintText(TxtboxSettings_SimStep1.Text, "Sim");
+            Settings.Default.SimStep2_hint = Utils.MakeHintText(TxtboxSettings_SimStep2.Text, "Sim");
+            Settings.Default.SimStep3_hint = Utils.MakeHintText(TxtboxSettings_SimStep3.Text, "Sim");
         }
 
         private void Btn_GetPaymentsResults_Click(object sender, EventArgs e)
@@ -391,18 +365,46 @@ namespace Arcane.Liquidador
         {
             var output = new List<string>();
             output.Insert((int)ObjectiveIndex.DefaultSim, Txtbox_DefaultSim.Text);
-            output.Insert((int)ObjectiveIndex.Obj1Sim, Txtbox_Obj1Sim.Text);
-            output.Insert((int)ObjectiveIndex.Obj2Sim, Txtbox_Obj2Sim.Text);
-            output.Insert((int)ObjectiveIndex.Obj3Sim, Txtbox_Obj3Sim.Text);
+            output.Insert((int)ObjectiveIndex.Obj1Sim, Txtbox_Step1Sim.Text);
+            output.Insert((int)ObjectiveIndex.Obj2Sim, Txtbox_Step2Sim.Text);
+            output.Insert((int)ObjectiveIndex.Obj3Sim, Txtbox_Step3Sim.Text);
             output.Insert((int)ObjectiveIndex.DefaultSO, Txtbox_DefaultSO.Text);
-            output.Insert((int)ObjectiveIndex.Obj1SO, Txtbox_Obj1SO.Text);
-            output.Insert((int)ObjectiveIndex.Obj2SO, Txtbox_Obj2SO.Text);
+            output.Insert((int)ObjectiveIndex.Obj1SO, Txtbox_Step1SO.Text);
+            output.Insert((int)ObjectiveIndex.Obj2SO, Txtbox_Step2SO.Text);
             output.Insert((int)ObjectiveIndex.SaleTarget, Txtbox_SalesTargetSO.Text);
-            output.Insert((int)ObjectiveIndex.VolTarget, Txtbox_volTarget.Text);
-            output.Insert((int)ObjectiveIndex.VolPayment, Txtbox_volPayment.Text);
-            output.Insert((int)ObjectiveIndex.PsrRequiered, Txtbox_PsrReq.Text);
+            output.Insert((int)ObjectiveIndex.VolTarget, Txtbox_VolTarget.Text);
+            output.Insert((int)ObjectiveIndex.VolPayment, Txtbox_VolPayment.Text);
+            output.Insert((int)ObjectiveIndex.PsrRequiered, Txtbox_PsrRequiered.Text);
 
             return output;
+        }
+
+        private void BtnSave_StepsSettings_Click(object sender, EventArgs e)
+        {
+            FillTxtboxSettingsDict();
+
+            if (IsSomeTxtEmpty())
+            {
+                MessageBox.Show(Warnings.EmptyFields, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                ValidateObjectiveRules();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var userConfirmation = MessageBox.Show(Warnings.ConfirmSave, "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (userConfirmation is DialogResult.No) return;
+
+            FillHintsForSim();
+            FillHintsForSellout();
+            SaveAndReloadForm(sender, e);
         }
     }
 }

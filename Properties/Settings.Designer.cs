@@ -38,36 +38,36 @@ namespace Arcane.Liquidador.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string objSim1_text {
+        public string SimStep1_text {
             get {
-                return ((string)(this["objSim1_text"]));
+                return ((string)(this["SimStep1_text"]));
             }
             set {
-                this["objSim1_text"] = value;
+                this["SimStep1_text"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string objSim2_text {
+        public string SimStep2_text {
             get {
-                return ((string)(this["objSim2_text"]));
+                return ((string)(this["SimStep2_text"]));
             }
             set {
-                this["objSim2_text"] = value;
+                this["SimStep2_text"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string objSim3_text {
+        public string SimStep3_text {
             get {
-                return ((string)(this["objSim3_text"]));
+                return ((string)(this["SimStep3_text"]));
             }
             set {
-                this["objSim3_text"] = value;
+                this["SimStep3_text"] = value;
             }
         }
         
@@ -86,144 +86,144 @@ namespace Arcane.Liquidador.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string objSO1_text {
+        public string SOStep1_text {
             get {
-                return ((string)(this["objSO1_text"]));
+                return ((string)(this["SOStep1_text"]));
             }
             set {
-                this["objSO1_text"] = value;
+                this["SOStep1_text"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string objSO2_text {
+        public string SOStep2_text {
             get {
-                return ((string)(this["objSO2_text"]));
+                return ((string)(this["SOStep2_text"]));
             }
             set {
-                this["objSO2_text"] = value;
+                this["SOStep2_text"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string saleTarget_text {
+        public string SaleTarget_text {
             get {
-                return ((string)(this["saleTarget_text"]));
+                return ((string)(this["SaleTarget_text"]));
             }
             set {
-                this["saleTarget_text"] = value;
+                this["SaleTarget_text"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string volumeTarget_text {
+        public string VolumeTarget_text {
             get {
-                return ((string)(this["volumeTarget_text"]));
+                return ((string)(this["VolumeTarget_text"]));
             }
             set {
-                this["volumeTarget_text"] = value;
+                this["VolumeTarget_text"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string volumePayment_text {
+        public string VolumePayment_text {
             get {
-                return ((string)(this["volumePayment_text"]));
+                return ((string)(this["VolumePayment_text"]));
             }
             set {
-                this["volumePayment_text"] = value;
+                this["VolumePayment_text"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string psrRequiered_text {
+        public string PsrRequiered_text {
             get {
-                return ((string)(this["psrRequiered_text"]));
+                return ((string)(this["PsrRequiered_text"]));
             }
             set {
-                this["psrRequiered_text"] = value;
+                this["PsrRequiered_text"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool darkMode {
+        public bool DarkMode {
             get {
-                return ((bool)(this["darkMode"]));
+                return ((bool)(this["DarkMode"]));
             }
             set {
-                this["darkMode"] = value;
+                this["DarkMode"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string objSim1_hint {
+        public string SimStep1_hint {
             get {
-                return ((string)(this["objSim1_hint"]));
+                return ((string)(this["SimStep1_hint"]));
             }
             set {
-                this["objSim1_hint"] = value;
+                this["SimStep1_hint"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string objSim2_hint {
+        public string SimStep2_hint {
             get {
-                return ((string)(this["objSim2_hint"]));
+                return ((string)(this["SimStep2_hint"]));
             }
             set {
-                this["objSim2_hint"] = value;
+                this["SimStep2_hint"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string objSim3_hint {
+        public string SimStep3_hint {
             get {
-                return ((string)(this["objSim3_hint"]));
+                return ((string)(this["SimStep3_hint"]));
             }
             set {
-                this["objSim3_hint"] = value;
+                this["SimStep3_hint"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string objSO1_hint {
+        public string SOStep1_hint {
             get {
-                return ((string)(this["objSO1_hint"]));
+                return ((string)(this["SOStep1_hint"]));
             }
             set {
-                this["objSO1_hint"] = value;
+                this["SOStep1_hint"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string objSO2_hint {
+        public string SOStep2_hint {
             get {
-                return ((string)(this["objSO2_hint"]));
+                return ((string)(this["SOStep2_hint"]));
             }
             set {
-                this["objSO2_hint"] = value;
+                this["SOStep2_hint"] = value;
             }
         }
     }

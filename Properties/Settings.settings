@@ -5,52 +5,52 @@
     <Setting Name="defaultSim_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSim1_text" Type="System.String" Scope="User">
+    <Setting Name="SimStep1_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSim2_text" Type="System.String" Scope="User">
+    <Setting Name="SimStep2_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSim3_text" Type="System.String" Scope="User">
+    <Setting Name="SimStep3_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="defaultSo_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSO1_text" Type="System.String" Scope="User">
+    <Setting Name="SOStep1_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSO2_text" Type="System.String" Scope="User">
+    <Setting Name="SOStep2_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="saleTarget_text" Type="System.String" Scope="User">
+    <Setting Name="SaleTarget_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="volumeTarget_text" Type="System.String" Scope="User">
+    <Setting Name="VolumeTarget_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="volumePayment_text" Type="System.String" Scope="User">
+    <Setting Name="VolumePayment_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="psrRequiered_text" Type="System.String" Scope="User">
+    <Setting Name="PsrRequiered_text" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="darkMode" Type="System.Boolean" Scope="User">
+    <Setting Name="DarkMode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="objSim1_hint" Type="System.String" Scope="User">
+    <Setting Name="SimStep1_hint" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSim2_hint" Type="System.String" Scope="User">
+    <Setting Name="SimStep2_hint" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSim3_hint" Type="System.String" Scope="User">
+    <Setting Name="SimStep3_hint" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSO1_hint" Type="System.String" Scope="User">
+    <Setting Name="SOStep1_hint" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="objSO2_hint" Type="System.String" Scope="User">
+    <Setting Name="SOStep2_hint" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

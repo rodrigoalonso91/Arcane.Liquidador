@@ -63,18 +63,18 @@ namespace Arcane.Liquidador.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a El objetivo 1 debe ser el de menor valor..
         /// </summary>
-        internal static string Error_Obj1 {
+        internal static string Error_Step1 {
             get {
-                return ResourceManager.GetString("Error_Obj1", resourceCulture);
+                return ResourceManager.GetString("Error_Step1", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a El valor del objetivo 3 debe ser el más alto..
         /// </summary>
-        internal static string Error_Obj3 {
+        internal static string Error_Step3 {
             get {
-                return ResourceManager.GetString("Error_Obj3", resourceCulture);
+                return ResourceManager.GetString("Error_Step3", resourceCulture);
             }
         }
     }

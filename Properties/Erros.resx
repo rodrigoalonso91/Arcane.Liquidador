@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Error_Obj1" xml:space="preserve">
+  <data name="Error_Step1" xml:space="preserve">
     <value>El objetivo 1 debe ser el de menor valor.</value>
   </data>
-  <data name="Error_Obj3" xml:space="preserve">
+  <data name="Error_Step3" xml:space="preserve">
     <value>El valor del objetivo 3 debe ser el más alto.</value>
   </data>
 </root>

@@ -61,7 +61,7 @@ namespace Arcane.Liquidador.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Este archivo ya fue seleccionado.
+        ///   Busca una cadena traducida similar a Este archivo ya fue seleccionado..
         /// </summary>
         internal static string AlreadySelectedFile {
             get {
