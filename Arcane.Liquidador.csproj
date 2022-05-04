@@ -65,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\HintSettings.cs" />
-    <Compile Include="Data\ObjectiveTypes.cs" />
+    <Compile Include="Data\StepTypes.cs" />
     <Compile Include="Extentions\ListExtentionMethods.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

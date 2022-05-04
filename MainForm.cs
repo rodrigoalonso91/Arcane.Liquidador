@@ -179,11 +179,11 @@ namespace Arcane.Liquidador
         {
             TxtboxSettingsDict.Clear();
 
-            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.SimStep1), TxtboxSettings_SimStep1);
-            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.SimStep2), TxtboxSettings_SimStep2);
-            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.SimStep3), TxtboxSettings_SimStep3);
-            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.SelloutStep1), TxtboxSettings_SelloutStep1);
-            TxtboxSettingsDict.Add(nameof(ObjectiveTypes.SelloutStep2), TxtboxSettings_SelloutStep2);
+            TxtboxSettingsDict.Add(nameof(StepTypes.SimStep1), TxtboxSettings_SimStep1);
+            TxtboxSettingsDict.Add(nameof(StepTypes.SimStep2), TxtboxSettings_SimStep2);
+            TxtboxSettingsDict.Add(nameof(StepTypes.SimStep3), TxtboxSettings_SimStep3);
+            TxtboxSettingsDict.Add(nameof(StepTypes.SelloutStep1), TxtboxSettings_SelloutStep1);
+            TxtboxSettingsDict.Add(nameof(StepTypes.SelloutStep2), TxtboxSettings_SelloutStep2);
         }
         private string ValidateFile()
         {
@@ -334,21 +334,21 @@ namespace Arcane.Liquidador
             string[] reportPayingSO = File.ReadAllLines(Txtbox_ReportSO.Text);
 
             var listObjValues = allObjValues.ConvertValuesToInt();
-            var objectivesDTO = new AgencyObjectivesDTO
+            var commisionValues = new CommissionValueDTO
             {
-                DefaultSim = listObjValues[(int)ObjectiveIndex.DefaultSim],
-                ObjectiveSim1 = listObjValues[(int)ObjectiveIndex.Obj1Sim],
-                ObjectiveSim2 = listObjValues[(int)ObjectiveIndex.Obj2Sim],
-                ObjectiveSim3 = listObjValues[(int)ObjectiveIndex.Obj3Sim],
-                DefaultSellout = listObjValues[(int)ObjectiveIndex.DefaultSO],
-                ObjectiveSO1 = listObjValues[(int)ObjectiveIndex.Obj1SO],
-                ObjectiveSO2 = listObjValues[(int)ObjectiveIndex.Obj2SO],
-                ClientSaleTarget = listObjValues[(int)ObjectiveIndex.SaleTarget],
-                VolumeTarget = listObjValues[(int)ObjectiveIndex.VolTarget],
-                VolumePayment = listObjValues[(int)ObjectiveIndex.VolPayment]
+                DefaultSim = listObjValues[(int)CommissionValuesIndex.SimDefault],
+                SimStep1 = listObjValues[(int)CommissionValuesIndex.SimStep1],
+                SimStep2 = listObjValues[(int)CommissionValuesIndex.SimStep2],
+                SimStep3 = listObjValues[(int)CommissionValuesIndex.SimStep3],
+                DefaultSellout = listObjValues[(int)CommissionValuesIndex.SelloutDefault],
+                SelloutStep1 = listObjValues[(int)CommissionValuesIndex.SelloutStep1],
+                SelloutStep2 = listObjValues[(int)CommissionValuesIndex.SelloutStep2],
+                SaleTarget = listObjValues[(int)CommissionValuesIndex.SaleTarget],
+                VolumeTarget = listObjValues[(int)CommissionValuesIndex.VolumeTarget],
+                VolumePayment = listObjValues[(int)CommissionValuesIndex.VolumePayment]
             };
 
-            var backoffice = new Backoffice(reportPsrAgency, reportPayingSim, reportPayingSO, objectivesDTO);
+            var backoffice = new Backoffice(reportPsrAgency, reportPayingSim, reportPayingSO, commisionValues);
 
 
             GridControl_Clients.DataSource = backoffice.GetNonCompliantClients();
@@ -364,17 +364,17 @@ namespace Arcane.Liquidador
         private List<string> GetValuesFromObjTxtBox()
         {
             var output = new List<string>();
-            output.Insert((int)ObjectiveIndex.DefaultSim, Txtbox_DefaultSim.Text);
-            output.Insert((int)ObjectiveIndex.Obj1Sim, Txtbox_Step1Sim.Text);
-            output.Insert((int)ObjectiveIndex.Obj2Sim, Txtbox_Step2Sim.Text);
-            output.Insert((int)ObjectiveIndex.Obj3Sim, Txtbox_Step3Sim.Text);
-            output.Insert((int)ObjectiveIndex.DefaultSO, Txtbox_DefaultSO.Text);
-            output.Insert((int)ObjectiveIndex.Obj1SO, Txtbox_Step1SO.Text);
-            output.Insert((int)ObjectiveIndex.Obj2SO, Txtbox_Step2SO.Text);
-            output.Insert((int)ObjectiveIndex.SaleTarget, Txtbox_SalesTargetSO.Text);
-            output.Insert((int)ObjectiveIndex.VolTarget, Txtbox_VolTarget.Text);
-            output.Insert((int)ObjectiveIndex.VolPayment, Txtbox_VolPayment.Text);
-            output.Insert((int)ObjectiveIndex.PsrRequiered, Txtbox_PsrRequiered.Text);
+            output.Insert((int)CommissionValuesIndex.SimDefault, Txtbox_DefaultSim.Text);
+            output.Insert((int)CommissionValuesIndex.SimStep1, Txtbox_Step1Sim.Text);
+            output.Insert((int)CommissionValuesIndex.SimStep2, Txtbox_Step2Sim.Text);
+            output.Insert((int)CommissionValuesIndex.SimStep3, Txtbox_Step3Sim.Text);
+            output.Insert((int)CommissionValuesIndex.SelloutDefault, Txtbox_DefaultSO.Text);
+            output.Insert((int)CommissionValuesIndex.SelloutStep1, Txtbox_Step1SO.Text);
+            output.Insert((int)CommissionValuesIndex.SelloutStep2, Txtbox_Step2SO.Text);
+            output.Insert((int)CommissionValuesIndex.SaleTarget, Txtbox_SalesTargetSO.Text);
+            output.Insert((int)CommissionValuesIndex.VolumeTarget, Txtbox_VolTarget.Text);
+            output.Insert((int)CommissionValuesIndex.VolumePayment, Txtbox_VolPayment.Text);
+            output.Insert((int)CommissionValuesIndex.PsrRequiered, Txtbox_PsrRequiered.Text);
 
             return output;
         }

@@ -11,27 +11,27 @@ namespace Arcane.Itec
 {
     public class Backoffice
     {
-        public CsvReportHandler ReportHandler;
-        private AgencyObjectivesDTO Objectives;
+        public CsvReportHandler _reportHandler;
+        private CommissionValueDTO _commissions;
 
-        public Backoffice(string[] reportPsrAgency, string[] reportSimPayment, string[] reportSoPayment, AgencyObjectivesDTO agencyObjectives)
+        public Backoffice(string[] reportPsrAgency, string[] reportSimPayment, string[] reportSoPayment, CommissionValueDTO commisionValues)
         {
-            ReportHandler = new CsvReportHandler(reportPsrAgency);
-            ReportHandler.HandleSimRemuneration(reportSimPayment);
-            ReportHandler.HandleSORemuneration(reportSoPayment, agencyObjectives.ClientSaleTarget);
-            Objectives = agencyObjectives;
+            _commissions = commisionValues;
+            _reportHandler = new CsvReportHandler(reportPsrAgency);
+            _reportHandler.HandleSimRemuneration(reportSimPayment);
+            _reportHandler.HandleSORemuneration(reportSoPayment, _commissions.SaleTarget);
         }
 
         public List<NonCompliantClients> GetNonCompliantClients()
         {
             var outputList = new List<NonCompliantClients>();
-            foreach (var psr in ReportHandler.GetPSRs.Values)
+            foreach (var psr in _reportHandler.GetPSRs.Values)
             {
                 if (!psr.SimOk)
                 {
                     var nonCompliant = new NonCompliantClients
                     {
-                        PsrCode = psr.Codpsr,
+                        Id = psr.Id,
                         WalkerName = psr.WalkerName,
                         ClientName = psr.ClientName,
                         Sale = "No aplica",
@@ -43,7 +43,7 @@ namespace Arcane.Itec
                 {
                     var nonCompliant = new NonCompliantClients
                     {
-                        PsrCode = psr.Codpsr,
+                        Id = psr.Id,
                         WalkerName = psr.WalkerName,
                         ClientName = psr.ClientName,
                         Sale = psr.MonthlySale.ToString(),

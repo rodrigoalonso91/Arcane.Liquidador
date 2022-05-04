@@ -1,6 +1,6 @@
 ﻿namespace Arcane.Liquidador.Data
 {
-    public enum ObjectiveTypes
+    public enum StepTypes
     {
         SimStep1 = 0,
         SimStep2 = 1,

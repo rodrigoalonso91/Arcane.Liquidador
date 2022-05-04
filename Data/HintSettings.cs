@@ -14,11 +14,11 @@ namespace Arcane.Liquidador.Data
 
         public HintSettings(Dictionary<string, MaterialTextBox> txtboxDict)
         {
-            SimStep1 = Convert.ToInt32(txtboxDict[nameof(ObjectiveTypes.SimStep1)].Text);
-            SimStep2 = Convert.ToInt32(txtboxDict[nameof(ObjectiveTypes.SimStep2)].Text);
-            SimStep3 = Convert.ToInt32(txtboxDict[nameof(ObjectiveTypes.SimStep3)].Text);
-            SelloutStep1 = Convert.ToInt32(txtboxDict[nameof(ObjectiveTypes.SelloutStep1)].Text);
-            SelloutStep2 = Convert.ToInt32(txtboxDict[nameof(ObjectiveTypes.SelloutStep2)].Text);
+            SimStep1 = Convert.ToInt32(txtboxDict[nameof(StepTypes.SimStep1)].Text);
+            SimStep2 = Convert.ToInt32(txtboxDict[nameof(StepTypes.SimStep2)].Text);
+            SimStep3 = Convert.ToInt32(txtboxDict[nameof(StepTypes.SimStep3)].Text);
+            SelloutStep1 = Convert.ToInt32(txtboxDict[nameof(StepTypes.SelloutStep1)].Text);
+            SelloutStep2 = Convert.ToInt32(txtboxDict[nameof(StepTypes.SelloutStep2)].Text);
         }
     }
 }
