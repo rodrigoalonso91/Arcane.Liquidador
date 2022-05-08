@@ -20,7 +20,7 @@ namespace Arcane.Itec.ItecUtils
             return new String(input.Where(Char.IsDigit).ToArray());
         }
 
-        public static string NormalizePsrCode(string[] arrSplitedItems, int index)
+        public static string NormalizeIdCode(string[] arrSplitedItems, int index)
         {
             if (arrSplitedItems[index].Substring(0, 1) != "0")
                 return arrSplitedItems[index].Insert(0, "0");

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arcane.Itec.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Arcane.Itec.Data
 {
-    public class PSR
+    public class PSR : ISalesPoint
     {
-        public string Codpsr { get; set; } = string.Empty;
+        public string Id { get; set; } = string.Empty;
         public string ClientName { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
         public string NumberAddress { get; set; } = string.Empty;

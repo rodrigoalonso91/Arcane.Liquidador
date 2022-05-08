@@ -42,13 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\IEmployee.cs" />
+    <Compile Include="Abstractions\IReportHandler.cs" />
+    <Compile Include="Abstractions\ISalesPoint.cs" />
     <Compile Include="Backoffice.cs" />
     <Compile Include="Data\NonCompliantClients.cs" />
     <Compile Include="Data\PSR.cs" />
-    <Compile Include="DTO\AgencyObjectivesDTO.cs" />
+    <Compile Include="DTO\CommissionValueDTO.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Extentions\ListExtentions.cs" />
-    <Compile Include="ItecUtils\ObjectiveIndex.cs" />
+    <Compile Include="ItecUtils\CommissionValuesIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportManager\CsvReportHandler.cs" />
     <Compile Include="ReportManager\ReportIndexs.cs" />

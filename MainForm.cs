@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Arcane.Itec;
+using Arcane.Itec.Abstractions;
 using Arcane.Itec.DTO;
 using Arcane.Itec.Extentions;
 using Arcane.Itec.ItecUtils;
@@ -24,12 +25,16 @@ namespace Arcane.Liquidador
     public partial class MainForm : MaterialForm
     {
         private bool _isStartUp = true;
+        private IReportHandler _reportHandler;
+
         private List<string> TxtboxPathsList { get; set; } = new List<string>();
         private List<MaterialTextBox> TxtboxReportsList { get; set; } = new List<MaterialTextBox>();
         private Dictionary<string, MaterialTextBox> TxtboxSettingsDict { get; set; } = new Dictionary<string, MaterialTextBox>();
 
-        public MainForm()
+        public MainForm(IReportHandler reportHandler)
         {
+            _reportHandler = reportHandler;
+
             InitializeComponent();
 
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -322,8 +327,8 @@ namespace Arcane.Liquidador
                 return;
             }
 
-            var allObjValues = GetValuesFromObjTxtBox();
-            if (allObjValues.Exists(item => string.IsNullOrEmpty(item)))
+            var listCommissionValues = GetValuesFromCommissionTxtBox();
+            if (listCommissionValues.Exists(item => string.IsNullOrEmpty(item)))
             {
                 MessageBox.Show(Warnings.EmptyFields, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -333,7 +338,7 @@ namespace Arcane.Liquidador
             string[] reportPayingSim = File.ReadAllLines(Txtbox_ReportSim.Text);
             string[] reportPayingSO = File.ReadAllLines(Txtbox_ReportSO.Text);
 
-            var listObjValues = allObjValues.ConvertValuesToInt();
+            var listObjValues = listCommissionValues.ConvertValuesToInt();
             var commisionValues = new CommissionValueDTO
             {
                 DefaultSim = listObjValues[(int)CommissionValuesIndex.SimDefault],
@@ -348,7 +353,7 @@ namespace Arcane.Liquidador
                 VolumePayment = listObjValues[(int)CommissionValuesIndex.VolumePayment]
             };
 
-            var backoffice = new Backoffice(reportPsrAgency, reportPayingSim, reportPayingSO, commisionValues);
+            var backoffice = new Backoffice(_reportHandler, reportPsrAgency, reportPayingSim, reportPayingSO, commisionValues);
 
 
             GridControl_Clients.DataSource = backoffice.GetNonCompliantClients();
@@ -361,22 +366,22 @@ namespace Arcane.Liquidador
             return TxtboxPathsList.Exists(item => string.IsNullOrEmpty(item));
         }
 
-        private List<string> GetValuesFromObjTxtBox()
+        private List<string> GetValuesFromCommissionTxtBox()
         {
-            var output = new List<string>();
-            output.Insert((int)CommissionValuesIndex.SimDefault, Txtbox_DefaultSim.Text);
-            output.Insert((int)CommissionValuesIndex.SimStep1, Txtbox_Step1Sim.Text);
-            output.Insert((int)CommissionValuesIndex.SimStep2, Txtbox_Step2Sim.Text);
-            output.Insert((int)CommissionValuesIndex.SimStep3, Txtbox_Step3Sim.Text);
-            output.Insert((int)CommissionValuesIndex.SelloutDefault, Txtbox_DefaultSO.Text);
-            output.Insert((int)CommissionValuesIndex.SelloutStep1, Txtbox_Step1SO.Text);
-            output.Insert((int)CommissionValuesIndex.SelloutStep2, Txtbox_Step2SO.Text);
-            output.Insert((int)CommissionValuesIndex.SaleTarget, Txtbox_SalesTargetSO.Text);
-            output.Insert((int)CommissionValuesIndex.VolumeTarget, Txtbox_VolTarget.Text);
-            output.Insert((int)CommissionValuesIndex.VolumePayment, Txtbox_VolPayment.Text);
-            output.Insert((int)CommissionValuesIndex.PsrRequiered, Txtbox_PsrRequiered.Text);
+            var listValues = new List<string>();
+            listValues.Insert((int)CommissionValuesIndex.SimDefault, Txtbox_DefaultSim.Text);
+            listValues.Insert((int)CommissionValuesIndex.SimStep1, Txtbox_Step1Sim.Text);
+            listValues.Insert((int)CommissionValuesIndex.SimStep2, Txtbox_Step2Sim.Text);
+            listValues.Insert((int)CommissionValuesIndex.SimStep3, Txtbox_Step3Sim.Text);
+            listValues.Insert((int)CommissionValuesIndex.SelloutDefault, Txtbox_DefaultSO.Text);
+            listValues.Insert((int)CommissionValuesIndex.SelloutStep1, Txtbox_Step1SO.Text);
+            listValues.Insert((int)CommissionValuesIndex.SelloutStep2, Txtbox_Step2SO.Text);
+            listValues.Insert((int)CommissionValuesIndex.SaleTarget, Txtbox_SalesTargetSO.Text);
+            listValues.Insert((int)CommissionValuesIndex.VolumeTarget, Txtbox_VolTarget.Text);
+            listValues.Insert((int)CommissionValuesIndex.VolumePayment, Txtbox_VolPayment.Text);
+            listValues.Insert((int)CommissionValuesIndex.PsrRequiered, Txtbox_PsrRequiered.Text);
 
-            return output;
+            return listValues;
         }
 
         private void BtnSave_StepsSettings_Click(object sender, EventArgs e)
@@ -400,7 +405,7 @@ namespace Arcane.Liquidador
             }
 
             var userConfirmation = MessageBox.Show(Warnings.ConfirmSave, "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (userConfirmation is DialogResult.No) return;
+            if (userConfirmation == DialogResult.No) return;
 
             FillHintsForSim();
             FillHintsForSellout();

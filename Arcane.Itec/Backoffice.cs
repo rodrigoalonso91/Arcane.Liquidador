@@ -1,4 +1,5 @@
-﻿using Arcane.Itec.Data;
+﻿using Arcane.Itec.Abstractions;
+using Arcane.Itec.Data;
 using Arcane.Itec.DTO;
 using Arcane.Itec.ReportManager;
 using System;
@@ -11,13 +12,14 @@ namespace Arcane.Itec
 {
     public class Backoffice
     {
-        public CsvReportHandler _reportHandler;
+        public IReportHandler _reportHandler;
         private CommissionValueDTO _commissions;
 
-        public Backoffice(string[] reportPsrAgency, string[] reportSimPayment, string[] reportSoPayment, CommissionValueDTO commisionValues)
+        public Backoffice(IReportHandler reportHander, string[] reportPsrAgency, string[] reportSimPayment, string[] reportSoPayment, CommissionValueDTO commisionValues)
         {
             _commissions = commisionValues;
-            _reportHandler = new CsvReportHandler(reportPsrAgency);
+            _reportHandler = reportHander;
+            _reportHandler.HandleAgencyPsr(reportPsrAgency);
             _reportHandler.HandleSimRemuneration(reportSimPayment);
             _reportHandler.HandleSORemuneration(reportSoPayment, _commissions.SaleTarget);
         }
@@ -25,7 +27,7 @@ namespace Arcane.Itec
         public List<NonCompliantClients> GetNonCompliantClients()
         {
             var outputList = new List<NonCompliantClients>();
-            foreach (var psr in _reportHandler.GetPSRs.Values)
+            foreach (var psr in _reportHandler.GetPSRs().Values)
             {
                 if (!psr.SimOk)
                 {
