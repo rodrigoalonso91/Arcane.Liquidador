@@ -31,6 +31,7 @@ namespace Arcane.Liquidador
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl_Main = new MaterialSkin.Controls.MaterialTabControl();
             this.TabPage_Home = new System.Windows.Forms.TabPage();
             this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
@@ -68,17 +69,7 @@ namespace Arcane.Liquidador
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Dgv_Main = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TabPage_Settings = new System.Windows.Forms.TabPage();
             this.BtnSave_StepsSettings = new MaterialSkin.Controls.MaterialButton();
             this.TxtboxSettings_SelloutStep2 = new MaterialSkin.Controls.MaterialTextBox();
@@ -99,6 +90,16 @@ namespace Arcane.Liquidador
             this.ImgList_Menu = new System.Windows.Forms.ImageList(this.components);
             this.pSRBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.psrAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SimAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.simPercentageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.simRewardDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelloutReward = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.selloutPercentageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.selloutRewardDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.volumeRewardDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalSalaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabControl_Main.SuspendLayout();
             this.TabPage_Home.SuspendLayout();
             this.MCard_ReportView.SuspendLayout();
@@ -108,6 +109,7 @@ namespace Arcane.Liquidador
             ((System.ComponentModel.ISupportInitialize)(this.nonCompliantClientsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Main)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.TabPage_Settings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pSRBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -718,103 +720,37 @@ namespace Arcane.Liquidador
             this.Dgv_Main.AllowUserToOrderColumns = true;
             this.Dgv_Main.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dgv_Main.AutoGenerateColumns = false;
             this.Dgv_Main.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Dgv_Main.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(181)))), ((int)(((byte)(157)))));
             this.Dgv_Main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Main.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11});
+            this.nameDataGridViewTextBoxColumn,
+            this.psrAmountDataGridViewTextBoxColumn,
+            this.SimAmount,
+            this.simPercentageDataGridViewTextBoxColumn,
+            this.simRewardDataGridViewTextBoxColumn,
+            this.SelloutReward,
+            this.selloutPercentageDataGridViewTextBoxColumn,
+            this.selloutRewardDataGridViewTextBoxColumn,
+            this.volumeRewardDataGridViewTextBoxColumn,
+            this.totalSalaryDataGridViewTextBoxColumn});
+            this.Dgv_Main.DataSource = this.employeeBindingSource;
             this.Dgv_Main.Location = new System.Drawing.Point(3, 4);
             this.Dgv_Main.Name = "Dgv_Main";
             this.Dgv_Main.ReadOnly = true;
             this.Dgv_Main.RowHeadersVisible = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.Dgv_Main.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.Dgv_Main.RowTemplate.Height = 30;
             this.Dgv_Main.Size = new System.Drawing.Size(1130, 316);
             this.Dgv_Main.TabIndex = 0;
             // 
-            // Column1
+            // employeeBindingSource
             // 
-            this.Column1.FillWeight = 111.6751F;
-            this.Column1.HeaderText = "Caminante";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.FillWeight = 98.83251F;
-            this.Column2.HeaderText = "PSR Totales";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 98.83251F;
-            this.Column3.HeaderText = "Obj. Sim";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 98.83251F;
-            this.Column4.HeaderText = "Sim (%)";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.FillWeight = 98.83251F;
-            this.Column5.HeaderText = "Comisión Sim";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.FillWeight = 98.83251F;
-            this.Column6.HeaderText = "Obj. SO";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.FillWeight = 98.83251F;
-            this.Column7.HeaderText = "SO (%)";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.FillWeight = 98.83251F;
-            this.Column8.HeaderText = "Comisión SO";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.FillWeight = 98.83251F;
-            this.Column9.HeaderText = "Volumen";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.FillWeight = 98.83251F;
-            this.Column10.HeaderText = "Comisión volumen";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.FillWeight = 98.83251F;
-            this.Column11.HeaderText = "Total a pagar";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
+            this.employeeBindingSource.DataSource = typeof(Arcane.Itec.Employee);
             // 
             // TabPage_Settings
             // 
@@ -1105,6 +1041,86 @@ namespace Arcane.Liquidador
             // 
             this.openFileDialog1.Filter = "Archivos CSV|*.csv|Todos los archivos|*.*";
             // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.FillWeight = 203.0456F;
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Caminante";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // psrAmountDataGridViewTextBoxColumn
+            // 
+            this.psrAmountDataGridViewTextBoxColumn.DataPropertyName = "PsrAmount";
+            this.psrAmountDataGridViewTextBoxColumn.FillWeight = 88.55046F;
+            this.psrAmountDataGridViewTextBoxColumn.HeaderText = "PSR totales";
+            this.psrAmountDataGridViewTextBoxColumn.Name = "psrAmountDataGridViewTextBoxColumn";
+            this.psrAmountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // SimAmount
+            // 
+            this.SimAmount.DataPropertyName = "SimAmount";
+            this.SimAmount.FillWeight = 88.55046F;
+            this.SimAmount.HeaderText = "Obj. Sim";
+            this.SimAmount.Name = "SimAmount";
+            this.SimAmount.ReadOnly = true;
+            // 
+            // simPercentageDataGridViewTextBoxColumn
+            // 
+            this.simPercentageDataGridViewTextBoxColumn.DataPropertyName = "SimPercentage";
+            this.simPercentageDataGridViewTextBoxColumn.FillWeight = 88.55046F;
+            this.simPercentageDataGridViewTextBoxColumn.HeaderText = "Sim (%)";
+            this.simPercentageDataGridViewTextBoxColumn.Name = "simPercentageDataGridViewTextBoxColumn";
+            this.simPercentageDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // simRewardDataGridViewTextBoxColumn
+            // 
+            this.simRewardDataGridViewTextBoxColumn.DataPropertyName = "SimReward";
+            this.simRewardDataGridViewTextBoxColumn.FillWeight = 88.55046F;
+            this.simRewardDataGridViewTextBoxColumn.HeaderText = "Comisión Sim";
+            this.simRewardDataGridViewTextBoxColumn.Name = "simRewardDataGridViewTextBoxColumn";
+            this.simRewardDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // SelloutReward
+            // 
+            this.SelloutReward.DataPropertyName = "SelloutAmount";
+            this.SelloutReward.FillWeight = 88.55046F;
+            this.SelloutReward.HeaderText = "Obj. SO";
+            this.SelloutReward.Name = "SelloutReward";
+            this.SelloutReward.ReadOnly = true;
+            // 
+            // selloutPercentageDataGridViewTextBoxColumn
+            // 
+            this.selloutPercentageDataGridViewTextBoxColumn.DataPropertyName = "SelloutPercentage";
+            this.selloutPercentageDataGridViewTextBoxColumn.FillWeight = 88.55046F;
+            this.selloutPercentageDataGridViewTextBoxColumn.HeaderText = "SO (%)";
+            this.selloutPercentageDataGridViewTextBoxColumn.Name = "selloutPercentageDataGridViewTextBoxColumn";
+            this.selloutPercentageDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // selloutRewardDataGridViewTextBoxColumn
+            // 
+            this.selloutRewardDataGridViewTextBoxColumn.DataPropertyName = "SelloutReward";
+            this.selloutRewardDataGridViewTextBoxColumn.FillWeight = 88.55046F;
+            this.selloutRewardDataGridViewTextBoxColumn.HeaderText = "Comisión SO";
+            this.selloutRewardDataGridViewTextBoxColumn.Name = "selloutRewardDataGridViewTextBoxColumn";
+            this.selloutRewardDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // volumeRewardDataGridViewTextBoxColumn
+            // 
+            this.volumeRewardDataGridViewTextBoxColumn.DataPropertyName = "VolumeReward";
+            this.volumeRewardDataGridViewTextBoxColumn.FillWeight = 88.55046F;
+            this.volumeRewardDataGridViewTextBoxColumn.HeaderText = "Volumen";
+            this.volumeRewardDataGridViewTextBoxColumn.Name = "volumeRewardDataGridViewTextBoxColumn";
+            this.volumeRewardDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalSalaryDataGridViewTextBoxColumn
+            // 
+            this.totalSalaryDataGridViewTextBoxColumn.DataPropertyName = "TotalSalary";
+            this.totalSalaryDataGridViewTextBoxColumn.FillWeight = 88.55046F;
+            this.totalSalaryDataGridViewTextBoxColumn.HeaderText = "Total a pagar";
+            this.totalSalaryDataGridViewTextBoxColumn.Name = "totalSalaryDataGridViewTextBoxColumn";
+            this.totalSalaryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
@@ -1131,6 +1147,7 @@ namespace Arcane.Liquidador
             ((System.ComponentModel.ISupportInitialize)(this.nonCompliantClientsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Main)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.TabPage_Settings.ResumeLayout(false);
             this.TabPage_Settings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pSRBindingSource)).EndInit();
@@ -1188,17 +1205,6 @@ namespace Arcane.Liquidador
         private MaterialSkin.Controls.MaterialLabel LblSettings_SelloutStep1;
         private MaterialSkin.Controls.MaterialLabel LblSettings_SimStep3;
         private MaterialSkin.Controls.MaterialButton BtnSave_StepsSettings;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private DevExpress.XtraGrid.GridControl GridControl_Clients;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
@@ -1208,6 +1214,18 @@ namespace Arcane.Liquidador
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private System.Windows.Forms.BindingSource pSRBindingSource;
         private System.Windows.Forms.BindingSource nonCompliantClientsBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salaryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource employeeBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn psrAmountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SimAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn simPercentageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn simRewardDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SelloutReward;
+        private System.Windows.Forms.DataGridViewTextBoxColumn selloutPercentageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn selloutRewardDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn volumeRewardDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalSalaryDataGridViewTextBoxColumn;
     }
 }
 

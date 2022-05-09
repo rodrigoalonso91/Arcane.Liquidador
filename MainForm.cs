@@ -339,7 +339,7 @@ namespace Arcane.Liquidador
             string[] reportPayingSO = File.ReadAllLines(Txtbox_ReportSO.Text);
 
             var listObjValues = listCommissionValues.ConvertValuesToInt();
-            var commisionValues = new CommissionValueDTO
+            var commisionValues = new CommissionValue
             {
                 DefaultSim = listObjValues[(int)CommissionValuesIndex.SimDefault],
                 SimStep1 = listObjValues[(int)CommissionValuesIndex.SimStep1],
@@ -353,9 +353,20 @@ namespace Arcane.Liquidador
                 VolumePayment = listObjValues[(int)CommissionValuesIndex.VolumePayment]
             };
 
-            var backoffice = new Backoffice(_reportHandler, reportPsrAgency, reportPayingSim, reportPayingSO, commisionValues);
+            var commosionRules = new CommisionRules
+            {
+                RequieredPSR = int.Parse(Txtbox_PsrRequiered.Text),
+                SimStep1 = int.Parse(Utils.ExtractNumber(Settings.Default.SimStep1_hint)),
+                SimStep2 = int.Parse(Utils.ExtractNumber(Settings.Default.SimStep2_hint)),
+                SimStep3 = int.Parse(Utils.ExtractNumber(Settings.Default.SimStep3_hint)),
+                SelloutStep1 = int.Parse(Utils.ExtractNumber(Settings.Default.SOStep1_hint)),
+                SelloutStep2 = int.Parse(Utils.ExtractNumber(Settings.Default.SOStep2_hint))
+            };
 
+            var salaryCalculator = new SalaryCalculator(commisionValues, commosionRules);
+            var backoffice = new Backoffice(_reportHandler, reportPsrAgency, reportPayingSim, reportPayingSO, commisionValues.SaleTarget);
 
+            Dgv_Main.DataSource = salaryCalculator.GetEmployeesSalary(backoffice._reportHandler.GetPSRs()).Values.ToList();
             GridControl_Clients.DataSource = backoffice.GetNonCompliantClients();
             TabControl_Main.SelectedTab = TabPage_Pagos;
         }

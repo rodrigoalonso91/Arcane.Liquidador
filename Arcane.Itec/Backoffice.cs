@@ -1,27 +1,19 @@
 ﻿using Arcane.Itec.Abstractions;
 using Arcane.Itec.Data;
-using Arcane.Itec.DTO;
-using Arcane.Itec.ReportManager;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Arcane.Itec
 {
     public class Backoffice
     {
         public IReportHandler _reportHandler;
-        private CommissionValueDTO _commissions;
 
-        public Backoffice(IReportHandler reportHander, string[] reportPsrAgency, string[] reportSimPayment, string[] reportSoPayment, CommissionValueDTO commisionValues)
+        public Backoffice(IReportHandler reportHander, string[] reportPsrAgency, string[] reportSimPayment, string[] reportSoPayment, int saleTarget)
         {
-            _commissions = commisionValues;
             _reportHandler = reportHander;
             _reportHandler.HandleAgencyPsr(reportPsrAgency);
             _reportHandler.HandleSimRemuneration(reportSimPayment);
-            _reportHandler.HandleSORemuneration(reportSoPayment, _commissions.SaleTarget);
+            _reportHandler.HandleSORemuneration(reportSoPayment, saleTarget);
         }
 
         public List<NonCompliantClients> GetNonCompliantClients()

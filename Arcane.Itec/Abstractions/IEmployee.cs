@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Arcane.Itec.Abstractions
+﻿namespace Arcane.Itec.Abstractions
 {
     public interface IEmployee
     {
         string Name { get; set; }
         int PsrAmount { get; set; }
-        int Salary { get; set; }
+        int SimAmount { get; set; }
+        int SimReward { get; set; }
+        string SimPercentage { get; set; }
+        int SelloutAmount { get; set; }
+        int SelloutReward { get; set; }
+        string SelloutPercentage { get; set; }
+        int VolumeAmount { get; set; }
+        int VolumeReward { get; set; }
+        int TotalSalary { get; set; }
     }
 }

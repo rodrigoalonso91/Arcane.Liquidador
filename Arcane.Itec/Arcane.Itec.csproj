@@ -47,7 +47,8 @@
     <Compile Include="Backoffice.cs" />
     <Compile Include="Data\NonCompliantClients.cs" />
     <Compile Include="Data\PSR.cs" />
-    <Compile Include="DTO\CommissionValueDTO.cs" />
+    <Compile Include="DTO\CommisionRules.cs" />
+    <Compile Include="DTO\CommissionValue.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Extentions\ListExtentions.cs" />
     <Compile Include="ItecUtils\CommissionValuesIndex.cs" />

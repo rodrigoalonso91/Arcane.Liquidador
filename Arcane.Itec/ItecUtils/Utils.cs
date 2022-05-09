@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Arcane.Itec.ItecUtils
 {
@@ -26,6 +23,12 @@ namespace Arcane.Itec.ItecUtils
                 return arrSplitedItems[index].Insert(0, "0");
 
             return arrSplitedItems[index];
+        }
+
+        public static string GetEfectivity(int totalClients, int clientsOk)
+        {
+            var result = (clientsOk * 100) / totalClients;
+            return result.ToString() + '%';
         }
     }
 }

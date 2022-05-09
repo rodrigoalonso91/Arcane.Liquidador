@@ -1,25 +1,22 @@
-﻿using Arcane.Itec;
-using Arcane.Itec.Abstractions;
+﻿using Arcane.Itec.Abstractions;
 using Arcane.Itec.ReportManager;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Arcane.Liquidador
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             var services = new ServiceCollection();
             ConfigureServices(services);
 
@@ -33,7 +30,7 @@ namespace Arcane.Liquidador
         private static void ConfigureServices(ServiceCollection services)
         {
             services.AddScoped<IReportHandler, CsvReportHandler>()
-                .AddScoped<MainForm>();
+                    .AddScoped<MainForm>();
         }
     }
 }

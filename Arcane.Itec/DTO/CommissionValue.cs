@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Arcane.Itec.DTO
+﻿namespace Arcane.Itec.DTO
 {
-    public class CommissionValueDTO
+    public class CommissionValue
     {
         public int DefaultSim { get; set; }
         public int SimStep1 { get; set; }
@@ -18,5 +12,6 @@ namespace Arcane.Itec.DTO
         public int SaleTarget { get; set; }
         public int VolumeTarget { get; set; }
         public int VolumePayment { get; set; }
+        public int RequieredPSR { get; set; }
     }
 }
