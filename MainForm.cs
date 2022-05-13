@@ -321,11 +321,14 @@ namespace Arcane.Liquidador
 
         private void Btn_GetPaymentsResults_Click(object sender, EventArgs e)
         {
+            ProgressBar.PerformStep();
             if (AnyReportMissing())
             {
                 MessageBox.Show(Warnings.ReportMissing, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            ProgressBar.PerformStep();
 
             var listCommissionValues = GetValuesFromCommissionTxtBox();
             if (listCommissionValues.Exists(item => string.IsNullOrEmpty(item)))
@@ -337,6 +340,8 @@ namespace Arcane.Liquidador
             string[] reportPsrAgency = File.ReadAllLines(TxtBox_ReportAgency.Text);
             string[] reportPayingSim = File.ReadAllLines(Txtbox_ReportSim.Text);
             string[] reportPayingSO = File.ReadAllLines(Txtbox_ReportSO.Text);
+
+            ProgressBar.PerformStep();
 
             var listObjValues = listCommissionValues.ConvertValuesToInt();
             var commisionValues = new CommissionValue
@@ -362,13 +367,15 @@ namespace Arcane.Liquidador
                 SelloutStep1 = int.Parse(Utils.ExtractNumber(Settings.Default.SOStep1_hint)),
                 SelloutStep2 = int.Parse(Utils.ExtractNumber(Settings.Default.SOStep2_hint))
             };
-
+            ProgressBar.PerformStep();
             var salaryCalculator = new SalaryCalculator(commisionValues, commosionRules);
             var backoffice = new Backoffice(_reportHandler, reportPsrAgency, reportPayingSim, reportPayingSO, commisionValues.SaleTarget);
 
             Dgv_Main.DataSource = salaryCalculator.GetEmployeesSalary(backoffice._reportHandler.GetPSRs()).Values.ToList();
             GridControl_Clients.DataSource = backoffice.GetNonCompliantClients();
             TabControl_Main.SelectedTab = TabPage_Pagos;
+
+            ProgressBar.PerformStep();
         }
 
         private bool AnyReportMissing()
