@@ -16,22 +16,7 @@ namespace Arcane.Liquidador
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(mainForm);
-
-            //var services = new ServiceCollection();
-            //ConfigureServices(services);
-
-            //using (var serviceProvider = services.BuildServiceProvider())
-            //{
-            //    var mainForm = serviceProvider.GetService<MainForm>();
-            //    Application.Run(mainForm);
-            //}
+            Application.Run(new MainForm());
         }
-
-        //private static void ConfigureServices(ServiceCollection services)
-        //{
-        //    services.AddScoped<IReportHandler, CsvReportHandler>()
-        //            .AddScoped<MainForm>();
-        //}
     }
 }

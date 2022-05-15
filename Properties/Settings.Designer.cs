@@ -169,7 +169,7 @@ namespace Arcane.Liquidador.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("+100 Sim")]
         public string SimStep1_hint {
             get {
                 return ((string)(this["SimStep1_hint"]));
@@ -181,7 +181,7 @@ namespace Arcane.Liquidador.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("+120 Sim")]
         public string SimStep2_hint {
             get {
                 return ((string)(this["SimStep2_hint"]));
@@ -193,7 +193,7 @@ namespace Arcane.Liquidador.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("+150 Sim")]
         public string SimStep3_hint {
             get {
                 return ((string)(this["SimStep3_hint"]));
@@ -205,7 +205,7 @@ namespace Arcane.Liquidador.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("+120 SO")]
         public string SOStep1_hint {
             get {
                 return ((string)(this["SOStep1_hint"]));
@@ -217,7 +217,7 @@ namespace Arcane.Liquidador.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("+150 SO")]
         public string SOStep2_hint {
             get {
                 return ((string)(this["SOStep2_hint"]));

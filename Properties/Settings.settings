@@ -39,19 +39,19 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="SimStep1_hint" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">+100 Sim</Value>
     </Setting>
     <Setting Name="SimStep2_hint" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">+120 Sim</Value>
     </Setting>
     <Setting Name="SimStep3_hint" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">+150 Sim</Value>
     </Setting>
     <Setting Name="SOStep1_hint" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">+120 SO</Value>
     </Setting>
     <Setting Name="SOStep2_hint" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">+150 SO</Value>
     </Setting>
   </Settings>
 </SettingsFile>

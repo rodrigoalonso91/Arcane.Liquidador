@@ -1,5 +1,6 @@
 ﻿using Arcane.Itec.Abstractions;
 using Arcane.Itec.Data;
+using Arcane.Itec.ReportManager;
 using System.Collections.Generic;
 
 namespace Arcane.Itec
@@ -8,9 +9,18 @@ namespace Arcane.Itec
     {
         public IReportHandler _reportHandler;
 
-        public Backoffice(IReportHandler reportHander, string[] reportPsrAgency, string[] reportSimPayment, string[] reportSoPayment, int saleTarget)
+        public Backoffice() : this(new CsvReportHandler())
         {
-            _reportHandler = reportHander;
+
+        }
+
+        internal Backoffice(IReportHandler reportHandler)
+        {
+            _reportHandler = reportHandler;
+        }
+
+        public void Handle(string[] reportPsrAgency, string[] reportSimPayment, string[] reportSoPayment, int saleTarget)
+        {
             _reportHandler.HandleAgencyPsr(reportPsrAgency);
             _reportHandler.HandleSimRemuneration(reportSimPayment);
             _reportHandler.HandleSORemuneration(reportSoPayment, saleTarget);

@@ -32,20 +32,25 @@ namespace Arcane.Itec
                 var totalVolume = psrFromThisEmployee.Select(x => x.MonthlySale)
                                                      .Aggregate((result, value) => result + value);
 
+                var simReward = CalculateSimReward(simOkAmount);
+                var selloutReward = CalculateSOReward(selloutOkAmount);
+                var volumeReward = CalculateVolumenReward(totalVolume, simOkAmount, selloutOkAmount);
+                var totalSalary = simReward + selloutReward + volumeReward;
+
                 employees.Add(name, new Employee()
                 {
                     Name = name,
                     PsrAmount = totalClients,
                     SimAmount = simOkAmount,
-                    SimReward = CalculateSimReward(simOkAmount),
+                    SimReward = "$ " + simReward,
                     SimPercentage = Utils.GetEfectivity(totalClients, simOkAmount),
                     SelloutAmount = selloutOkAmount,
-                    SelloutReward = CalculateSOReward(selloutOkAmount),
+                    SelloutReward = "$ " + selloutReward,
                     SelloutPercentage = Utils.GetEfectivity(totalClients, selloutOkAmount),
                     VolumeAmount = totalVolume,
-                    VolumeReward = CalculateVolumenReward(totalVolume, simOkAmount, selloutOkAmount),
+                    VolumeReward = "$ " + volumeReward,
+                    TotalSalary = "$ " + totalSalary
                 });
-                employees[name].TotalSalary = employees[name].SimReward + employees[name].SelloutReward + employees[name].VolumeReward;
             }
             return employees;
         }

@@ -31,7 +31,7 @@ namespace Arcane.Liquidador
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl_Main = new MaterialSkin.Controls.MaterialTabControl();
             this.TabPage_Home = new System.Windows.Forms.TabPage();
             this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
@@ -312,6 +312,7 @@ namespace Arcane.Liquidador
             this.BtnAdd_ReportAgency.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnAdd_ReportAgency.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.BtnAdd_ReportAgency.Depth = 0;
+            this.BtnAdd_ReportAgency.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAdd_ReportAgency.HighEmphasis = true;
             this.BtnAdd_ReportAgency.Icon = null;
             this.BtnAdd_ReportAgency.Location = new System.Drawing.Point(451, 25);
@@ -745,10 +746,10 @@ namespace Arcane.Liquidador
             this.Dgv_Main.Name = "Dgv_Main";
             this.Dgv_Main.ReadOnly = true;
             this.Dgv_Main.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
-            this.Dgv_Main.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.Dgv_Main.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Main.RowTemplate.Height = 30;
             this.Dgv_Main.Size = new System.Drawing.Size(1130, 316);
             this.Dgv_Main.TabIndex = 0;

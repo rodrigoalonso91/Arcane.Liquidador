@@ -25,15 +25,13 @@ namespace Arcane.Liquidador
     public partial class MainForm : MaterialForm
     {
         private bool _isStartUp = true;
-        private IReportHandler _reportHandler;
 
         private List<string> TxtboxPathsList { get; set; } = new List<string>();
         private List<MaterialTextBox> TxtboxReportsList { get; set; } = new List<MaterialTextBox>();
         private Dictionary<string, MaterialTextBox> TxtboxSettingsDict { get; set; } = new Dictionary<string, MaterialTextBox>();
 
-        public MainForm(IReportHandler reportHandler)
+        public MainForm()
         {
-            _reportHandler = reportHandler;
 
             InitializeComponent();
 
@@ -369,7 +367,8 @@ namespace Arcane.Liquidador
             };
             ProgressBar.PerformStep();
             var salaryCalculator = new SalaryCalculator(commisionValues, commosionRules);
-            var backoffice = new Backoffice(_reportHandler, reportPsrAgency, reportPayingSim, reportPayingSO, commisionValues.SaleTarget);
+            var backoffice = new Backoffice();
+            backoffice.Handle(reportPsrAgency, reportPayingSim, reportPayingSO, commisionValues.SaleTarget);
 
             Dgv_Main.DataSource = salaryCalculator.GetEmployeesSalary(backoffice._reportHandler.GetPSRs()).Values.ToList();
             GridControl_Clients.DataSource = backoffice.GetNonCompliantClients();
