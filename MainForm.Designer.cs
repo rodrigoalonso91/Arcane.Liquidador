@@ -31,6 +31,7 @@ namespace Arcane.Liquidador
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl_Main = new MaterialSkin.Controls.MaterialTabControl();
             this.TabPage_Home = new System.Windows.Forms.TabPage();
@@ -472,7 +473,7 @@ namespace Arcane.Liquidador
             // 
             // MCard_ReportView
             // 
-            this.MCard_ReportView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MCard_ReportView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MCard_ReportView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.MCard_ReportView.Controls.Add(this.PicBox_Logo);
@@ -490,7 +491,7 @@ namespace Arcane.Liquidador
             // 
             // PicBox_Logo
             // 
-            this.PicBox_Logo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.PicBox_Logo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PicBox_Logo.Image = ((System.Drawing.Image)(resources.GetObject("PicBox_Logo.Image")));
             this.PicBox_Logo.InitialImage = ((System.Drawing.Image)(resources.GetObject("PicBox_Logo.InitialImage")));
@@ -503,7 +504,7 @@ namespace Arcane.Liquidador
             // 
             // MLTxtBox1
             // 
-            this.MLTxtBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MLTxtBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MLTxtBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.MLTxtBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -649,14 +650,14 @@ namespace Arcane.Liquidador
             // 
             // GridControl_Clients
             // 
-            this.GridControl_Clients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.GridControl_Clients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GridControl_Clients.DataSource = this.nonCompliantClientsBindingSource;
-            this.GridControl_Clients.Location = new System.Drawing.Point(3, 326);
+            this.GridControl_Clients.Location = new System.Drawing.Point(3, 299);
             this.GridControl_Clients.MainView = this.gridView1;
             this.GridControl_Clients.Name = "GridControl_Clients";
-            this.GridControl_Clients.Size = new System.Drawing.Size(1130, 201);
+            this.GridControl_Clients.Size = new System.Drawing.Size(1130, 225);
             this.GridControl_Clients.TabIndex = 1;
             this.GridControl_Clients.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -724,7 +725,7 @@ namespace Arcane.Liquidador
             this.Dgv_Main.AllowUserToAddRows = false;
             this.Dgv_Main.AllowUserToDeleteRows = false;
             this.Dgv_Main.AllowUserToOrderColumns = true;
-            this.Dgv_Main.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Dgv_Main.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Dgv_Main.AutoGenerateColumns = false;
             this.Dgv_Main.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -746,17 +747,19 @@ namespace Arcane.Liquidador
             this.Dgv_Main.Name = "Dgv_Main";
             this.Dgv_Main.ReadOnly = true;
             this.Dgv_Main.RowHeadersVisible = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
-            this.Dgv_Main.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(128)))), ((int)(((byte)(97)))));
+            this.Dgv_Main.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_Main.RowTemplate.Height = 30;
-            this.Dgv_Main.Size = new System.Drawing.Size(1130, 316);
+            this.Dgv_Main.Size = new System.Drawing.Size(1130, 289);
             this.Dgv_Main.TabIndex = 0;
             // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.nameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.nameDataGridViewTextBoxColumn.FillWeight = 203.0456F;
             this.nameDataGridViewTextBoxColumn.HeaderText = "Caminante";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
@@ -1040,7 +1043,7 @@ namespace Arcane.Liquidador
             // 
             // materialDivider3
             // 
-            this.materialDivider3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.materialDivider3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider3.Depth = 0;
@@ -1053,7 +1056,7 @@ namespace Arcane.Liquidador
             // 
             // materialDivider1
             // 
-            this.materialDivider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.materialDivider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
@@ -1235,6 +1238,7 @@ namespace Arcane.Liquidador
         private System.Windows.Forms.BindingSource nonCompliantClientsBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn salaryDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource employeeBindingSource;
+        private MaterialSkin.Controls.MaterialProgressBar ProgressBar;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn psrAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn SimAmount;
@@ -1245,7 +1249,6 @@ namespace Arcane.Liquidador
         private System.Windows.Forms.DataGridViewTextBoxColumn selloutRewardDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn volumeRewardDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalSalaryDataGridViewTextBoxColumn;
-        private MaterialSkin.Controls.MaterialProgressBar ProgressBar;
     }
 }
 

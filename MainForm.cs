@@ -372,8 +372,16 @@ namespace Arcane.Liquidador
 
             Dgv_Main.DataSource = salaryCalculator.GetEmployeesSalary(backoffice._reportHandler.GetPSRs()).Values.ToList();
             GridControl_Clients.DataSource = backoffice.GetNonCompliantClients();
-            TabControl_Main.SelectedTab = TabPage_Pagos;
 
+            var rowStyle = new DataGridViewCellStyle
+            {
+                BackColor = Color.MediumPurple,
+                Font = new Font(Font, FontStyle.Bold),
+                ForeColor = Color.WhiteSmoke,
+            };
+            Dgv_Main.Rows[Dgv_Main.RowCount - 1].DefaultCellStyle = rowStyle;
+
+            TabControl_Main.SelectedTab = TabPage_Pagos;
             ProgressBar.PerformStep();
         }
 
