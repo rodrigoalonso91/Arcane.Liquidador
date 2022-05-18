@@ -668,6 +668,8 @@ namespace Arcane.Liquidador
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseForeColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn6,
@@ -888,6 +890,7 @@ namespace Arcane.Liquidador
             this.BtnSave_StepsSettings.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnSave_StepsSettings.UseAccentColor = false;
             this.BtnSave_StepsSettings.UseVisualStyleBackColor = true;
+            this.BtnSave_StepsSettings.Visible = false;
             this.BtnSave_StepsSettings.Click += new System.EventHandler(this.BtnSave_StepsSettings_Click);
             // 
             // TxtboxSettings_SelloutStep2
@@ -906,6 +909,7 @@ namespace Arcane.Liquidador
             this.TxtboxSettings_SelloutStep2.TabIndex = 5;
             this.TxtboxSettings_SelloutStep2.Text = "";
             this.TxtboxSettings_SelloutStep2.TrailingIcon = null;
+            this.TxtboxSettings_SelloutStep2.Visible = false;
             // 
             // TxtboxSettings_SelloutStep1
             // 
@@ -923,6 +927,7 @@ namespace Arcane.Liquidador
             this.TxtboxSettings_SelloutStep1.TabIndex = 5;
             this.TxtboxSettings_SelloutStep1.Text = "";
             this.TxtboxSettings_SelloutStep1.TrailingIcon = null;
+            this.TxtboxSettings_SelloutStep1.Visible = false;
             // 
             // TxtboxSettings_SimStep3
             // 
@@ -940,6 +945,7 @@ namespace Arcane.Liquidador
             this.TxtboxSettings_SimStep3.TabIndex = 5;
             this.TxtboxSettings_SimStep3.Text = "";
             this.TxtboxSettings_SimStep3.TrailingIcon = null;
+            this.TxtboxSettings_SimStep3.Visible = false;
             // 
             // TxtboxSettings_SimStep2
             // 
@@ -957,6 +963,7 @@ namespace Arcane.Liquidador
             this.TxtboxSettings_SimStep2.TabIndex = 5;
             this.TxtboxSettings_SimStep2.Text = "";
             this.TxtboxSettings_SimStep2.TrailingIcon = null;
+            this.TxtboxSettings_SimStep2.Visible = false;
             // 
             // TxtboxSettings_SimStep1
             // 
@@ -974,6 +981,7 @@ namespace Arcane.Liquidador
             this.TxtboxSettings_SimStep1.TabIndex = 5;
             this.TxtboxSettings_SimStep1.Text = "";
             this.TxtboxSettings_SimStep1.TrailingIcon = null;
+            this.TxtboxSettings_SimStep1.Visible = false;
             this.TxtboxSettings_SimStep1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtboxSettings_ObjSim1_KeyPress);
             // 
             // LblSettings_SelloutStep2
@@ -988,6 +996,7 @@ namespace Arcane.Liquidador
             this.LblSettings_SelloutStep2.Size = new System.Drawing.Size(122, 24);
             this.LblSettings_SelloutStep2.TabIndex = 4;
             this.LblSettings_SelloutStep2.Text = "Objetivo SO 2";
+            this.LblSettings_SelloutStep2.Visible = false;
             // 
             // LblSettings_SelloutStep1
             // 
@@ -1001,6 +1010,7 @@ namespace Arcane.Liquidador
             this.LblSettings_SelloutStep1.Size = new System.Drawing.Size(122, 24);
             this.LblSettings_SelloutStep1.TabIndex = 4;
             this.LblSettings_SelloutStep1.Text = "Objetivo SO 1";
+            this.LblSettings_SelloutStep1.Visible = false;
             // 
             // LblSettings_SimStep3
             // 
@@ -1014,6 +1024,7 @@ namespace Arcane.Liquidador
             this.LblSettings_SimStep3.Size = new System.Drawing.Size(130, 24);
             this.LblSettings_SimStep3.TabIndex = 4;
             this.LblSettings_SimStep3.Text = "Objetivo Sim 3";
+            this.LblSettings_SimStep3.Visible = false;
             // 
             // LblSettings_SimStep2
             // 
@@ -1027,6 +1038,7 @@ namespace Arcane.Liquidador
             this.LblSettings_SimStep2.Size = new System.Drawing.Size(130, 24);
             this.LblSettings_SimStep2.TabIndex = 4;
             this.LblSettings_SimStep2.Text = "Objetivo Sim 2";
+            this.LblSettings_SimStep2.Visible = false;
             // 
             // LblSettings_SimStep1
             // 
@@ -1040,6 +1052,7 @@ namespace Arcane.Liquidador
             this.LblSettings_SimStep1.Size = new System.Drawing.Size(130, 24);
             this.LblSettings_SimStep1.TabIndex = 4;
             this.LblSettings_SimStep1.Text = "Objetivo Sim 1";
+            this.LblSettings_SimStep1.Visible = false;
             // 
             // materialDivider3
             // 
@@ -1236,7 +1249,6 @@ namespace Arcane.Liquidador
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private System.Windows.Forms.BindingSource pSRBindingSource;
         private System.Windows.Forms.BindingSource nonCompliantClientsBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salaryDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource employeeBindingSource;
         private MaterialSkin.Controls.MaterialProgressBar ProgressBar;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;

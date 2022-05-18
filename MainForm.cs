@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Arcane.Itec;
-using Arcane.Itec.Abstractions;
+﻿using Arcane.Itec;
 using Arcane.Itec.DTO;
 using Arcane.Itec.Extentions;
 using Arcane.Itec.ItecUtils;
-using Arcane.Itec.ReportManager;
 using Arcane.Liquidador.Data;
 using Arcane.Liquidador.Extentions;
 using Arcane.Liquidador.Properties;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Arcane.Liquidador
 {
@@ -27,12 +21,11 @@ namespace Arcane.Liquidador
         private bool _isStartUp = true;
 
         private List<string> TxtboxPathsList { get; set; } = new List<string>();
-        private List<MaterialTextBox> TxtboxReportsList { get; set; } = new List<MaterialTextBox>();
+        private List<MaterialTextBox> TxtboxReports_List { get; set; } = new List<MaterialTextBox>();
         private Dictionary<string, MaterialTextBox> TxtboxSettingsDict { get; set; } = new Dictionary<string, MaterialTextBox>();
 
         public MainForm()
         {
-
             InitializeComponent();
 
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -54,6 +47,25 @@ namespace Arcane.Liquidador
             else return MaterialSkinManager.Themes.LIGHT;
         }
 
+        private void FillTxtboxReportList()
+        {
+            TxtboxReports_List.Clear();
+            TxtboxReports_List.Add(TxtBox_ReportAgency);
+            TxtboxReports_List.Add(Txtbox_ReportSim);
+            TxtboxReports_List.Add(Txtbox_ReportSO);
+        }
+
+        private void FillTxtboxSettingsDict()
+        {
+            TxtboxSettingsDict.Clear();
+
+            TxtboxSettingsDict.Add(nameof(StepTypes.SimStep1), TxtboxSettings_SimStep1);
+            TxtboxSettingsDict.Add(nameof(StepTypes.SimStep2), TxtboxSettings_SimStep2);
+            TxtboxSettingsDict.Add(nameof(StepTypes.SimStep3), TxtboxSettings_SimStep3);
+            TxtboxSettingsDict.Add(nameof(StepTypes.SelloutStep1), TxtboxSettings_SelloutStep1);
+            TxtboxSettingsDict.Add(nameof(StepTypes.SelloutStep2), TxtboxSettings_SelloutStep2);
+        }
+
         private void Switch_DarkMode_CheckedChanged(object sender, EventArgs e)
         {
             MaterialSkinManager.Instance.Theme = SetTheme();
@@ -66,6 +78,7 @@ namespace Arcane.Liquidador
         }
 
         #region Manage load and save settings
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             _isStartUp = false;
@@ -109,60 +122,70 @@ namespace Arcane.Liquidador
             Settings.Default.defaultSim_text = Txtbox_DefaultSim.Text;
             Settings.Default.Save();
         }
+
         private void Txtbox_Obj1Sim_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
             Settings.Default.SimStep1_text = Txtbox_Step1Sim.Text;
             Settings.Default.Save();
         }
+
         private void Txtbox_Obj2Sim_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
             Settings.Default.SimStep2_text = Txtbox_Step2Sim.Text;
             Settings.Default.Save();
         }
+
         private void Txtbox_Obj3Sim_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
             Settings.Default.SimStep3_text = Txtbox_Step3Sim.Text;
             Settings.Default.Save();
         }
+
         private void Txtbox_DefaultSO_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
             Settings.Default.defaultSo_text = Txtbox_DefaultSO.Text;
             Settings.Default.Save();
         }
+
         private void Txtbox_Obj1SO_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
             Settings.Default.SOStep1_text = Txtbox_Step1SO.Text;
             Settings.Default.Save();
         }
+
         private void Txtbox_Obj2SO_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
             Settings.Default.SOStep2_text = Txtbox_Step2SO.Text;
             Settings.Default.Save();
         }
+
         private void Txtbox_SalesTargetSO_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
             Settings.Default.SaleTarget_text = Txtbox_SalesTargetSO.Text;
             Settings.Default.Save();
         }
+
         private void Txtbox_volTarget_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
             Settings.Default.VolumeTarget_text = Txtbox_VolTarget.Text;
             Settings.Default.Save();
         }
+
         private void Txtbox_volPayment_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
             Settings.Default.VolumePayment_text = Txtbox_VolPayment.Text;
             Settings.Default.Save();
         }
+
         private void Txtbox_PsrReq_TextChanged(object sender, EventArgs e)
         {
             if (_isStartUp) return;
@@ -170,100 +193,93 @@ namespace Arcane.Liquidador
             Settings.Default.Save();
         }
 
-        #endregion
+        #endregion Manage load and save settings
 
-        private void FillTxtboxReportList()
+        private string CheckForDuplicateFields()
         {
-            TxtboxReportsList.Add(TxtBox_ReportAgency);
-            TxtboxReportsList.Add(Txtbox_ReportSim);
-            TxtboxReportsList.Add(Txtbox_ReportSO);
-        }
-        private void FillTxtboxSettingsDict()
-        {
-            TxtboxSettingsDict.Clear();
-
-            TxtboxSettingsDict.Add(nameof(StepTypes.SimStep1), TxtboxSettings_SimStep1);
-            TxtboxSettingsDict.Add(nameof(StepTypes.SimStep2), TxtboxSettings_SimStep2);
-            TxtboxSettingsDict.Add(nameof(StepTypes.SimStep3), TxtboxSettings_SimStep3);
-            TxtboxSettingsDict.Add(nameof(StepTypes.SelloutStep1), TxtboxSettings_SelloutStep1);
-            TxtboxSettingsDict.Add(nameof(StepTypes.SelloutStep2), TxtboxSettings_SelloutStep2);
-        }
-        private string ValidateFile()
-        {
-            TxtboxPathsList.SyncTxtboxContent(TxtboxReportsList);
-
             if (openFileDialog1.ShowDialog() != DialogResult.OK) return string.Empty;
 
-            var filePath = openFileDialog1.FileName;
-            if (TxtboxPathsList.Contains(filePath))
+            var fileName = openFileDialog1.FileName;
+            TxtboxPathsList.SyncTxtboxContent(TxtboxReports_List);
+
+            if (TxtboxPathsList.Contains(fileName))
             {
                 MessageBox.Show(Warnings.AlreadySelectedFile, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return string.Empty;
             }
 
-            return filePath;
+            return fileName;
         }
 
         private void BtnAdd_ReportAgency_Click(object sender, EventArgs e)
         {
-            TxtBox_ReportAgency.Text = ValidateFile();
+            TxtBox_ReportAgency.Text = CheckForDuplicateFields();
         }
 
         private void BtnAdd_ReportSim_Click(object sender, EventArgs e)
         {
-            Txtbox_ReportSim.Text = ValidateFile();
+            Txtbox_ReportSim.Text = CheckForDuplicateFields();
         }
 
         private void BtnAdd_ReportSO_Click(object sender, EventArgs e)
         {
-            Txtbox_ReportSO.Text = ValidateFile();
+            Txtbox_ReportSO.Text = CheckForDuplicateFields();
         }
 
         #region Manage Key Press Events
+
         private bool IsNumber(KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) return true;
             else return false;
         }
+
         private void Txtbox_DefaultSim_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = IsNumber(e);
         }
+
         private void Txtbox_Obj1Sim_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = IsNumber(e);
         }
+
         private void Txtbox_Obj2Sim_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = IsNumber(e);
         }
+
         private void Txtbox_Obj3Sim_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = IsNumber(e);
         }
+
         private void Txtbox_DefaultSO_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = IsNumber(e);
         }
+
         private void Txtbox_Obj1SO_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = IsNumber(e);
         }
+
         private void Txtbox_Obj2SO_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = IsNumber(e);
         }
+
         private void Txtbox_SalesTargetSO_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = IsNumber(e);
         }
+
         private void TxtboxSettings_ObjSim1_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = IsNumber(e);
         }
-        #endregion
 
-
+        #endregion Manage Key Press Events
 
         private bool IsSomeTxtEmpty()
         {
@@ -387,7 +403,7 @@ namespace Arcane.Liquidador
 
         private bool AnyReportMissing()
         {
-            TxtboxPathsList.SyncTxtboxContent(TxtboxReportsList);
+            TxtboxPathsList.SyncTxtboxContent(TxtboxReports_List);
             return TxtboxPathsList.Exists(item => string.IsNullOrEmpty(item));
         }
 
