@@ -654,6 +654,7 @@ namespace Arcane.Liquidador
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GridControl_Clients.DataSource = this.nonCompliantClientsBindingSource;
+            this.GridControl_Clients.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GridControl_Clients.Location = new System.Drawing.Point(3, 299);
             this.GridControl_Clients.MainView = this.gridView1;
             this.GridControl_Clients.Name = "GridControl_Clients";
@@ -668,8 +669,14 @@ namespace Arcane.Liquidador
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.ColumnFilterButton.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridView1.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseFont = true;
             this.gridView1.Appearance.ColumnFilterButton.Options.UseForeColor = true;
+            this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Poppins", 9.75F);
+            this.gridView1.Appearance.Row.Options.UseFont = true;
+            this.gridView1.AppearancePrint.EvenRow.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView1.AppearancePrint.EvenRow.Options.UseFont = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn6,
@@ -680,7 +687,10 @@ namespace Arcane.Liquidador
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.OptionsPrint.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn6, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // gridColumn1
             // 
@@ -718,6 +728,7 @@ namespace Arcane.Liquidador
             // 
             this.gridColumn5.Caption = "Objetivo";
             this.gridColumn5.FieldName = "Type";
+            this.gridColumn5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("gridColumn5.ImageOptions.Image")));
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
