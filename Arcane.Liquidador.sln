@@ -5,10 +5,6 @@ VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcane.Liquidador", "Arcane.Liquidador.csproj", "{A8B4CF2B-E911-4F2D-95CF-D4ECC5086977}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcane.Liquidador.UT", "Arcane.Liquidador.UT\Arcane.Liquidador.UT.csproj", "{C152CEA4-F2C2-4A58-A99C-8845EC7A3E4F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcane.Itec", "Arcane.Itec\Arcane.Itec.csproj", "{8542FD10-1487-4584-990D-CED31595455F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,14 +15,6 @@ Global
 		{A8B4CF2B-E911-4F2D-95CF-D4ECC5086977}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8B4CF2B-E911-4F2D-95CF-D4ECC5086977}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8B4CF2B-E911-4F2D-95CF-D4ECC5086977}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C152CEA4-F2C2-4A58-A99C-8845EC7A3E4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C152CEA4-F2C2-4A58-A99C-8845EC7A3E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C152CEA4-F2C2-4A58-A99C-8845EC7A3E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C152CEA4-F2C2-4A58-A99C-8845EC7A3E4F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8542FD10-1487-4584-990D-CED31595455F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8542FD10-1487-4584-990D-CED31595455F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8542FD10-1487-4584-990D-CED31595455F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8542FD10-1487-4584-990D-CED31595455F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
