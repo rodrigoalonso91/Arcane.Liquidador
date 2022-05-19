@@ -13,11 +13,6 @@ namespace Arcane.Itec.ReportManager
         {
             PsrFromAgency = new Dictionary<string, PSR>();
         }
-        public CsvReportHandler(string[] reportPsrAgency)
-        {
-            PsrFromAgency = new Dictionary<string, PSR>();
-            HandleAgencyPsr(reportPsrAgency);
-        }
 
         public Dictionary<string, PSR> GetPSRs() => PsrFromAgency;
         public Dictionary<string, PSR> HandleAgencyPsr(string[] reportPsrAgency)
