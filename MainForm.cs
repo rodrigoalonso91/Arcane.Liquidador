@@ -386,7 +386,7 @@ namespace Arcane.Liquidador
             var backoffice = new Backoffice();
             backoffice.Handle(reportPsrAgency, reportPayingSim, reportPayingSO, commisionValues.SaleTarget);
 
-            Dgv_Main.DataSource = salaryCalculator.GetEmployeesSalary(backoffice._reportHandler.GetPSRs()).Values.ToList();
+            Dgv_Main.DataSource = salaryCalculator.GetEmployeesSalary(backoffice._reportHandler.GetPSRs());
             GridControl_Clients.DataSource = backoffice.GetNonCompliantClients();
 
             var rowStyle = new DataGridViewCellStyle

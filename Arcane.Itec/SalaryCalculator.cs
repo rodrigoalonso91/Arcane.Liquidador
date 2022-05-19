@@ -11,9 +11,7 @@ namespace Arcane.Itec
     {
         private readonly CommissionValue Commission;
         private readonly CommisionRules Rules;
-        private int TotalSimAmount { get; set; }
         private int TotalSimReward { get; set; }
-        private int TotalSelloutAmount { get; set; }
         private int TotalSelloutReward { get; set; }
         private int TotalVolumes { get; set; }
         private int TotalVolumeRewards { get; set; }
@@ -25,60 +23,54 @@ namespace Arcane.Itec
             Rules = rules;
         }
 
-        public Dictionary<string, Employee> GetEmployeesSalary(Dictionary<string, PSR> agencyPsr)
+        public List<Employee> GetEmployeesSalary(Dictionary<string, PSR> agencyPsr)
         {
-            var employeesNames = agencyPsr.Values.Select(x => x.WalkerName).Distinct();
-            var employees = new Dictionary<string, Employee>();
+            var employeesNames = agencyPsr.Values.Select(x => x.WalkerName)
+                                                 .Distinct()
+                                                 .ToList();
 
-            TotalVolumes = agencyPsr.Values.Select(x => x.MonthlySale)
-                                         .Aggregate((result, value) => result + value);
-
-            foreach (var name in employeesNames)
+            var employees = new List<Employee>();
+            employeesNames.ForEach(name =>
             {
-                var psrFromThisEmployee = agencyPsr.Values.Where(psr => psr.WalkerName == name);
-                var totalClients = psrFromThisEmployee.Count();
-
-                var simOkAmount = psrFromThisEmployee.Where(psr => psr.SimOk).Count();
-                TotalSimAmount += simOkAmount;
-
-                var selloutOkAmount = psrFromThisEmployee.Where(psr => psr.SelloutOk).Count();
-                TotalSelloutAmount += selloutOkAmount;
-
-                var totalVolume = psrFromThisEmployee.Select(x => x.MonthlySale).Aggregate((result, value) => result + value);
-
-                var simReward = CalculateSimReward(simOkAmount);
-                var selloutReward = CalculateSOReward(selloutOkAmount);
-                var volumeReward = CalculateVolumenReward(totalVolume, TotalVolumes, simOkAmount, selloutOkAmount);
-
-
-                var totalSalary = simReward + selloutReward + volumeReward;
-                TotalEmployeeSalarys += totalSalary;
-
-                employees.Add(name, new Employee()
+                var clientFromEmployee = agencyPsr.Values.Where(psr => psr.WalkerName == name);
+                employees.Add(new Employee
                 {
                     Name = name,
-                    PsrAmount = totalClients,
-                    SimAmount = simOkAmount,
-                    SimReward = "$ " + simReward,
-                    SimPercentage = Utils.GetEfectivity(totalClients, simOkAmount),
-                    SelloutAmount = selloutOkAmount,
-                    SelloutReward = "$ " + selloutReward,
-                    SelloutPercentage = Utils.GetEfectivity(totalClients, selloutOkAmount),
-                    VolumeAmount = totalVolume,
-                    VolumeReward = "$ " + volumeReward,
-                    TotalSalary = "$ " + totalSalary
+                    PsrAmount = clientFromEmployee.Count(),
+                    SimAmount = clientFromEmployee.Where(client => client.SimOk).Count(),
+                    SelloutAmount = clientFromEmployee.Where(client => client.SelloutOk).Count(),
+                    VolumeAmount = clientFromEmployee.Select(x => x.MonthlySale).Aggregate((result, value) => result + value)
                 });
-            }
-            employees.Add("Total", new Employee
+            });
+
+            TotalVolumes = agencyPsr.Values.Select(x => x.MonthlySale)
+                                           .Aggregate((result, value) => result + value);
+
+            RemoveUnpaidVolumes(employees);
+
+            employees.ForEach(e =>
             {
-                Name = "Total",
+                e.SimReward = CalculateSimReward(e);
+                e.SelloutReward = CalculateSOReward(e);
+                e.SimPercentage = Utils.GetEfectivity(e.PsrAmount, e.SimAmount);
+                e.SelloutPercentage = Utils.GetEfectivity(e.PsrAmount, e.SelloutAmount);
+                e.VolumeReward = CalculateVolumenReward(e, TotalVolumes);
+                e.TotalSalary = CalculateTotalRewards(e);
+            });
+
+            var totalSimAmount = agencyPsr.Where(p => p.Value.SimOk).Count();
+            var totalSelloutAmount = agencyPsr.Where(p => p.Value.SelloutOk).Count();
+
+            employees.Add(new Employee
+            {
+                Name = "TOTALES",
                 PsrAmount = agencyPsr.Values.Count,
-                SimAmount = TotalSimAmount,
+                SimAmount = totalSimAmount,
                 SimReward = "$ " + TotalSimReward,
-                SimPercentage = Utils.GetEfectivity(agencyPsr.Values.Count, TotalSimAmount),
-                SelloutAmount = TotalSelloutAmount,
+                SimPercentage = Utils.GetEfectivity(agencyPsr.Values.Count, totalSimAmount),
+                SelloutAmount = totalSelloutAmount,
                 SelloutReward = "$ " + TotalSelloutReward,
-                SelloutPercentage = Utils.GetEfectivity(agencyPsr.Values.Count, TotalSelloutAmount),
+                SelloutPercentage = Utils.GetEfectivity(agencyPsr.Values.Count, totalSelloutAmount),
                 VolumeAmount = TotalVolumes,
                 VolumeReward = "$ " + TotalVolumeRewards,
                 TotalSalary = "$ " + TotalEmployeeSalarys
@@ -86,39 +78,62 @@ namespace Arcane.Itec
             return employees;
         }
 
-        private int CalculateSimReward(int simsOk)
+        private void RemoveUnpaidVolumes(List<Employee> employees)
         {
-            int reward;
-            if (simsOk >= Rules.SimStep3) reward = simsOk * Commission.SimStep3;
-            if (simsOk >= Rules.SimStep2) reward = simsOk * Commission.SimStep2;
-            if (simsOk >= Rules.SimStep1) reward = simsOk * Commission.SimStep1;
-            else reward = simsOk * Commission.DefaultSim;
+            employees.ForEach(e =>
+            {
+                if (e.SimAmount < Rules.RequieredPSR || e.SelloutAmount < Rules.RequieredPSR)
+                {
+                    TotalVolumes -= e.VolumeAmount;
+                }
+            });
+        }
 
+        private string CalculateSimReward(Employee employee)
+        {
+            var commision = Commission.DefaultSim;
+            if (employee.SimAmount >= Rules.SimStep3) commision = Commission.SimStep3;
+            else if (employee.SimAmount >= Rules.SimStep2) commision = Commission.SimStep2;
+            else if (employee.SimAmount >= Rules.SimStep1) commision = Commission.SimStep1;
+
+            var reward = employee.SimAmount * commision;
             TotalSimReward += reward;
-            return reward;
+            TotalEmployeeSalarys += reward;
+            return "$ " + reward;
         }
 
-        private int CalculateSOReward(int selloutOk)
+        private string CalculateSOReward(Employee employee)
         {
-            int reward;
-            if (selloutOk >= Rules.SelloutStep2) reward = selloutOk * Commission.SelloutStep2;
-            if (selloutOk >= Rules.SelloutStep1) reward = selloutOk * Commission.SelloutStep1;
-            else reward = selloutOk * Commission.DefaultSellout;
+            int commision = Commission.DefaultSellout;
+            if (employee.SelloutAmount >= Rules.SelloutStep2) commision = Commission.SelloutStep2;
+            else if (employee.SelloutAmount >= Rules.SelloutStep1) commision = Commission.SelloutStep1;
 
+            var reward = employee.SelloutAmount * commision;
             TotalSelloutReward += reward;
-            return reward;
+            TotalEmployeeSalarys += reward;
+            return "$ " + reward;
         }
 
-        private int CalculateVolumenReward(int employeeVolume, int finalVol, int simOk, int selloutOk)
+        private string CalculateVolumenReward(Employee employee, int volume)
         {
-            if (simOk < Rules.RequieredPSR || selloutOk < Rules.RequieredPSR) return 0;
+            if (employee.SimAmount < Rules.RequieredPSR || employee.SelloutAmount < Rules.RequieredPSR) return "$ 0";
 
-            long multiplyResult = (long)employeeVolume * Commission.VolumePayment;
-            var reward = (int)Math.Round((double)multiplyResult / finalVol);
+            long multiplyResult = (long)employee.VolumeAmount * Commission.VolumePayment;
+            var reward = (int)Math.Round((double)multiplyResult / volume);
 
             TotalVolumeRewards += reward;
+            TotalEmployeeSalarys += reward;
+            return "$ " + reward;
+        }
 
-            return reward;
+        private string CalculateTotalRewards(Employee employee)
+        {
+            var simReward = int.Parse(Utils.ExtractNumber(employee.SimReward));
+            var selloutReward = int.Parse(Utils.ExtractNumber(employee.SelloutReward));
+            var volumeReward = int.Parse(Utils.ExtractNumber(employee.VolumeReward));
+
+            var totalReward = simReward + selloutReward + volumeReward;
+            return "$ " + totalReward;
         }
     }
 }
