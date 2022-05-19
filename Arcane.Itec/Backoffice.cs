@@ -11,7 +11,6 @@ namespace Arcane.Itec
 
         public Backoffice() : this(new CsvReportHandler())
         {
-
         }
 
         internal Backoffice(IReportHandler reportHandler)

@@ -11,6 +11,13 @@ namespace Arcane.Itec
     {
         private readonly CommissionValue Commission;
         private readonly CommisionRules Rules;
+        private int TotalSimAmount { get; set; }
+        private int TotalSimReward { get; set; }
+        private int TotalSelloutAmount { get; set; }
+        private int TotalSelloutReward { get; set; }
+        private int AllVolumes { get; set; }
+        private int AllVolumesRewards { get; set; }
+        private int AllEmployeeSalary { get; set; }
 
         public SalaryCalculator(CommissionValue commission, CommisionRules rules)
         {
@@ -23,15 +30,7 @@ namespace Arcane.Itec
             var employeesNames = agencyPsr.Values.Select(x => x.WalkerName).Distinct();
             var employees = new Dictionary<string, Employee>();
 
-            var totalSimAmount = 0;
-            var totalSimReward = 0;
-            var totalSelloutAmount = 0;
-            var totalSelloutReward = 0;
-
-            var allVolumes = agencyPsr.Values.Select(x => x.MonthlySale).Aggregate((result, value) => result + value);
-            var allVolumesRewards = 0;
-            var allEmployeeSalary = 0;
-
+            var AllVolumes = agencyPsr.Values.Select(x => x.MonthlySale).Aggregate((result, value) => result + value);
 
             foreach (var name in employeesNames)
             {
@@ -39,25 +38,25 @@ namespace Arcane.Itec
                 var totalClients = psrFromThisEmployee.Count();
 
                 var simOkAmount = psrFromThisEmployee.Where(psr => psr.SimOk).Count();
-                totalSimAmount += simOkAmount;
+                TotalSimAmount += simOkAmount;
 
                 var selloutOkAmount = psrFromThisEmployee.Where(psr => psr.SelloutOk).Count();
-                totalSelloutAmount += selloutOkAmount;
+                TotalSelloutAmount += selloutOkAmount;
 
                 var totalVolume = psrFromThisEmployee.Select(x => x.MonthlySale)
                                                      .Aggregate((result, value) => result + value);
 
                 var simReward = CalculateSimReward(simOkAmount);
-                totalSimReward += simReward;
+                TotalSimReward += simReward;
 
                 var selloutReward = CalculateSOReward(selloutOkAmount);
-                totalSelloutReward += selloutReward;
+                TotalSelloutReward += selloutReward;
 
-                var volumeReward = CalculateVolumenReward(totalVolume, allVolumes, simOkAmount, selloutOkAmount);
-                allVolumesRewards += volumeReward;
+                var volumeReward = CalculateVolumenReward(totalVolume, AllVolumes, simOkAmount, selloutOkAmount);
+                AllVolumesRewards += volumeReward;
 
                 var totalSalary = simReward + selloutReward + volumeReward;
-                allEmployeeSalary += totalSalary;
+                AllEmployeeSalary += totalSalary;
 
                 employees.Add(name, new Employee()
                 {
@@ -78,15 +77,15 @@ namespace Arcane.Itec
             {
                 Name = "Total",
                 PsrAmount = agencyPsr.Values.Count,
-                SimAmount = totalSimAmount,
-                SimReward = "$ " + totalSimReward,
-                SimPercentage = Utils.GetEfectivity(agencyPsr.Values.Count, totalSimAmount),
-                SelloutAmount = totalSelloutAmount,
-                SelloutReward = "$ " + totalSelloutReward,
-                SelloutPercentage = Utils.GetEfectivity(agencyPsr.Values.Count, totalSelloutAmount),
-                VolumeAmount = allVolumes,
-                VolumeReward = "$ " + allVolumesRewards,
-                TotalSalary = "$ " + allEmployeeSalary
+                SimAmount = TotalSimAmount,
+                SimReward = "$ " + TotalSimReward,
+                SimPercentage = Utils.GetEfectivity(agencyPsr.Values.Count, TotalSimAmount),
+                SelloutAmount = TotalSelloutAmount,
+                SelloutReward = "$ " + TotalSelloutReward,
+                SelloutPercentage = Utils.GetEfectivity(agencyPsr.Values.Count, TotalSelloutAmount),
+                VolumeAmount = AllVolumes,
+                VolumeReward = "$ " + AllVolumesRewards,
+                TotalSalary = "$ " + AllEmployeeSalary
             });
             return employees;
         }

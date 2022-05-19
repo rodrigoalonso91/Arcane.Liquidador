@@ -53,7 +53,7 @@ namespace Arcane.Itec.ReportManager
             }
             return PsrFromAgency;
         }
-        public Dictionary<string, PSR> HandleSORemuneration(string[] reportSOPaying, int sellTargetSO)
+        public Dictionary<string, PSR> HandleSORemuneration(string[] reportSOPaying, int sellTarget)
         {
             var reportLength = reportSOPaying.Length;
 
@@ -66,7 +66,7 @@ namespace Arcane.Itec.ReportManager
                 if (PsrFromAgency.ContainsKey(psrCode))
                 {
                     PsrFromAgency[psrCode].MonthlySale = int.Parse(monthlySale);
-                    PsrFromAgency[psrCode].SelloutOk = PsrFromAgency[psrCode].MonthlySale >= sellTargetSO;
+                    PsrFromAgency[psrCode].SelloutOk = PsrFromAgency[psrCode].MonthlySale >= sellTarget;
                 }
             }
             return PsrFromAgency;
