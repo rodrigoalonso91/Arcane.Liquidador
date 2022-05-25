@@ -475,7 +475,7 @@ namespace Arcane.Liquidador
             // 
             // MCard_ReportView
             // 
-            this.MCard_ReportView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MCard_ReportView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MCard_ReportView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.MCard_ReportView.Controls.Add(this.PicBox_Logo);
@@ -493,7 +493,7 @@ namespace Arcane.Liquidador
             // 
             // PicBox_Logo
             // 
-            this.PicBox_Logo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.PicBox_Logo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PicBox_Logo.Image = ((System.Drawing.Image)(resources.GetObject("PicBox_Logo.Image")));
             this.PicBox_Logo.InitialImage = ((System.Drawing.Image)(resources.GetObject("PicBox_Logo.InitialImage")));
@@ -506,7 +506,7 @@ namespace Arcane.Liquidador
             // 
             // MLTxtBox1
             // 
-            this.MLTxtBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MLTxtBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MLTxtBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.MLTxtBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -652,12 +652,10 @@ namespace Arcane.Liquidador
             // 
             // Dgv_Main
             // 
-            this.Dgv_Main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Dgv_Main.DataSource = this.employeeBindingSource1;
+            this.Dgv_Main.Dock = System.Windows.Forms.DockStyle.Top;
             this.Dgv_Main.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Main.Location = new System.Drawing.Point(3, 3);
+            this.Dgv_Main.Location = new System.Drawing.Point(3, 4);
             this.Dgv_Main.MainView = this.gridView2;
             this.Dgv_Main.Name = "Dgv_Main";
             this.Dgv_Main.Size = new System.Drawing.Size(1130, 263);
@@ -675,6 +673,10 @@ namespace Arcane.Liquidador
             this.gridView2.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Black;
             this.gridView2.Appearance.ColumnFilterButton.Options.UseFont = true;
             this.gridView2.Appearance.ColumnFilterButton.Options.UseForeColor = true;
+            this.gridView2.Appearance.ColumnFilterButtonActive.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView2.Appearance.ColumnFilterButtonActive.Options.UseFont = true;
+            this.gridView2.Appearance.FooterPanel.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView2.Appearance.FooterPanel.Options.UseFont = true;
             this.gridView2.Appearance.Row.Font = new System.Drawing.Font("Poppins", 9.75F);
             this.gridView2.Appearance.Row.Options.UseFont = true;
             this.gridView2.AppearancePrint.EvenRow.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -693,9 +695,13 @@ namespace Arcane.Liquidador
             this.gridView2.GridControl = this.Dgv_Main;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.Editable = false;
-            this.gridView2.OptionsFind.AlwaysVisible = true;
+            this.gridView2.OptionsCustomization.AllowSort = false;
+            this.gridView2.OptionsFind.AllowFindPanel = false;
+            this.gridView2.OptionsMenu.ShowFooterItem = true;
             this.gridView2.OptionsPrint.EnableAppearanceEvenRow = true;
+            this.gridView2.OptionsView.ShowFooter = true;
             this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.OptionsView.ShowIndicator = false;
             this.gridView2.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn7, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
@@ -705,50 +711,58 @@ namespace Arcane.Liquidador
             this.gridColumn3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn3.Caption = "Caminante";
             this.gridColumn3.FieldName = "Name";
-            this.gridColumn3.MinWidth = 110;
+            this.gridColumn3.MinWidth = 10;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 0;
-            this.gridColumn3.Width = 219;
+            this.gridColumn3.Width = 123;
             // 
             // gridColumn7
             // 
             this.gridColumn7.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn7.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn7.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn7.Caption = "PSR totales";
+            this.gridColumn7.DisplayFormat.FormatString = " {0} PSR";
+            this.gridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn7.FieldName = "PsrAmount";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 1;
-            this.gridColumn7.Width = 71;
+            this.gridColumn7.Width = 79;
             // 
             // gridColumn8
             // 
             this.gridColumn8.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn8.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn8.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn8.Caption = "Objetivo Sim";
+            this.gridColumn8.DisplayFormat.FormatString = " {0} PSR";
+            this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn8.FieldName = "SimAmount";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 2;
-            this.gridColumn8.Width = 74;
+            this.gridColumn8.Width = 79;
             // 
             // gridColumn9
             // 
             this.gridColumn9.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn9.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn9.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn9.Caption = "Sim (%)";
+            this.gridColumn9.DisplayFormat.FormatString = " {0:N1} %";
+            this.gridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn9.FieldName = "SimPercentage";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 4;
-            this.gridColumn9.Width = 57;
+            this.gridColumn9.Width = 84;
             // 
             // gridColumn10
             // 
             this.gridColumn10.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn10.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn10.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn10.Caption = "Comisión Sim";
+            this.gridColumn10.DisplayFormat.FormatString = " $ {0}";
+            this.gridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn10.FieldName = "SimReward";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
@@ -758,69 +772,79 @@ namespace Arcane.Liquidador
             // gridColumn11
             // 
             this.gridColumn11.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn11.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn11.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn11.Caption = "Objetivo SO";
+            this.gridColumn11.DisplayFormat.FormatString = " {0} PSR";
+            this.gridColumn11.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn11.FieldName = "SelloutAmount";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 5;
-            this.gridColumn11.Width = 68;
+            this.gridColumn11.Width = 78;
             // 
             // gridColumn12
             // 
             this.gridColumn12.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn12.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn12.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn12.Caption = "SO (%)";
+            this.gridColumn12.DisplayFormat.FormatString = " {0:N1} %";
+            this.gridColumn12.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn12.FieldName = "SelloutPercentage";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 6;
-            this.gridColumn12.Width = 49;
+            this.gridColumn12.Width = 78;
             // 
             // gridColumn13
             // 
             this.gridColumn13.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn13.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn13.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn13.Caption = "Comisión SO";
+            this.gridColumn13.DisplayFormat.FormatString = " $ {0}";
+            this.gridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn13.FieldName = "SelloutReward";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 7;
-            this.gridColumn13.Width = 71;
+            this.gridColumn13.Width = 78;
             // 
             // gridColumn15
             // 
             this.gridColumn15.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn15.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn15.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn15.Caption = "Volumen";
+            this.gridColumn15.DisplayFormat.FormatString = " $ {0}";
+            this.gridColumn15.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn15.FieldName = "VolumeReward";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 8;
-            this.gridColumn15.Width = 71;
+            this.gridColumn15.Width = 78;
             // 
             // gridColumn16
             // 
             this.gridColumn16.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn16.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn16.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn16.Caption = "A pagar";
+            this.gridColumn16.DisplayFormat.FormatString = " $ {0}";
+            this.gridColumn16.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn16.FieldName = "TotalSalary";
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 9;
-            this.gridColumn16.Width = 104;
+            this.gridColumn16.Width = 120;
             // 
             // GridControl_Clients
             // 
-            this.GridControl_Clients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.GridControl_Clients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GridControl_Clients.DataSource = this.nonCompliantClientsBindingSource;
             this.GridControl_Clients.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GridControl_Clients.Location = new System.Drawing.Point(3, 299);
+            this.GridControl_Clients.Location = new System.Drawing.Point(3, 273);
             this.GridControl_Clients.MainView = this.gridView1;
             this.GridControl_Clients.Name = "GridControl_Clients";
-            this.GridControl_Clients.Size = new System.Drawing.Size(1130, 225);
+            this.GridControl_Clients.Size = new System.Drawing.Size(1130, 288);
             this.GridControl_Clients.TabIndex = 1;
             this.GridControl_Clients.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1107,7 +1131,7 @@ namespace Arcane.Liquidador
             // 
             // materialDivider3
             // 
-            this.materialDivider3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.materialDivider3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider3.Depth = 0;
@@ -1120,7 +1144,7 @@ namespace Arcane.Liquidador
             // 
             // materialDivider1
             // 
-            this.materialDivider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.materialDivider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;

@@ -381,7 +381,9 @@ namespace Arcane.Liquidador
                 SelloutStep1 = int.Parse(Utils.ExtractNumber(Settings.Default.SOStep1_hint)),
                 SelloutStep2 = int.Parse(Utils.ExtractNumber(Settings.Default.SOStep2_hint))
             };
+
             ProgressBar.PerformStep();
+
             var salaryCalculator = new SalaryCalculator(commisionValues, commosionRules);
             var backoffice = new Backoffice();
             backoffice.Handle(reportPsrAgency, reportPayingSim, reportPayingSO, commisionValues.SaleTarget);
